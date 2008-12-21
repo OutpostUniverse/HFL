@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>HFL Basics</h1>
+This page will introduce you to the basics of HFL and get you started in no time.
+
+<h2>Configuring your compiler</h2>
+Before you can start using HFL in your projects, you need to tell your compiler where the HFL headers and libraries are located.<br>
+<b>Instructions for MS Visual C++ 5/6:</b><br>
+Start the MSVC IDE. Go to Tools &gt; Options and click the Directories tab.
+Make sure "Include files" is selected in the "Show directories for" dropdown. Double click the empty space and locate the "Include" directory within your HFL package.
+Now choose "Library files" and do the same, this time with the "Lib" folder. Click OK to save your settings.<br>
+<b>Instructions for MS Visual C++ Toolkit 2003 with CodeBlocks:</b><br>
+Start CodeBlocks. Go to Settings &gt; Compiler and click the Directories tab.
+Click the innermost Compiler tab and press the Add button, and locate your "Include" directory in your HFL package. Click OK in the Add dialog.
+Now click the innermost Linker tab and push Add, this time locate the "Lib" folder. Click OK twice to save settings.
+
+<h2>Starting a Project</h2>
+Now that your compiler should be set up, start a typical OP2 mission project as you normally would. You'll get a standard file from the SDK, Main.cpp, with the standard chunks of code that make up an OP2 mission.
+This should all be familiar to you (assuming you've written OP2 missions before).
+
+<h2>Your first HFL mission</h2>
+Go to main.cpp and scroll to the very top of the file. You'll see code that looks like this:
+<pre>#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
+#include &lt;windows.h&gt;
+
+// Include important header files needed to interface with Outpost 2
+#include &lt;Outpost2DLL.h&gt;
+// Include header files to make it easier to build levels
+#include &lt;OP2Helper.h&gt;
+
+// ...</pre>
+
+Below this area is where an extra #include statement will be added to give you access to the HFL library.
+Below the #includes for Outpost2DLL.h and OP2Helper.h, add the following:
+<pre>#include &lt;HFL.h&gt;</pre>
+<p>This allows you to use the HFL functions and classes from your own code.</p>
+<p>Next, you must add calls to HFLInit and HFLCleanup to initialize and cleanup the HFL library. Without these, HFL will not work at all.</p>
+<h2>HFLInit</h2>
+<p>At the top of InitProc, add an HFLInit call as shown:</p>
+<pre>int InitProc()<br>{<br>	HFLInit();
+	// ... rest of your code goes below
+}</pre>
+<p>It's as simple as that. Now, you have to add an HFLCleanup call in the DLL_PROCESS_DETACH handler of DllMain to clean up HFL.</p>
+<h2>HFLCleanup</h2>
+<p>Go to DllMain in your code. Inside, there should already be code to handle DLL_PROCESS_ATTACH. Below, you just need to add a handler for DLL_PROCESS_DETACH. Add code below so it looks like the following:</p>
+<pre>// ... right here would be the end of the if-statement for DLL_PROCESS_ATTACH
+else if (fdwReason == DLL_PROCESS_DETACH)<br>{<br>	HFLCleanup();<br>}</pre>
+<p>Again, not much more difficult. Now that the calls are in place to initialize and cleanup HFL, we can begin using the library itself.</p>
+<h2>Your first HFL function call</h2>
+<p>HFL defines a new class, the UnitEx class. UnitEx stands for &quot;Unit Extension&quot; -- it can be used in place of any code that requires a plain old Unit.</p>
+<p>We'll use this to create an RPG Lynx with the fire rate of a Tiger, by turning on the &quot;double fire rate&quot; flag that OP2 normally uses with Tigers to double their rate of fire. Use code such as the following:</p>
+<pre>// Inside InitProc
+UnitEx lynx; // a UnitEx var. It doesn't look that much different from a normal Unit var declaration.<br>
+// Create a Lynx at (32, 32) for Player 0.. still not much different
+TethysGame::CreateUnit(lynx, mapLynx, LOCATION(32+31, 32-1), 0, mapRPG, 0);
+
+// Now, set the double fire rate flag
+lynx.SetDoubleFireRate(1);</pre>
+<p>Give the mission a suitable map, such as tutorial.map. Start the mission up and tell the RPG lynx to attack the ground. Its fire rate should be twice that of normal.</p>
+<p>That's about it for the basics. Have a look at the rest of the manual for specifics on the different HFL functions.</p>
+</body>
+</html>

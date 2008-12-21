@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>Starve</h1>
+Starve kills off numToStarve number of colonists as if they had died from a food shortage.
+
+<pre>void Starve(int numToStarve, int boolSkipMoraleUpdate);</pre>
+
+It is not possible to directly control what types of colonists die off first. The game maintains a starvation order and starves off colonists in a round robin fashion.<p>
+
+If boolSkipMoraleUpdate is set to a nonzero value, morale will not change as a result, people will just die off instead. Otherwise, morale will drop as it would if there was actually a food shortage.<br>
+In either case, the only messages that are printed are those telling the player how many colonists have died. Messages such as "COLONISTS ARE STARVING TO DEATH" must be printed manually if you wish to have those messages.<p>
+
+Starve can be useful if you want to kill colonists as a result of military or some other non food related game action.
+
+</body>
+</html>

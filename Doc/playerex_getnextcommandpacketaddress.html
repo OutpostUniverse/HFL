@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>GetNextCommandPacketAddress</h1>
+GetNextCommandPacketAddress returns a pointer to the next command packet in the queue ready to be processed by the game.
+
+<pre>CommandPacket* GetNextCommandPacketAddress();</pre>
+
+The pointer returned points to a buffer inside the game. You can modify the contents of the buffer in order to change or prevent player commands from being processed.<br>
+For example, the following code cancels the next player command about to be processed:
+
+<pre>CommandPacket *packet = ExtPlayer[0].GetNextCommandPacketAddress(); // Get the next command
+
+packet->type = ctNop; // Cancel the command</pre>
+
+If called from AIProc or a trigger callback function, this will affect packets before they are sent for processing to the engine (but packets modified here will not get sent through the network).<br>
+Packet and unit processing is done after triggers and AIProc are called.<p>
+
+<div class="warning">GetNextCommandPacketAddress is a function for advanced users only. Incorrect use may prevent player commands from being received, or general game instability.</div>
+</body>
+</html>

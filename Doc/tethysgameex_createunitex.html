@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>CreateUnitEx</h1>
+CreateUnitEx calls an internal unit creation function, allowing you to create objects that typically would crash the game when created normally.
+<pre>int CreateUnitEx(map_id unitType, int pixelX, int pixelY, int creatorId, int cargoWeapon, int unitIndex, int boolCenterInTile);</pre>
+
+<p>unitType specifies the map_id of the unit to create.<br>
+  pixelX and pixelY specify the new unit's location in pixels (multiply tile positions * 32 to get pixels)<br>
+  creatorId specifies the player who creates and initially owns the unit.<br>
+  cargoWeapon specifies the cargo or weapon type to use.<br>
+  unitIndex specifies the existing unit ID to overwrite if nonzero (make sure the old unit is dead first)<br>
+  boolCenterInTile centers the unit on the tile it's placed over if nonzero.</p>
+<p class="tip">CreateUnitEx can be useful to create EMP blasts on the map, as well as &quot;Pretty art!&quot; / AMBIENT_ANIM type objects. </p>
+<p class="warning">This function is intended for power users only, as various different checks on the input parameters are skipped. If you aren't using this function for a specific reason you should use TethysGame::CreateUnit instead to create units. </p>
+</body>
+</html>

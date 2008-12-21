@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>ProcessCommandPacket</h1>
+ProcessCommandPacket injects a game command packet directly into the game engine locally to be processed. (The packet will not get sent over the network).
+
+<pre>int ProcessCommandPacket(CommandPacket *packet);</pre>
+
+No error checking or input validation is performed on the packet. The result from the game engine is returned (typically a true or false value).<p>
+
+<div class="warning">This function is intended only for those familiar and comfortable with using CommandPackets directly.<br>
+Unwanted behavior will almost certainly result if invalid data is passed.</div>
+
+</body>
+</html>

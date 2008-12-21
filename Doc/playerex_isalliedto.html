@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>IsAlliedTo</h1>
+IsAlliedTo returns a true or false value indicating the state of an alliance between two players.<p>
+
+<pre>int IsAlliedTo(int playerId);</pre>
+
+A nonzero value is returned if the player is allied to the player given in the parameter. As an example:
+<pre>if (ExtPlayer[0].IsAlliedTo(2))
+{
+	// Player 0 is allied to Player 2. This doesn't imply that player 2 is allied to player 0 however.
+}</pre>
+
+You can then use the AllyWith method from the normal _Player class to toggle the state of an alliance.<p>
+
+<div class="warning">By default, players are allied to themselves as well as player 6 (the Gaia player).<br>
+Undesired things may happen if either of these alliances are broken.</div>
+
+</body>
+</html>

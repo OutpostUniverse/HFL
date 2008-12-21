@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>MsgBox</h1>
+<p>MsgBox displays an OP2-style message box. </p>
+<pre>int MsgBox(HWND hwnd, LPCTSTR lpText, LPCTSTR lpCaption, UINT uType);</pre>
+
+<p>See the MessageBox API in any Windows API reference to learn how to use the MsgBox method.</p>
+<p class="warning">Keep in mind that the message box will be modal; that is, it will suspend the game. If used in multiplayer the player displaying the message box will lag out of the game. </p>
+</body>
+</html>

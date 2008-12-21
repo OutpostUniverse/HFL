@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>SetHasFired</h1>
+SetHasFired allows you to manually mark a trigger as fired for a player, or reset it.<p>
+
+<pre>void SetHasFired(int playerId, int boolSet);</pre>
+
+If boolSet is nonzero, the trigger will be marked as fired for the player specified in playerId, otherwise it will be cleared.<p>
+
+<div class="tip">You can use this to force a victory or failure on a player. If you create a trigger attached to a victory or failure condition that is always true, but create it disabled, you can use this function to forcefully mark it as fired and cause the victory / failure condition to kick in.</div>
+
+</body>
+</html>

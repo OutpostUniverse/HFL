@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>CreateUnit</h1>
+<p>CreateUnit creates a new unit instance from the current UnitInfo class and returns the instance. </p>
+<pre>Unit CreateUnit(LOCATION where, int unitId);</pre>
+
+<p>where specifies a unit location in pixels. If unitId is nonzero, the unit with that ID will be overwritten (make sure that the old unit is dead first). The unit count will still be incremented even if an ID is specified.</p>
+<p class="warning">This function is for power users who want extra control over the unit. Everyone else should use TethysGame::CreateUnit to create a unit. </p>
+</body>
+</html>

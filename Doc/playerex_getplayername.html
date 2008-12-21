@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>GetPlayerName</h1>
+GetPlayerName retrieves the text name of the player, useful in multiplayer missions to generate messages customized for each player.
+
+<pre>char* GetPlayerName();</pre>
+
+The pointer to the buffer that GetPlayerName returns is a global buffer. If you need to save the name for any length of time, you should make a copy of it using strcpy or other means, as the next call to GetPlayerName (including calls made internally by the game) will overwrite its contents.
+
+<pre>char playerName[15];
+strcpy(playerName, ExtPlayer[0].GetPlayerName());
+// You are now safe to use the playerName variable, as a copy has been made in your mission.</pre>
+
+</body>
+</html>

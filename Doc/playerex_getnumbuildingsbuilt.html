@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>GetNumBuildingsBuilt</h1>
+GetNumBuildingsBuilt returns the number of buildings constructed by the player.<p>
+
+<pre>int GetNumBuildingsBuilt();</pre>
+
+GetNumBuildingsBuilt can be used to control AI and other tasks, for example after the player has 10 buildings the AI will start attacking:
+
+<pre>if (ExtPlayer[0].GetNumBuildingsBuilt() >= 10)
+{
+	// start the attacks from the AI base here... :-)
+}</pre>
+
+</body>
+</html>

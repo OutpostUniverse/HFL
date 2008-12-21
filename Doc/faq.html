@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>FAQ</h1>
+This page will attempt to answer some frequently asked questions you may have while using HFL.<br>
+The FAQ is always a work in progress. If you have a question that you want to add to this FAQ, let me know. You'll get credit for asking the question.
+<h2>I get errors about not being able to access private member functions.</h2>
+HFL requires an OP2 SDK update. Be sure to download the latest version of the Outpost 2 SDK from the OPU website.
+<h2>&quot;HFLInit&quot; identifier not found.</h2>
+Be sure that you have #include'd &lt;HFL.h&gt; into your project.
+<h2>The compile goes OK, but linking fails with &quot;external not found&quot; or some other message.</h2>
+Make sure that you have set your project settings to link with HFL.lib. Go to <a href="basics.html">Basics</a> to learn more.
+<h2>My DLL crashed! Could it be HFL? </h2>
+<p>Possibly. First of all, try to locate the source of the error. One convenient way is to use the Windows MessageBox API around code that might be questionable. Dialogs will pop up everywhere you have inserted a MessageBox call, this way you can find out what points in the code are actually being reached before the crash occurs. If the crash was due to something you did (ex. dereferenced a NULL pointer) then don't bother to report it as being part of HFL. Likewise, if it occurs within a 'normal' Outpost2 call, there's not a whole lot that I can do about it, you'll have to blame OP2 on it. (Unless it's a really weird / quirky bug that we might be able to patch in the next version of OP2 that we release).<br>
+  Otherwise, if you think it's being caused by a call into HFL, look at the next item. </p>
+<h2>I think I've found a bug within HFL. How do I go about reporting it? </h2>
+Let me know via email, forum PM, or IRC. I'll take a look. If I can reproduce the bug and am sure that it's something wrong with the library itself (not something your DLL is doing that's wrong) I'll do what I can to fix it.
+<h2>Why did you decide to use a static library instead of a DLL for HFL? </h2>
+<p>Well, first of all, it makes it a LOT easier on the end users in a case like this. They aren't forced to download an extra DLL that's not really part of the finished mission, but that the mission still needs to run. You avoid the so-called 'DLL hell' by forcing them to have other DLLs.<br>
+  It makes my job easier since I don't have to stay binary-compatible with ALL past versions of HFL as I would if I were using a DLL (since old missions linked against an earlier version of HFL still have to work properly with the new HFL DLL). At link time when your mission is compiled, the HFL code is internalized within your mission. The only burden that this places is on the person writing the mission, since they may need to change their code to make it up-to-date with the new version of HFL should they upgrade (which really shouldn't be that big of a deal after all).<br>
+  Sure, it makes your missions slightly larger, but consider this. If HFL were a DLL, the total size of the finished product would likely be larger in total since code is duplicated (for example, standard C runtime library functions must be placed into the DLL since the DLL has to be able to execute independently of whatever program or DLL is linked to it). However, with a static library, the linker only has to place the C runtime library in the file once along with the HFL library. Not only is your program smaller, but it is slightly faster since intermodular calls are avoided. (All calls are within the same DLL file in the end).</p>
+<h2>What language is HFL written in?</h2>
+<p>HFL is written in Microsoft C++ for a couple of reasons. First of all, you're pretty much locked into using MS C++ with Outpost 2, due to the way that the MS compiler 'decorates' exported C++ class names. These 'decoration schemes' are not compatible with other compilers such as gcc / mingw32 thus you must use the Microsoft C++ compiler.<br>
+  Because of this, I wrote HFL in Microsoft C++ since I knew that would create a library which is compatible with the MS C++ compiler, the MS linker, etc. (Not to mention I despise Borland C++ Builder. It tends to make quite bloated programs).</p>
+<h2>How much inline assembler did you have to use?</h2>
+<p>Absolutely none. Every function call to internal OP2 functions can be done using function pointers using the __fastcall calling convention. I use __fastcall to emulate the MS 'thiscall' convention used to call class member functions. (The class 'this' pointer is placed into the ECX register). Microsoft's version of __fastcall passes the first and second parameters in ECX and EDX respectively (thus the first parameter is just a void* for the 'this' pointer. I create a second dummy parameter but always pass zero since EDX isn't used in this case). This makes the code quite a bit easier to maintain (I only have to use two lines for each function call: one to declare the function pointer and assign it a value, and the second one to actually call the function). I don't really like the Microsoft inline assembler anyway.</p>
+<h2>What other tools did you use to aid in the creation of HFL?</h2>
+<p>Aside from the Microsoft C++ compiler, I used a disassembler (<a href="http://www.datarescue.com/idabase/">IDA</a>, which served well as an assembly level debugger). I take notes in both IDA as well as text files (for text file editing I use <a href="http://www.textpad.com/">TextPad</a>).<br>
+  I have to give a lot of credit to Hooman and Cynex as well since they reverse-engineered many other pieces to the game. Their work was helpful in reverse-engineering other pieces of the game myself.<br>
+  As for any other tools, Cynex's op2art viewer came in helpful when I needed to know what animation the game was referencing. For writing the HFL manual, I used Macromedia Dreamweaver as well as HTML Help Workshop to compile the manual into a .chm file. (Yes, I know HTML -- it would be too time consuming for me to write the entire manual in a text editor though). </p>
+<h2>How could I learn to reverse engineer programs?</h2>
+<p>Well, it goes without saying that you must be proficient in x86 Assembler. All compiled programs that run on the Intel family of processors are written in x86, thus if you want to have any idea what the programs are doing, you should have a thorough understanding of this.<br>
+  In the case of Outpost 2, in depth knowledge of Microsoft C++ 5/6 are good to have. (For any program, it helps to understand the language that the program was compiled in, to understand the program itself).<br>
+  Good disassemblers like IDA are useful to have (for example, IDA automatically recognizes the compiler as well as marks common runtime library functions automatically, for example it identifies sprintf(), malloc(), new and delete operators, fopen, so on..) but are no substitute for your own knowledge.<br>
+  One book I would recommend is <em>Hacker Disassembling Uncovered</em> by Kris Kaspersky. This book details a lot of things which you used to only be able to find online by hunting through obscure websites. It tells a lot about how various compilers work internally (especially Microsoft C++ which OP2 is written in).<br>
+  One starting point if you want to work on OP2 related stuff are the mission DLLs themselves, especially ones like the auto-demo DLLs as there is equivalent C++ code posted on the wiki for them (kudos to Eddy-B for taking the time to do that). The DLLs should be pretty simple to understand provided you know the Outpost 2 SDK. </p>
+</body>
+</html>

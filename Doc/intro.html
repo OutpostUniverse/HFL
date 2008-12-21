@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>Introduction</h1>
+This page will attempt to introduce you to HFL and answer a few basic questions you probably have about it.
+
+<h2>What is HFL?</h2>
+Hacker's Function Library (HFL) is an extension library for Outpost 2 mission programming. It allows you to do things that you couldn't typically do through the high level Outpost2 API, or would need additional expertise / programming skill in a low level language such as Assembler.<br>
+Simply put, HFL makes it easy to do additional actions in the Outpost 2 game environment that don't seem 'normally' possible, easily and safely. A few examples are:
+<ul>
+<li>Load a different map or techtree after the mission has loaded
+<li>Access internal player and unit properties directly. (ex. GetColorNumber(), GetPlayerName(), etc).
+<li>Send low level commands directly to the game engine, to allow units to do things that they couldn't ordinarily through code
+<li>Intercept, modify, or cancel commands from human players
+<li>Create your own reports to appear in the Command Pane 
+<li>and a lot more.
+</ul>
+
+<h2>Why would I need HFL?</h2>
+Suppose you're developing an AI as part of your latest mission, and want to set a unit to move using waypoints. The Outpost2 API has no way to tell a unit to move using waypoints, only directly with Unit.DoMove().
+Or, suppose you want to load a different techtree based on difficulty level in the mission. This is all completely possible with HFL, where there is no equivalent way to do it with just the Outpost2 API.
+There are lots of other non-mission uses as well, for example game mods and such.
+
+<h2>What do I need in order to use HFL? What do I need to know?</h2>
+First of all, you need to be set up to create missions with the standard OP2 SDK. This means that you need a working C++ compiler as well as the Outpost 2 headers and libraries.
+At this time only a compiler that can handle Microsoft libraries and class decoration will work. If you can compile OP2 missions, you most likely have this.<br>
+It is also assumed that you are familiar with both the basics of C++ as well as OP2 mission development. If you haven't created a mission before, HFL is not for you and you should get acquainted with the main SDK before you get into HFL.
+Of course, patience is another good thing to have, since after all, you will be making the game do things it's not supposed to allow the mission to do 'out of the box' and it won't always be smooth sailing ;-)
+
+<h2>Will HFL make the game crash?</h2>
+No more than you can cause the game to crash using just the 'normal' Outpost2 API. Used properly, HFL won't cause the game to be any less stable than it is without HFL being used.
+
+That said, there are always certain situations that can cause a crash, just as certain situations in the normal SDK can cause problems (example: creating too many triggers). Keep in mind that Dynamix never intended for there to be any user created missions. The people who wrote the first missions at Dynamix probably had access to the source code (thus they knew more than we do now about the game limitations) and could write crash-free missions a lot easier.
+<h2>How easy is HFL to use?</h2>
+I try to make it as easy to use as possible. Simply include the header file, link with a library and you're set. The HFL API I try to make as simple as possible (since I know all too well the numerous lines of code you have to write just to put a basic window up on the screen in Windows, pieces of code that are always the same in just about every program).
+Because of this I avoid long names, annoying characters (no static classes or namespaces, so you won't need <b>::</b> too much) and the like. HFL is something I use myself, so of course I want to make it easy on myself (and as a result, everyone else).
+
+<h2>How can I get started?</h2>
+<p>Just follow the link <a href="basics.html">here.</a></p>
+</body>
+</html>

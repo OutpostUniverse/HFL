@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>SetAttachedTrigger</h1>
+For a victory condition, SetAttachedTrigger sets the trigger which is attached to the victory condition given a pointer to the trigger.
+
+<pre>void SetAttachedTrigger(Trigger *trig);</pre>
+
+Keep in mind that trig must be a pointer to a trigger:
+
+<pre>// This code is the correct way.
+TriggerEx vc;
+Trigger trig;
+// ...
+vc.SetAttachedTrigger(&trig); // correct
+
+// This is not correct and won't compile.
+vc.SetAttachedTrigger(trig); // error</pre>
+
+</body>
+</html>

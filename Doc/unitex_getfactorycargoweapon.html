@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>GetFactoryCargoWeapon</h1>
+GetFactoryCargo returns the weapon / cargo value for an item in a factory bay.
+
+<pre>map_id GetFactoryCargoWeapon(int bay);</pre>
+
+bay is a number from 0-5 (0 = first bay in the factory). If an invalid bay number is used, -1 is returned.<br>
+The weapon / cargo value for the item is returned (for example, if a Rail Gun Guard Post is in bay 0, mapRailGun would get returned if bay 0 were queried).<p>
+
+The result is undefined if the bay doesn't contain an item in the first place.
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>SetAnimation</h1>
+SetAnimation sets the animation of a unit, mostly useful if you want to create Pretty art! / AMBIENT_ANIM objects on your own.
+<pre>void SetAnimation(int animIdx, int animDelay, int animStartDelay, int boolInvisible, int boolSkipDoDeath);</pre>
+
+animIdx specifies the animation ID to use (as from OP2_ART). animDelay specifies the delay in ticks between frames. animStartDelay sets how many ticks to wait before starting the animation. boolInvisible controls whether the animation will be visible (there isn't much use for this unless you want to hide the animation temporarily). boolSkipDoDeath, to the best of my knowledge, controls whether the unit will stay alive after playing the animation. If nonzero, you will have to kill it manually. 
+</body>
+</html>

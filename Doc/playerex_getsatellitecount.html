@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>GetSatelliteCount</h1>
+GetSatelliteCount will retrieve the number of 'satellites' of a specific type that the player has.<p>
+
+<pre>int GetSatelliteCount(map_id objectType);</pre>
+
+The game defines a 'satellite' to be anything up in space (with the exception of starship modules, these are handled differently in a way I'm not totally familiar with).<br>
+This means there are three types of satellites possible:
+<ul>
+<li>mapRLV
+<li>mapSolarSatellite
+<li>mapEDWARDSatellite
+</ul>
+One of these three values can be passed to GetSatelliteCount to retrieve a count. If any other value is passed, GetSatelliteCount returns 0.
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>UnitEx Reference</h1>
+
+<h2>Overview</h2>
+UnitEx is an extension to the OP2 Unit class. It allows you to issue various commands that are not possible with the standard Unit functions, as well as retrieve extra information about the unit.<br>
+UnitEx is derived from Unit, so anywhere you declare Unit variables, you can declare UnitEx variables and use them in the same way. You can still call functions from the normal Unit class on them as well. For example, the following is perfectly legal code:
+
+<pre>UnitEx scout;
+TethysGame::CreateUnit(scout, mapScout, LOCATION(32+31, 32-1), 0, mapNone, 0);
+
+int owner = scout.OwnerID(); // call Unit function
+int creator = scout.CreatorID(); // call UnitEx function</pre>
+
+<h2>New/Changed Methods</h2>
+<a href="unitex_doattack.html">DoAttack</a><br>
+<a href="unitex_dodoze.html">DoDoze</a><br>
+<a href="unitex_dodock.html">DoDock</a><br>
+<a href="unitex_dodockatgarage.html">DoDockAtGarage</a><br>
+<a href="unitex_dostandground.html">DoStandGround</a><br>
+<a href="unitex_doremovewall.html">DoRemoveWall</a><br>
+<a href="unitex_doproduce.html">DoProduce</a><br>
+<a href="unitex_dotransfercargo.html">DoTransferCargo</a><br>
+<a href="unitex_doloadcargo.html">DoLoadCargo</a><br>
+<a href="unitex_dounloadcargo.html">DoUnloadCargo</a><br>
+<a href="unitex_dodumpcargo.html">DoDumpCargo</a><br>
+<a href="unitex_doresearch.html">DoResearch</a><br>
+<a href="unitex_dotrainscientists.html">DoTrainScientists</a><br>
+<a href="unitex_dorepair.html">DoRepair</a><br>
+<a href="unitex_doreprogram.html">DoReprogram</a><br>
+<a href="unitex_dodismantle.html">DoDismantle</a><br>
+<a href="unitex_dosalvage.html">DoSalvage</a><br>
+<a href="unitex_doguard.html">DoGuard</a><br>
+<a href="unitex_dopoof.html">DoPoof</a><br>
+<a href="unitex_getlastcommand.html">GetLastCommand</a><br>
+<a href="unitex_getcuraction.html">GetCurAction</a><br>
+<a href="unitex_creatorid.html">CreatorID</a><br>
+<a href="unitex_isempedex.html">IsEMPedEx</a><br>
+<a href="unitex_isstickyfoamed.html">IsStickyfoamed</a><br>
+<a href="unitex_isesged.html">IsESGed</a><br>
+<a href="unitex_getdamage.html">GetDamage</a><br>
+<a href="unitex_getcargoamount.html">GetCargoAmount</a><br>
+<a href="unitex_getfactorycargo.html">GetFactoryCargo</a><br>
+<a href="unitex_getfactorycargoweapon.html">GetFactoryCargoWeapon</a><br>
+<a href="unitex_getlights.html">GetLights</a><br>
+<a href="unitex_getdoublefirerate.html">GetDoubleFireRate</a><br>
+<a href="unitex_getinvisible.html">GetInvisible</a><br>
+<a href="unitex_setdoublefirerate.html">SetDoubleFireRate</a><br>
+<a href="unitex_setinvisible.html">SetInvisible</a><br>
+<a href="unitex_getdocklocation.html">GetDockLocation</a><br>
+<a href="unitex_getunitinfo.html">GetUnitInfo</a><br>
+<a href="unitex_setanimation.html">SetAnimation</a><br>
+
+</body>
+</html>

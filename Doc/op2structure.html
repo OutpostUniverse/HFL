@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<style type="text/css">
+<!--
+.style1 {color: #99B3E9}
+-->
+</style></head>
+<body>
+<h1>Outpost 2 Game Structure </h1>
+<p>This page contains general information about how OP2's internals work, to help explain why certain things in HFL work a certain way. </p>
+<h2>Units and UnitInfo</h2>
+<p>A 'unit' is defined as any object on the map. In addition to the typical intepretation of 'unit' (Structures and Vehicles) the following types of map objects are units:</p>
+<ul>
+  <li>Mining beacons</li>
+  <li>Fumaroles</li>
+  <li>Magma wells</li>
+  <li>Meteors</li>
+  <li>Electrical storms</li>
+  <li>Vortexes</li>
+  <li>Weapons fire (projectile graphics, smoke trails, explosions, EMP, laser beams, etc)</li>
+  <li>Wreckage (the flag is considered a 'unit'. When the wreckage is picked up the flag 'unit' is destroyed)</li>
+  <li>Markers (set with TethysGame::PlaceMarker, the circle / DNA strand / beaker)</li>
+  <li>Rockets</li>
+  <li>Explosions from self destruction, buildings being destroyed</li>
+  <li>&quot;Temporary&quot; items like consumer items and satellites (when created, they cause an effect on the game and then go away immediately)</li>
+  <li>Most other animations on the map</li>
+</ul>
+<p>Every unit type in the game is assigned a specific structure which we refer to as the unit info for that type. UnitInfo structures define all the standard, tweakable parameters that are loaded from the text files in sheets.vol and modified by the game when a research is completed. For example, hit points, common ore cost, reload time, move speed, etc. are all parameters set from the unit info for a unit.</p>
+<p>Certain things like tubes, walls, starship modules, and satellites have unit info associated with them, but these are not really 'units' themselves, nor are blight or lava. (Blight, lava, tubes, and walls are all attributes of the map tile, and are not units at all).</p>
+<p>Other 'units' like weapons and consumer items are handled differently. Weapon 'units' are created only when a turret is being fired. It's the projectile 'unit' itself that does damage to the object that it hits, not the vehicle or GP that it is mounted on. Likewise, consumer items are units without graphics which simply cause an event to happen (raise morale) but after that they disappear. The same is true for satellites and starship modules. They cause the game to track an event that the module was built, and then the 'unit' itself disappears. </p>
+<p>Each unit info structure is really a class inside the game which is part of a larger array. (The ordering of the classes in this array define the map_id's for each unit. For example, the first item is a unit info class meaning 'no unit', the next is the cargo truck (map_id 1), so on. Each unit info class is also linked to a codename which the game uses to match up entries in the text files. For example, the code name for the Cargo Truck is &quot;BIG_TRUCK&quot;.</p>
+<p>When a unit is created, the unit info class that corresponds to the map_id for the unit to be created is selected from the array. Next, a member function is called which actually creates an instance of the unit. This instance is linked to a specific chunk of data within the unit info class for that unit type. Each player has their own 'chunk' of data in the unit info. This way, research only affects a certain player's unit info chunk and not everyone's.</p>
+<p>For this reason, there are few ways that you could change parameters like the common ore cost for just a single unit, since all this information is specified in the unit info. (You would have to modify the unit info data, which would affect the values for all units of that type). </p>
+<p>There is a hard limit of 1023 units for the whole game. Once this limit is reached, unit creation fails. (This is also why weapons will not fire when the limit is reached - 'units' must be created for the projectile / laser beams, since creation of these items fails, the weapon does not fire).</p>
+<p>Each unit is also assigned an ID. This ID corresponds to the position in a global Unit array</p>
+<p>The Unit class, and in HFL, the UnitEx class correspond to a unit instance within the game. The UnitInfo class corresponds to the unit info structure within the game.</p>
+<h2>Players</h2>
+<p>Likewise, the _Player and PlayerEx objects correspond to an internal Player object within the game. The Player object holds all statistics about a logical player in the game, for example lists of all units that they own, as well as 'command packets' (see next section).</p>
+<p>Each player is assigned an ID (which is not foreign to DLL programmers -- the first player has ID #0).</p>
+<p>In a network game, the game also assigns each player a 'net ID' which is a random number that uniquely identifies each client in the game. This is used by the game for identification purposes.</p>
+<h2>Game Commands</h2>
+<p>Now that I have described Units and Players, and how a Player owns a Unit, now I'll describe commands. Commands in the game are stored in a structure known as a 'command packet.' A command packet simply consists of a type (telling the game what the command is) as well as parameters for the command.</p>
+<p>When you tell the game to do something, for example, telling a Vehicle Factory to produce a cargo truck, a ctMoProduce packet is generated with parameters telling the game the ID of the factory, as well as the map_id's of the unit to produce and that unit's weapon.</p>
+<p>Each player has their own buffer for CommandPackets, which is processed separately. For network transmission, command packets are copied into a network packet which tracks network state information (such as the timestamp of the packet as well as the net ID of the player, etc). They are then transmitted and unpacked at the other end.</p>
+<p>One thing to keep in mind is that the Do* functions for units simply generate a command packet. The processing won't start until the next game cycle.</p>
+<h2>The Command Pane </h2>
+<p>The command pane is the bottom-right area of the screen which allows you to view information about your colony as well as command the units. HFL adds the ability to control the contents of this pane, to allow for custom control panels for missions. Because of this, it is crucial that you understand the game architecture for the command pane if you wish to create your own views.</p>
+<p>Each 'view' for the command pane is a 'report' object internally. The report object is just a class with a series of virtual functions that specify what to draw in the command pane when it is repainted, as well as what to do when the report is first opened. It can also specify what button at the top of the command pane is associated with it (that way the button opens the report and the button will 'pop out' again when the report is closed) </p>
+<p>Each report can contain one or more controls, which have different actions depending on what the control is. Currently, the only supported control in HFL is the button, which is associated with an animation ID (from OP2_ART.bmp). The typical report button is just a blank 'button image' with some text on top of it. When the button is clicked, a virtual function is called that causes the button to perform an action.</p>
+<p>Controls themselves are really associated with the command pane itself, but the command pane removes all buttons when a report is deactivated (thus it is the report's job to maintain the buttons). </p>
+<p>The command pane is also associated with a graphics surface object which handles all drawing for the pane. All text and graphics rendering are done through this object, which is passed as a pointer to virtual functions that repaint the report.</p>
+<p>&nbsp; </p>
+</body>
+</html>

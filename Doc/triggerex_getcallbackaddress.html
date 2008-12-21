@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>GetCallbackAddress</h1>
+GetCallbackAddress retrieves the address of the function associated with the trigger.<p>
+
+<pre>TRIGCB GetCallbackAddress();</pre>
+
+TRIGCB is a function pointer to a standard trigger function, and is typedef'd as follows:
+
+<pre>typedef void (__cdecl *TRIGCB)(void);</pre>
+
+One use of this function is to create arrays of function pointers for triggers. See SetCallback for a discussion of this.
+
+</body>
+</html>

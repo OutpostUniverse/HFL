@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>General Reference</h1>
+<p>This page contains general reference information about HFL.</p>
+<h2>Initialization and Cleanup</h2>
+<p>Before you call any HFL-specific functions, you must call HFLInit to initialize the library. HFLInit relocates all object and function pointers into the game (which is not necessary, but may be on later versions of Windows. This way, old missions will not need modification to continue running on new versions of Windows). If HFL functions are called, for those returning a value (including pointer values), the constant HFLNOTINITED is returned if HFLInit has not yet been called. Normally, this should never happen since HFLInit is usually called in InitProc before all other code.<br>
+  The only exception to HFLInit is for static / global classes, for example:</p>
+<pre>UnitInfo rpg(mapRPG);</pre>
+<p>As static and global classes are initialized and their constructor is called by the startup code which is called as soon as the DLL gets loaded, constructors of these classes will automatically call HFLInit if HFL is not already initialized. However, you should never depend on this automatic initialization, and always place the HFLInit call in your InitProc.</p>
+<p>Likewise, when the DLL is being unloaded, HFLCleanup should be called to clean up the library's state.</p>
+<p class="warning">If you write custom destructors, for example in the Report and Button classes (which require you to derive your own classes), be careful not to call any functions that would be unavailable after cleanup, since destructors of static / global classes are called outside of any user written code (by the CRT startup code). </p>
+<p>&nbsp;</p>
+</body>
+</html>

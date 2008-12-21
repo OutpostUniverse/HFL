@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>GetCallbackName</h1>
+GetCallbackName retrieves the exported name of the callback function associated with the trigger.<p>
+
+<pre>char *GetCallbackName();</pre>
+
+A pointer to the exported function name for the trigger function (from the DLL) is returned.<br>
+If you used SetCallback to set the trigger callback using a function address, NULL will be returned.
+
+</body>
+</html>

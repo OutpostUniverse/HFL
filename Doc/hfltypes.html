@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>HFLTypes.h documentation </h1>
+<p>Below is basic documentation for each of the structs, enums and constants defined in HFLTypes.h.</p>
+<h2>CommandType</h2>
+<p>The CommandType enum is a list of different command packet types. These are also sent to a unit when a command packet is processed, thus it is possible to use them to find out what a unit has been ordered to do.</p>
+<h2>ActionType</h2>
+<p>The ActionType enum is a list of different unit action types. These are used to indicate exactly what a unit is doing at the time the value is checked.</p>
+<h2>TrackType</h2>
+<p>Vehicles have different track types which affect how fast they can move on different cell types (if they can move to those celltypes at all). This enum lists the different track types (used with the UnitInfo classes to control the track type of a unit).</p>
+<h2>ReportButtonType</h2>
+<p>Each grey report button at the top of the Command Pane has an ID associated with it. This enum lists all the ID's for use in various report-related functions.</p>
+<h2>ArmorType </h2>
+<p>The ArmorType enum lists various armor classes for units, for use with UnitInfo.</p>
+<h2>OwnerFlags</h2>
+<p>The OwnerFlags enum lists various settings for the owner type in a unit's UnitInfo. This specifies who can build the unit.</p>
+<h2>VehicleFlags</h2>
+<p>The VehicleFlags enum lists various flags that apply to vehicles. They can be combined with the | (bitwise OR) operator to mix different flags together.</p>
+<h2>BuildingFlags</h2>
+<p>The BuildingFlags enum lists flags that apply to structures. They can be combined with the | operator like VehicleFlags above.</p>
+<h2>RenderData, RenderHeader, RenderChunk</h2>
+<p>These structs are used in the rendering of text onto a PaneGFXSurface.</p>
+<h2>AnimId</h2>
+<p>This enum specifies various animation ID's in the OP2_ART that could be useful for report developers. (Note on animation ID's: if you use an animation ID from the OP2art reader, you must add +101 to it to get a valid ID that can be used in game).</p>
+<h2>FrameId</h2>
+<p>This enum specifies standard frame ID's used for button states.</p>
+<h2>MapTile</h2>
+<p>The MapTile struct is a series of bitfields that control attributes of a map tile. It can be used with GetTileEx / SetTileEx to control other flags such as lava and blight.</p>
+<h2>RCCEffectState</h2>
+<p>This enum is used with the TethysGameEx.SetRCCEffect function to control the state of pathfinding effects for all players.</p>
+<h2>COLOR* defines</h2>
+<p>These specify various standard colors for use with the SetBottomStatusBar function. You can | (OR) them together to make new colors (just use what you learned in art class, except it applies to light - red and green make yellow, etc). You can also use the RGB macro to define new colors.</p>
+<h2>TRIGCB</h2>
+<p>This defines a trigger callback function pointer for use with the TriggerEx class.</p>
+<h2>HFL* defines </h2>
+<p>These are values returned from either HFLInit or other HFL functions. HFLNOTINITED is returned from any HFL function if HFLInit has not yet been called (for functions that return no value, nothing happens in this case).</p>
+<p>HFLLOADED is returned by HFLInit if initialization goes normally. HFLALREADYINITED is returned if HFLInit was already called (nothing happens). HFLCANTINIT is returned if HFL failed to initialize (this should only be returned if the DLL was loaded by a program other than OP2, for example mission DLL profilers that may exist in the future). </p>
+<p>&nbsp;</p>
+</body>
+</html>

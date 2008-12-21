@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>CreatorID</h1>
+CreatorID returns the ID of the player who created the unit.
+
+<pre>int CreatorID();</pre>
+
+Usually, but not always, the Creator ID of a unit is the same as its owner. However, the owner ID changes when a unit is captured or transferred to another player, unlike the creator ID.<br>
+The creator ID can be used to find out what upgrades and settings the unit uses (as the unit inherits upgrade info from the player who created it, not the current owner).
+
+</body>
+</html>

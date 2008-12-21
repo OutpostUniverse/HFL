@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>LoadTechtree</h1>
+<p>LoadTechtree loads a different techtree after the mission has started. </p>
+<pre>void LoadTechtree(char *fileName, int maxTechLevel);</pre>
+
+<p>fileName specifies the name of the techtree file to load. maxTechLevel specifies the maximum tech level to load (the first two digits of a Tech ID are the tech level), technologies with a higher tech level than this are skipped.</p>
+<p class="warning">The file that is loaded must not contain errors. If it does, the game state may be unstable.<br>
+  Also, the result is undefined if labs are currently researching anything when the techtree is loaded. </p>
+</body>
+</html>

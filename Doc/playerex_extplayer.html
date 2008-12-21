@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>ExtPlayer</h1>
+ExtPlayer is a new array that allows the use of PlayerEx in place of Player in mission scripting.<br>
+Use is similar to the Player array, as an example:
+
+<pre>int playerColor = ExtPlayer[0].GetColorNumber();</pre>
+
+You must use the ExtPlayer array in order to use the new methods that PlayerEx provides. The following will generate an error.
+
+<pre>int playerColor = Player[0].GetColorNumber(); // error</pre>
+
+</body>
+</html>

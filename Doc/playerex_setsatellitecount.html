@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>SetSatelliteCount</h1>
+SetSatelliteCount will set the number of 'satellites' of a specific type that the player has.<p>
+
+<pre>void SetSatelliteCount(map_id objectType, int count);</pre>
+
+See the page on GetSatelliteCount for a discussion of what a satellite is and what values can be used for objectType.<br>
+If you give an invalid map_id for objectType, nothing will happen.<p>
+
+The following code gives a player 5 RLV's. These will be up in space and will be able to land at an empty Spaceport.
+<pre>ExtPlayer[0].SetSatelliteCount(mapRLV, 5);</pre>
+
+</body>
+</html>

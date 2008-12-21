@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>SetCallback</h1>
+SetCallback sets the trigger callback function either by name or by function pointer. There are two possible function calls:<p>
+
+<pre>void SetCallback(char *funcName);
+void SetCallback(TRIGCB callback);</pre>
+
+TRIGCB is typedef'd as a pointer to a trigger function. See GetCallbackAddress for more information.<p>
+
+One possible use of SetCallback is to select a trigger function at random. For example, you could use one trigger to handle various types of disasters:
+
+<pre>// It can be done through exported functions like so:
+SCRIPT_API void Meteor()
+{
+	// meteor code..
+}
+
+SCRIPT_API void Lightning()
+{
+	// electrical storm code..
+}
+
+char *triggerNames[] = {"Meteor", "Lightning"};
+
+TriggerEx trig;
+
+void SetRandomDisaster()
+{
+	// assuming the trigger has already been created..
+	trig.SetCallback(triggerNames[TethysGame::GetRand(2)]);
+}
+
+// The same is possible with function pointers, like so:
+TRIGCB triggerPtrs[] = {Meteor, Lightning};
+
+void SetRandomDisasterWithPointer()
+{
+	// assuming the trigger has already been created..
+	trig.SetCallback(triggerPtrs[TethysGame::GetRand(2)]);
+}
+
+// ...
+
+// Pointers have the added benefit of being able to be changed rather easily, for example if you wanted to have all meteors for awhile:
+triggerPtrs[1] = Meteor;</pre>
+
+If a function name is passed in (as a string), the game will immediately look up the function address for the name and save it. If the address is not found, the game will display a warning dialog.<br>
+If a function pointer is passed in, it is saved immediately. No check is made to be sure that it points to valid memory.
+
+</body>
+</html>

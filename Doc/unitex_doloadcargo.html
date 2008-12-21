@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>DoLoadCargo</h1>
+DoLoadCargo fills a Cargo Truck with materials from a structure with a dock.
+
+<pre>void DoLoadCargo();</pre>
+
+The truck should be empty before DoLoadCargo is called. Also, this function does not work with structures that can't load cargo into a truck directly.<br>
+For factories with storage bays, use DoTransferCargo instead. The vehicle must be sitting on the dock before this function is called.
+
+</body>
+</html>

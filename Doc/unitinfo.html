@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>UnitInfo Reference</h1>
+
+<h2>Overview</h2>
+<p>UnitInfo is a new class whose means is to access the internal UnitInfo classes inside the game. This allows you to set unit parameters without having to use UNIT_PROP or other means in a techtree. (It also allows setting of more variables than are  available through techtrees).</p>
+<p>To use UnitInfo, just declare a new UnitInfo var and pass either a map_id or a codename of a unit to it:</p>
+<pre>UnitInfo lynx(mapLynx);
+// or ...
+UnitInfo lynx(&quot;LIGHT_TANK&quot;);</pre>
+<p>Note that many of the methods for UnitInfo are just aliases for each other. This is because the game stores data in the same locations for different types of units, but interprets the values differently.</p>
+<h2>Methods</h2>
+<p><a href="unitinfo_isvalid.html">IsValid</a><br>
+  <a href="unitinfo_gethitpoints.html">GetHitPoints</a><br>
+  <a href="unitinfo_sethitpoints.html">SetHitPoints</a><br>
+  <a href="unitinfo_getrepairamt.html">GetRepairAmt</a><br>
+  <a href="unitinfo_setrepairamt.html">SetRepairAmt</a><br>
+  GetArmor<br>
+  SetArmor<br>
+  GetOreCost<br>
+  SetOreCost<br>
+  GetRareOreCost<br>
+  SetRareOreCost<br>
+  GetBuildTime<br>
+  SetBuildTime<br>
+  GetSightRange<br>
+  SetSightRange<br>
+  GetWeaponRange<br>
+  SetWeaponRange<br>
+  GetPowerRequired<br>
+  SetPowerRequired<br>
+  GetMovePoints<br>
+  SetMovePoints<br>
+  GetTurretTurnRate<br>
+  SetTurretTurnRate<br>
+  GetConcussionDamage<br>
+  SetConcussionDamage<br>
+  GetWorkersRequired<br>
+  SetWorkersRequired<br>
+  GetTurnRate<br>
+  SetTurnRate<br>
+  GetPenetrationDamage<br>
+  SetPenetrationDamage<br>
+  GetScientistsRequired<br>
+  SetScientistsRequired<br>
+  GetProductionRate<br>
+  SetProductionRate<br>
+GetReloadTime<br>
+SetReloadTime<br>
+GetStorageCapacity<br>
+SetStorageCapacity<br>
+GetWeaponSightRange<br>
+SetWeaponSightRange<br>
+GetProductionCapacity<br>
+SetProductionCapacity<br>
+GetNumStorageBays<br>
+SetNumStorageBays<br>
+GetCargoCapacity<br>
+SetCargoCapacity<br>
+GetResearchTopic<br>
+SetResearchTopic<br>
+GetTrackType<br>
+SetTrackType<br>
+GetOwnerFlags<br> 
+SetOwnerFlags<br>
+<a href="unitinfo_getunitname.html">GetUnitName</a><br>
+<a href="unitinfo_setunitname.html">SetUnitName</a><br>
+<a href="unitinfo_getproducelistname.html">GetProduceListName</a><br>
+<a href="unitinfo_setproducelistname.html">SetProduceListName</a><br> 
+GetXSize<br> 
+SetXSize<br>
+GetDamageRadius<br>
+SetDamageRadius<br>
+GetVehicleFlags<br>
+SetVehicleFlags<br>
+GetYSize<br>
+SetYSize<br>
+GetPixelsSkippedWhenFiring<br>
+SetPixelsSkippedWhenFiring<br>
+GetBuildingFlags<br>
+SetBuildingFlags<br>
+GetExplosionSize<br>
+SetExplosionSize<br>
+GetResourcePriority<br>
+SetResourcePriority<br>
+<a href="unitinfo_getrarerubble.html">GetRareRubble</a><br>
+<a href="unitinfo_setrarerubble.html">SetRareRubble</a><br>
+<a href="unitinfo_getrubble.html">GetRubble</a><br>
+<a href="unitinfo_setrubble.html">SetRubble</a><br>
+GetEdenDockPos<br>
+SetEdenDockPos<br>
+GetPlymDockPos<br>
+SetPlymDockPos<br>
+<a href="unitinfo_getcodename.html">GetCodeName</a><br>
+<a href="unitinfo_getmapid.html">GetMapID</a><br>
+<a href="unitinfo_createunit.html">CreateUnit</a></p>
+<p>&nbsp; </p>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>HFL Manual</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>ActivateReport</h1>
+<p>ActivateReport loads a new report into the Command Pane.</p>
+<pre>void ActivateReport(PaneReport *report);</pre>
+<p>If report is NULL, the pane will be cleared.</p>
+<p>Upon load, the report's Init virtual method will be called. At that time, the report should initialize all data and controls.</p>
+<p>The old report's button will be popped up if the old report's GetLinkedButtonId virtual method returns a nonzero value. </p>
+</body>
+</html>

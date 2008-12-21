@@ -1,0 +1,43 @@
+body {
+	font-family: Verdana, Tahoma, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+a:link {
+	color: #00bb00;
+}
+
+h1 {
+	font-size: 16px;
+	color: #0000aa;
+	border-bottom: 1px solid #000000;
+}
+
+h2 {
+	font-size: 14px;
+}
+
+pre {
+	font-family: Courier New, Courier, monospaced;
+	font-size: 12px;
+	border: 1px solid #000000;
+	padding: 4px;
+	margin-left: 20px;
+	background-color: #ffff99;
+}
+
+.warning {
+	font-size: 10px;
+	border: 1px solid #000000;
+	padding: 4px;
+	margin-left: 20px;
+	background-color: #ff9999;
+}
+
+.tip {
+	font-size: 10px;
+	border: 1px solid #000000;
+	padding: 4px;
+	margin-left: 20px;
+	background-color: #bbbbff;
+}
