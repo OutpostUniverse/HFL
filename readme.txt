@@ -16,20 +16,17 @@ This is a description of the files inside this package:
 
 Doc\		The (incomplete) manual for HFL
 Example\	A really small example mission that shows how to use the GUI objects like command panes and buttons in HFL
-Include\	The C++ headers for HFL
-Lib\		The static library for HFL
-SDKInclude\	The replacement headers for the SDK (you must overwrite the old SDK files otherwise you'll get errors when you compile!)
-Src\		The source code to HFL (the headers are located here, along with an MSVC++ 6 project that you can use to compile the library)
+Source\		The source code to HFL (the headers are located here, along with an MSVC++ 6 project that you can use to compile the library)
 readme.txt	You're looking at it right now
 
 Installation
 ------------
-1. Install the new SDK by copying the contents of the SDKInclude folder into your old Include folder for the SDK.
+1. **delete step** Install the new SDK by copying the contents of the SDKInclude folder into your old Include folder for the SDK.
 (You may want to make a backup of the old Include folder first). Overwrite existing files.
 
-2. Unpack HFL into a directory of your choice.
+2. Unpack HFL into a directory of your choice (** specify location **).
 
-3. Add HFL to your compiler's include and library paths.
+3. Add HFL to your compiler's include and library paths.  (** fix package so no change is required, using known path **)
 follow the directions in the manual, located in the Doc folder, to figure out how to set up your source code to work with HFL. (Specifically, the "basics" page is what you want).
 
 4. #include <HFL.h> into your project, write code, set project to link with HFL.lib, compile, run :-)
