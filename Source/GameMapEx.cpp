@@ -9,16 +9,20 @@ struct OP2Map
 	int pixelWidth;
 	unsigned int tileXMask;
 	int tileWidth;
-	unsigned char logTileWidth; // base 2 log
-	char filler1[3];
+	int logTileWidth; // base 2 log
+	int tileHeight;
 	MAP_RECT clipRect;
 	int numTiles;
 	int numTileSets;
-	unsigned char logTileHeight; // base 2 log
-	char filler2[3];
-	int unknown2;
+	int logTileHeight; // base 2 log
+	int paddingOffsetTileX;
 	int numUnits;
-	int unknown3[4];
+	int lastUsedUnitIndex;
+	int nextFreeUnitSlotIndex;
+	int firstFreeUnitSlotIndex;
+	int unknown2;
+	void *unitArray;
+	void *unitLinkedListHead;
 };
 #pragma pack(pop)
 
@@ -35,13 +39,15 @@ MapTile GameMapEx::GetTileEx(LOCATION where)
 		return t;
 
 	OP2Map *p = (OP2Map*)mapObj;
-	MapTile *tiles = (MapTile*)mapTileData;
+	MapTile **tileArray = (MapTile**)(mapTileData);
 
-	unsigned int a = where.x & p->tileXMask;
-	unsigned int b = (((a & 31) / 32) << p->logTileHeight) + where.y;
-
-	t = tiles[b * 32 + a];
-	return t;
+	int xLower = p->tileXMask & where.x;
+	int xUpper = xLower >> 5;
+	xLower &= 31;
+	xUpper <<= p->logTileHeight;
+	xUpper += where.y;
+	xUpper <<= 5;
+	return (*tileArray)[xUpper + xLower];
 }
 
 void GameMapEx::SetTileEx(LOCATION where, MapTile newData)
@@ -50,12 +56,16 @@ void GameMapEx::SetTileEx(LOCATION where, MapTile newData)
 		return;
 
 	OP2Map *p = (OP2Map*)mapObj;
-	MapTile *tiles = (MapTile*)mapTileData;
+	MapTile **tileArray = (MapTile**)(mapTileData);
 
-	unsigned int a = where.x & p->tileXMask;
-	unsigned int b = (((a & 31) / 32) << p->logTileHeight) + where.y;
+	int xLower = p->tileXMask & where.x;
+	int xUpper = xLower >> 5;
+	xLower &= 31;
+	xUpper <<= p->logTileHeight;
+	xUpper += where.y;
+	xUpper <<= 5;
 
-	tiles[b * 32 + a] = newData;
+	(*tileArray)[xUpper + xLower] = newData;
 }
 
 int GameMapEx::GetMapWidth()
@@ -77,6 +87,7 @@ int GameMapEx::GetMapHeight()
 
 	return 1 << p->logTileHeight;
 }
+
 
 int GameMapEx::GetNumUnits()
 {
