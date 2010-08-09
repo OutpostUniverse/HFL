@@ -690,8 +690,22 @@ int UnitEx::GetCargoAmount()
 	if (!IsLive())
 		return -1;
 
-	return ((*unitArray)[unitID].weaponCargo >> 4) & 0xF;
-	return 0;
+	int cargoAmount = (((*unitArray)[unitID].weaponCargo) >> 4) & 0xFFF;
+	if (GetCargoType() == truckGarbage)
+		cargoAmount += 8000;
+
+	return cargoAmount;
+}
+
+Truck_Cargo UnitEx::GetCargoType()
+{
+	if (!isInited)
+		return (Truck_Cargo)HFLNOTINITED;
+
+	if (!IsLive())
+		return (Truck_Cargo)-1;
+
+	return (Truck_Cargo)(((*unitArray)[unitID].weaponCargo) & 0xF);
 }
 
 map_id UnitEx::GetFactoryCargo(int bay)

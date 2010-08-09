@@ -33,6 +33,7 @@ public:
 	int IsESGed();
 	int GetDamage();
 	int GetCargoAmount();
+	Truck_Cargo GetCargoType();
 	map_id GetFactoryCargo(int bay);
 	map_id GetFactoryCargoWeapon(int bay);
 	int GetLights();
