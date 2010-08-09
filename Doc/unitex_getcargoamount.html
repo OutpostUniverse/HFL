@@ -9,8 +9,10 @@ GetCargoAmount returns the current amount of cargo held in a Cargo Truck.
 
 <pre>int GetCargoAmount();</pre>
 
-The cargo amount is a scaled value from 0 - 127. 127 indicates full cargo.<br>
-You can use the SetTruckCargo function from the standard Unit class to set the amount of cargo in a truck.
+The maximum possible amount of cargo a truck can carry is 4095.<br>
+For wreckage, internally the "cargo amount" (or tech ID) has 8000 subtracted from it. Therefore, this means that the tech ID of a wreck must be in the range of 8000-12095.<br>
+You can use the SetTruckCargo function from the standard Unit class to set the amount of cargo in a truck.<br>
+You can use the GetCargoType function to get the type of cargo held in a truck.
 
 </body>
 </html>
