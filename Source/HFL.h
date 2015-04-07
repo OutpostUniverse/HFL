@@ -6,7 +6,7 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
-#include <Outpost2DLL.h>
+#include "../../Outpost2DLL/Outpost2DLL.h"
 
 // Include other HFL related headers
 #include "HFLTypes.h"
