@@ -544,7 +544,7 @@ void UnitInfo::SetUnitName(char *newName)
 		return;
 
 	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	strcpy(p->unitName, newName);
+	strcpy_s(p->unitName, newName);
 }
 
 char* UnitInfo::GetProduceListName()
@@ -564,7 +564,7 @@ void UnitInfo::SetProduceListName(char *newName)
 		return;
 
 	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	strcpy(p->produceName, newName);
+	strcpy_s(p->produceName, newName);
 }
 
 int UnitInfo::GetXSize()
