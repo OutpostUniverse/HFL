@@ -246,8 +246,8 @@ void UnitEx::DoDeployMiner(LOCATION where)
 
 	// Convert x/y location to pixel
 	int pxLoc = 0;
-	int x = (int)(where.x) * 32;
-	int y = (int)(where.y) * 32;
+	int x = where.x * 32;
+	int y = where.y * 32;
 	pxLoc = (x & 0x07FFF) | (y & 0x03FFF) << 15;
 
 	// Build command packet
