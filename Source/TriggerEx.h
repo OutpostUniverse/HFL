@@ -19,4 +19,4 @@ class TriggerEx : public Trigger
 	// todo: any other get/set type of functions
 };
 
-#endif _TRIGGEREX_H_
+#endif // _TRIGGEREX_H_
