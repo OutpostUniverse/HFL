@@ -13,26 +13,17 @@ This is incomplete software. If your computer crashes or you lose data because y
 
 This library is distributed as part of the [MissionSDK](https://github.com/OutpostUniverse/OP2MissionSDK). An Outpost 2 mission project can reference the MissionSDK project, which will bring in access to HFL. For a template mission project, see the [LevelTemplate](https://github.com/OutpostUniverse/LevelTemplate) project. The LevelTemplate project is already configured to use the MissionSDK, and hence also provides access to HFL.
 
-## Files
+## Documentation
 
-This is a description of the files inside this package:
+An incomplete manual in HTML format can be found in the "Doc\" folder. A small example mission can be found in the "Example\" folder.
 
-Doc\		The (incomplete) manual for HFL
-Example\	A really small example mission that shows how to use the GUI objects like command panes and buttons in HFL
-Source\		The source code to HFL (the headers are located here, along with a Visual Studio project that you can use to compile the library)
-readme.txt	You're looking at it right now
+## Client Project Configuration
 
-## Installation
+If you are using the LevelTemplate project, you can largely ignore this section as it is already setup for you.
 
-1. **delete step** Install the new SDK by copying the contents of the SDKInclude folder into your old Include folder for the SDK.
-(You may want to make a backup of the old Include folder first). Overwrite existing files.
+To use HFL, you must configure the compiler's Include and Library paths. See the "basics" page of the manual in the Doc folder for details. The project will need an include folder set so it can find the header file with the `#include <HFL.h>` line. It will also need a library folder set so it can find HFL.lib during the link step.
 
-2. Unpack HFL into a directory of your choice (** specify location **).
-
-3. Add HFL to your compiler's include and library paths.  (** fix package so no change is required, using known path **)
-follow the directions in the manual, located in the Doc folder, to figure out how to set up your source code to work with HFL. (Specifically, the "basics" page is what you want).
-
-4. #include <HFL.h> into your project, write code, set project to link with HFL.lib, compile, run :-)
+Calling code should be sure to call `HFLInit` before calling any other HFL methods. For an Outpost 2 mission, this should be done from `DllMain`. In particular, this should not be done from `InitProc`, as that will leave the mission vulnerable to problems after loading a saved game. The `InitProc` method is only run once at level start, and will not run when a saved game is loaded. This can leave the HFL library uninitialized after loading a saved game.
 
 ## Bugs / Help
 
