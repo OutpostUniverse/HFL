@@ -13,13 +13,6 @@ This is incomplete software. If your computer crashes or you lose data because y
 
 This library is distributed as part of the [MissionSDK](https://github.com/OutpostUniverse/OP2MissionSDK). An Outpost 2 mission project can reference the MissionSDK project, which will bring in access to HFL. For a template mission project, see the [LevelTemplate](https://github.com/OutpostUniverse/LevelTemplate) project. The LevelTemplate project is already configured to use the MissionSDK, and hence also provides access to HFL.
 
-## Requirements
-
-- A C++ compiler that can compile OP2 missions (duh)
-- The most recent Outpost 2 mission SDK
-- A working copy of Outpost 2 (preferably the OPU version)
-- Some patience as you work with code that is incomplete :-)
-
 ## Files
 
 This is a description of the files inside this package:
