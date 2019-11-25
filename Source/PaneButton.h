@@ -3,6 +3,10 @@
 #ifndef _PANEBUTTON_H_
 #define _PANEBUTTON_H_
 
+
+struct OP2Button;
+
+
 class PaneButton
 {
 public:
@@ -29,7 +33,7 @@ public:
 	RECT* GetBoundingBox();
 
 	void *internalVtbl;
-	void *internalBtn;
+	OP2Button *internalBtn;
 	int isInternalObj;
 };
 

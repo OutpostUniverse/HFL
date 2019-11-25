@@ -183,7 +183,7 @@ PaneButton::PaneButton(void *internalPtr)
 
 	int *p = (int*)internalPtr;
 
-	internalBtn = internalPtr;
+	internalBtn = (OP2Button*)internalPtr;
 	internalVtbl = (void*)*p;
 	isInternalObj = 1;
 }
