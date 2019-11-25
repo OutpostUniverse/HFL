@@ -22,7 +22,7 @@ This is a description of the files inside this package:
 
 Doc\		The (incomplete) manual for HFL
 Example\	A really small example mission that shows how to use the GUI objects like command panes and buttons in HFL
-Source\		The source code to HFL (the headers are located here, along with an MSVC++ 6 project that you can use to compile the library)
+Source\		The source code to HFL (the headers are located here, along with a Visual Studio project that you can use to compile the library)
 readme.txt	You're looking at it right now
 
 ## Installation
