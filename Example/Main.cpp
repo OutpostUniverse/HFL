@@ -110,7 +110,7 @@ BOOL APIENTRY DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 		HFLCleanup();
 	}
 
-    return TRUE;
+	return TRUE;
 }
 
 // Note: The following function is called once by Outpost2.exe when the

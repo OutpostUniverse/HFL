@@ -20,28 +20,28 @@ struct OP2ButtonVtbl
 #pragma pack(push, 1)
 struct OP2ButtonData
 {
-    int animId;
-    short normalFrameId;
-    short activeFrameId;
-    short disabledFrameId;
-    short unknown1;
-    char *helpText;
+	int animId;
+	short normalFrameId;
+	short activeFrameId;
+	short disabledFrameId;
+	short unknown1;
+	char *helpText;
 	char *buttonLabel;
-    int unknown2[3];
+	int unknown2[3];
 };
 
 struct OP2Button
 {
-    OP2ButtonVtbl *vtbl;
-    unsigned int flags;
-    RECT rect;
-    int accelKey;
-    int unknown[3];
-    int hasButtonText; // set to 4 if the button has text drawn on it, 0 if not
-    int unknown2[22];
-    OP2ButtonData data;
+	OP2ButtonVtbl *vtbl;
+	unsigned int flags;
+	RECT rect;
+	int accelKey;
+	int unknown[3];
+	int hasButtonText; // set to 4 if the button has text drawn on it, 0 if not
+	int unknown2[22];
+	OP2ButtonData data;
 	void *report; // all buttons are 'report buttons' but we won't use them that way necessarily
-    int unknown3;
+	int unknown3;
 	int fillingSpace[10]; // maybe more stuff that OP2 depends on here..
 	PaneButton *btnPtr; // our PaneButton
 };
