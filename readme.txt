@@ -9,6 +9,10 @@ Normally memory hacks of the nature used in this project can be a bit unsafe as 
 
 This is incomplete software. If your computer crashes or you lose data because you used this, I cannot and will not be held responsible for any bad things that occur. Use at your own risk.
 
+## Usage
+
+This library is distributed as part of the [MissionSDK](https://github.com/OutpostUniverse/OP2MissionSDK). An Outpost 2 mission project can reference the MissionSDK project, which will bring in access to HFL. For a template mission project, see the [LevelTemplate](https://github.com/OutpostUniverse/LevelTemplate) project. The LevelTemplate project is already configured to use the MissionSDK, and hence also provides access to HFL.
+
 ## Requirements
 
 - A C++ compiler that can compile OP2 missions (duh)
