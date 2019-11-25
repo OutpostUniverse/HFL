@@ -13,7 +13,7 @@ class PaneReport
 {
 public:
 	PaneReport();
-	PaneReport(void *internalPtr);
+	PaneReport(OP2Report *internalPtr);
 	~PaneReport();
 
 	virtual void Update();

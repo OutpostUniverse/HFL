@@ -358,7 +358,7 @@ PaneReport ReportButton::GetAttachedReport()
 	if (!p) // not inited if this is null
 		return PaneReport(0);
 
-	return PaneReport(p->report);
+	return PaneReport((OP2Report*)p->report);
 }
 
 void ReportButton::SetAttachedReport(PaneReport *newReport)
