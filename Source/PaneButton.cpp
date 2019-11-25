@@ -40,7 +40,7 @@ struct OP2Button
 	int hasButtonText; // set to 4 if the button has text drawn on it, 0 if not
 	int unknown2[22];
 	OP2ButtonData data;
-	void *report; // all buttons are 'report buttons' but we won't use them that way necessarily
+	OP2Report *report; // all buttons are 'report buttons' but we won't use them that way necessarily
 	int unknown3;
 	int fillingSpace[10]; // maybe more stuff that OP2 depends on here..
 	PaneButton *btnPtr; // our PaneButton
@@ -358,7 +358,7 @@ PaneReport ReportButton::GetAttachedReport()
 	if (!p) // not inited if this is null
 		return PaneReport(0);
 
-	return PaneReport((OP2Report*)p->report);
+	return PaneReport(p->report);
 }
 
 void ReportButton::SetAttachedReport(PaneReport *newReport)
