@@ -11,7 +11,7 @@ class PaneButton
 {
 public:
 	PaneButton();
-	PaneButton(void *internalPtr);
+	PaneButton(OP2Button *internalPtr);
 	~PaneButton();
 
 	virtual void Paint(PaneGFXSurface gfxSurface);
@@ -41,7 +41,7 @@ class ReportButton : public PaneButton
 {
 public:
 	ReportButton();
-	ReportButton(void *internalPtr);
+	ReportButton(OP2Button *internalPtr);
 	PaneReport GetAttachedReport();
 	void SetAttachedReport(PaneReport *newReport);
 };

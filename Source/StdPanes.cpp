@@ -73,7 +73,7 @@ ReportButton CommandPane::GetReportButton(ReportButtonType which)
 
 	OP2CommandPane *p = (OP2CommandPane*)cmdPane;
 
-	return ReportButton(p->reportButtons[which-1]);
+	return ReportButton((OP2Button*)p->reportButtons[which-1]);
 }
 
 void CommandPane::AddButton(PaneButton *btn)
