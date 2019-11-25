@@ -3,8 +3,11 @@
 #ifndef _PANEREPORT_H_
 #define _PANEREPORT_H_
 
+
 // forward declare is needed since the other header isn't included yet
 class PaneButton;
+struct OP2Report;
+
 
 class PaneReport
 {
@@ -26,7 +29,7 @@ public:
 	// todo: listcontrol stuff in the future
 
 	void *internalVtbl;
-	void *internalRpt;
+	OP2Report *internalRpt;
 	int isInternalObj;
 };
 

@@ -129,7 +129,7 @@ PaneReport::PaneReport(void *internalPtr)
 
 	int *p = (int*)internalPtr;
 
-	internalRpt = internalPtr;
+	internalRpt = (OP2Report*)internalPtr;
 	internalVtbl = (void*)*p;
 	isInternalObj = 1;
 }
