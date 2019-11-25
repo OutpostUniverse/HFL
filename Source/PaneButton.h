@@ -5,6 +5,7 @@
 
 
 struct OP2Button;
+struct OP2ButtonVtbl;
 
 
 class PaneButton
@@ -32,7 +33,7 @@ public:
 	void SetAcceleratorKey(int asciiCode);
 	RECT* GetBoundingBox();
 
-	void *internalVtbl;
+	OP2ButtonVtbl *internalVtbl;
 	OP2Button *internalBtn;
 	int isInternalObj;
 };

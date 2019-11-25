@@ -149,7 +149,7 @@ PaneButton::PaneButton()
 	// set up vtbl
 	internalVtbl = new OP2ButtonVtbl;
 	
-	OP2ButtonVtbl *vp = (OP2ButtonVtbl*)internalVtbl;
+	OP2ButtonVtbl *vp = internalVtbl;
 	p->vtbl = vp;
 
 	vp->Destructor = (void* (__fastcall *)(OP2Button*,int,int))(imageBase + 0xA8F0);
@@ -181,10 +181,8 @@ PaneButton::PaneButton(OP2Button *internalPtr)
 		}
 	}
 
-	int *p = (int*)internalPtr;
-
 	internalBtn = internalPtr;
-	internalVtbl = (void*)*p;
+	internalVtbl = internalPtr->vtbl;
 	isInternalObj = 1;
 }
 
