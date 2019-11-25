@@ -7,6 +7,7 @@
 // forward declare is needed since the other header isn't included yet
 class PaneButton;
 struct OP2Report;
+struct OP2ReportVtbl;
 
 
 class PaneReport
@@ -28,7 +29,7 @@ public:
 	void SetCurrentPage(int pageNum);
 	// todo: listcontrol stuff in the future
 
-	void *internalVtbl;
+	OP2ReportVtbl *internalVtbl;
 	OP2Report *internalRpt;
 	int isInternalObj;
 };

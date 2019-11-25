@@ -103,7 +103,7 @@ PaneReport::PaneReport()
 	// set up vtbl
 	internalVtbl = new OP2ReportVtbl;
 
-	OP2ReportVtbl *vp = (OP2ReportVtbl*)internalVtbl;
+	OP2ReportVtbl *vp = internalVtbl;
 	p->vtbl = vp;
 
 	// todo: some vtbl entries need changing for reports with lists
@@ -127,10 +127,8 @@ PaneReport::PaneReport(OP2Report *internalPtr)
 	if (!isInited)
 		return;
 
-	int *p = (int*)internalPtr;
-
 	internalRpt = internalPtr;
-	internalVtbl = (void*)*p;
+	internalVtbl = internalPtr->vtbl;
 	isInternalObj = 1;
 }
 
