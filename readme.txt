@@ -1,17 +1,17 @@
-HFL version 0.7-incomplete readme
----------------------------------
+# HFL version 0.7-incomplete readme
+
 This is incomplete software. If your computer crashes or you lose data because you used this, I cannot and will not be held responsible for any bad things that occur.
 Use at your own risk.
 
-Requirements
-------------
+## Requirements
+
 - A C++ compiler that can compile OP2 missions (duh)
 - The most recent Outpost 2 mission SDK
 - A working copy of Outpost 2 (preferably the OPU version)
 - Some patience as you work with code that is incomplete :-)
 
-Files
------
+## Files
+
 This is a description of the files inside this package:
 
 Doc\		The (incomplete) manual for HFL
@@ -19,8 +19,8 @@ Example\	A really small example mission that shows how to use the GUI objects li
 Source\		The source code to HFL (the headers are located here, along with an MSVC++ 6 project that you can use to compile the library)
 readme.txt	You're looking at it right now
 
-Installation
-------------
+## Installation
+
 1. **delete step** Install the new SDK by copying the contents of the SDKInclude folder into your old Include folder for the SDK.
 (You may want to make a backup of the old Include folder first). Overwrite existing files.
 
@@ -31,8 +31,8 @@ follow the directions in the manual, located in the Doc folder, to figure out ho
 
 4. #include <HFL.h> into your project, write code, set project to link with HFL.lib, compile, run :-)
 
-Bugs / Help
------------
+## Bugs / Help
+
 I'm sure this has lots of bugs. If you find something that might be a bug, post about it on the forum.
 Likewise, if you need help using anything in HFL, make a post regarding that.
 
