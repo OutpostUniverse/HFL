@@ -30,5 +30,3 @@ I'm sure this has lots of bugs. If you find something that might be a bug, post 
 And yes, I know one of the major 'bugs' is the lack of a complete manual. The manual also probably has the wrong version number listed, has pages missing, has stuff documented that doesn't even exist in the library, etc. As far as documentation on the GUI objects like command panes and such, the manual isn't too helpful. You'd be best off looking at the example mission in the Example folder, and/or playing around until you get things to work.
 
 Good luck, and I hope this helps you in your Outpost 2 mission endeavors :-)
-
--- BlackBox (formerly op2hacker)
