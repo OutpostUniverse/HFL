@@ -1,7 +1,13 @@
-# HFL version 0.7-incomplete readme
+# HFL (Hacker's Function Library)
 
-This is incomplete software. If your computer crashes or you lose data because you used this, I cannot and will not be held responsible for any bad things that occur.
-Use at your own risk.
+Version 0.7-incomplete
+Author: BlackBox (formerly op2hacker)
+
+This library is for use by Outpost 2 mission DLLs (or shell extensions). It extends the usual set of functionality provided by Outpost2.exe, beyond what is normally exported, by giving direct access to internal methods and data. It does this through various memory hacking techniques.
+
+Normally memory hacks of the nature used in this project can be a bit unsafe as they are dependent on particular binary layouts of classes and structures. Such layouts are subject to change during a recompile. However, as the source code for Outpost 2 is unavailable, it is extremely unlikely it will ever be recompiled, hence memory hacks should be reasonably safe to use.
+
+This is incomplete software. If your computer crashes or you lose data because you used this, I cannot and will not be held responsible for any bad things that occur. Use at your own risk.
 
 ## Requirements
 
