@@ -29,8 +29,6 @@ I'm sure this has lots of bugs. If you find something that might be a bug, post 
 
 And yes, I know one of the major 'bugs' is the lack of a complete manual. The manual also probably has the wrong version number listed, has pages missing, has stuff documented that doesn't even exist in the library, etc. As far as documentation on the GUI objects like command panes and such, the manual isn't too helpful. You'd be best off looking at the example mission in the Example folder, and/or playing around until you get things to work.
 
-What you see is what you get. I don't have the time to work on this project anymore, so you're pretty much on your own. I can try to give some help regarding problems you may have but I can't guarantee anything. As far as the GUI stuff is concerned, don't expect a whole lot (it's been ages since I looked at any of the GUI code in Outpost 2, and I don't remember how much of it works at all). I know there are others out there who can help you with HFL, I've given them copies ages ago because they needed some feature for a certain mission.
-
 Good luck, and I hope this helps you in your Outpost 2 mission endeavors :-)
 
 -- BlackBox (formerly op2hacker)
