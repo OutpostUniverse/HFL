@@ -105,6 +105,8 @@ BOOL APIENTRY DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 	if (fdwReason == DLL_PROCESS_ATTACH)
 	{
 		DisableThreadLibraryCalls(hinstDLL);
+		// Initialize HFL library.
+		HFLInit();
 	} else if (fdwReason == DLL_PROCESS_DETACH)
 	{
 		HFLCleanup();
@@ -120,9 +122,6 @@ BOOL APIENTRY DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 
 int InitProc()
 {
-	// Initialize HFL library.
-	HFLInit();
-
 	// Get the class for the Factories (gear) button in the command pane.
 	ReportButton factories = gCommandPane.GetReportButton(rbtnFactories);
 
