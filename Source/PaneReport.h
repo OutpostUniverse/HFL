@@ -1,4 +1,3 @@
-// PaneReport.h
 // Report objects
 #pragma once
 

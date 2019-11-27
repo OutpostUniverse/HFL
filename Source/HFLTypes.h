@@ -1,4 +1,3 @@
-// HFLTypes.h
 // Defines basic types such as command packet types, unit action types, etc
 #pragma once
 

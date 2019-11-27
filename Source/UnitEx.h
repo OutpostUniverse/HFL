@@ -1,4 +1,3 @@
-// UnitEx.h
 // Extra / useful unit stuff
 #pragma once
 

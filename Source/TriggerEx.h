@@ -1,4 +1,3 @@
-// TriggerEx.h
 #pragma once
 
 class TriggerEx : public Trigger

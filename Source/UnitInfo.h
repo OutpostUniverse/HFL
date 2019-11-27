@@ -1,4 +1,3 @@
-// UnitInfo.h
 // Classes for modifying UnitInfo structures
 #pragma once
 

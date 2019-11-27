@@ -1,4 +1,3 @@
-// PaneButton.cpp
 #include "HFL.h"
 
 // fwd declares needed here

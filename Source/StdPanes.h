@@ -1,4 +1,3 @@
-// StdPanes.h
 // CommandPane etc.
 #pragma once
 

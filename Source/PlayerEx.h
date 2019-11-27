@@ -1,4 +1,3 @@
-// PlayerEx.h
 // Extra / useful player stuff
 #pragma once
 

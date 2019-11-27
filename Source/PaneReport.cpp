@@ -1,4 +1,3 @@
-// PaneReport.cpp
 #include "HFL.h"
 #include <stdarg.h> // var args on CreateStdButtons
 

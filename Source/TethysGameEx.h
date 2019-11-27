@@ -1,4 +1,3 @@
-// TethysGameEx.h
 // Extensions to TethysGame
 #pragma once
 

@@ -1,4 +1,3 @@
-// PaneGFXSurface.h
 // Graphics rendering surface (as well as Text Rendering interface)
 #pragma once
 

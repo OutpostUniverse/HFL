@@ -1,4 +1,3 @@
-// PaneButton.h
 // Definition of Outpost2 pane button / control, as well as report button.
 #pragma once
 

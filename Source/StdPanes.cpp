@@ -1,4 +1,3 @@
-// StdPanes.cpp
 #include "HFL.h"
 
 // fwd declare
