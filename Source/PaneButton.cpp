@@ -40,7 +40,7 @@ struct OP2Button
 	int hasButtonText; // set to 4 if the button has text drawn on it, 0 if not
 	int unknown2[22];
 	OP2ButtonData data;
-	void *report; // all buttons are 'report buttons' but we won't use them that way necessarily
+	OP2Report *report; // all buttons are 'report buttons' but we won't use them that way necessarily
 	int unknown3;
 	int fillingSpace[10]; // maybe more stuff that OP2 depends on here..
 	PaneButton *btnPtr; // our PaneButton
@@ -141,7 +141,7 @@ PaneButton::PaneButton()
 	// set up button object
 	internalBtn = new OP2Button;
 
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 	memset(p, 0, sizeof(OP2Button));
 	// save a pointer so the dispatcher function can redirect the call to the right object
 	p->btnPtr = this;
@@ -149,7 +149,7 @@ PaneButton::PaneButton()
 	// set up vtbl
 	internalVtbl = new OP2ButtonVtbl;
 	
-	OP2ButtonVtbl *vp = (OP2ButtonVtbl*)internalVtbl;
+	OP2ButtonVtbl *vp = internalVtbl;
 	p->vtbl = vp;
 
 	vp->Destructor = (void* (__fastcall *)(OP2Button*,int,int))(imageBase + 0xA8F0);
@@ -167,7 +167,7 @@ PaneButton::PaneButton()
 	p->hasButtonText = 4;
 }
 
-PaneButton::PaneButton(void *internalPtr)
+PaneButton::PaneButton(OP2Button *internalPtr)
 {
 	internalBtn = NULL;
 	internalVtbl = NULL;
@@ -181,10 +181,8 @@ PaneButton::PaneButton(void *internalPtr)
 		}
 	}
 
-	int *p = (int*)internalPtr;
-
 	internalBtn = internalPtr;
-	internalVtbl = (void*)*p;
+	internalVtbl = internalPtr->vtbl;
 	isInternalObj = 1;
 }
 
@@ -230,7 +228,7 @@ void PaneButton::OnClick()
 
 void PaneButton::SetParams(int pixelX, int pixelY, int animId, int normalFrameId, int activeFrameId, int disabledFrameId, char *helpText, char *label)
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return;
@@ -252,7 +250,7 @@ void PaneButton::SetParams(int pixelX, int pixelY, int animId, int normalFrameId
 
 void PaneButton::SetHelpText(char *helpText)
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return;
@@ -262,7 +260,7 @@ void PaneButton::SetHelpText(char *helpText)
 
 char* PaneButton::GetHelpText()
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return (char*)HFLNOTINITED;
@@ -272,7 +270,7 @@ char* PaneButton::GetHelpText()
 
 void PaneButton::SetLabel(char *label)
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return;
@@ -282,7 +280,7 @@ void PaneButton::SetLabel(char *label)
 
 char* PaneButton::GetLabel()
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return (char*)HFLNOTINITED;
@@ -292,7 +290,7 @@ char* PaneButton::GetLabel()
 
 int PaneButton::GetPushedIn()
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return HFLNOTINITED;
@@ -302,7 +300,7 @@ int PaneButton::GetPushedIn()
 
 void PaneButton::SetPushedIn(int boolPushed)
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return;
@@ -315,7 +313,7 @@ void PaneButton::SetPushedIn(int boolPushed)
 
 int PaneButton::GetAcceleratorKey()
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return HFLNOTINITED;
@@ -325,7 +323,7 @@ int PaneButton::GetAcceleratorKey()
 
 void PaneButton::SetAcceleratorKey(int asciiCode)
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return;
@@ -335,7 +333,7 @@ void PaneButton::SetAcceleratorKey(int asciiCode)
 
 RECT* PaneButton::GetBoundingBox()
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return NULL;
@@ -347,13 +345,13 @@ ReportButton::ReportButton()
 {
 }
 
-ReportButton::ReportButton(void *internalPtr) : PaneButton(internalPtr)
+ReportButton::ReportButton(OP2Button *internalPtr) : PaneButton(internalPtr)
 {
 }
 
 PaneReport ReportButton::GetAttachedReport()
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return PaneReport(0);
@@ -363,7 +361,7 @@ PaneReport ReportButton::GetAttachedReport()
 
 void ReportButton::SetAttachedReport(PaneReport *newReport)
 {
-	OP2Button *p = (OP2Button*)internalBtn;
+	OP2Button *p = internalBtn;
 
 	if (!p) // not inited if this is null
 		return;

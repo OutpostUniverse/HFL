@@ -95,7 +95,7 @@ PaneReport::PaneReport()
 	// set up report object
 	internalRpt = new OP2Report;
 
-	OP2Report *p = (OP2Report*)internalRpt;
+	OP2Report *p = internalRpt;
 	memset(p, 0, sizeof(OP2Report));
 	// save a pointer so the dispatcher function can redirect the call to the right object
 	p->rptPtr = this;
@@ -103,7 +103,7 @@ PaneReport::PaneReport()
 	// set up vtbl
 	internalVtbl = new OP2ReportVtbl;
 
-	OP2ReportVtbl *vp = (OP2ReportVtbl*)internalVtbl;
+	OP2ReportVtbl *vp = internalVtbl;
 	p->vtbl = vp;
 
 	// todo: some vtbl entries need changing for reports with lists
@@ -118,7 +118,7 @@ PaneReport::PaneReport()
 	vp->GetButtonId = ReportGetButtonIdDispatcher;
 }
 
-PaneReport::PaneReport(void *internalPtr)
+PaneReport::PaneReport(OP2Report *internalPtr)
 {
 	isInternalObj = 0;
 	internalRpt = NULL;
@@ -127,10 +127,8 @@ PaneReport::PaneReport(void *internalPtr)
 	if (!isInited)
 		return;
 
-	int *p = (int*)internalPtr;
-
 	internalRpt = internalPtr;
-	internalVtbl = (void*)*p;
+	internalVtbl = internalPtr->vtbl;
 	isInternalObj = 1;
 }
 
@@ -164,7 +162,7 @@ int PaneReport::GetLinkedButtonId()
 
 void PaneReport::DrawTitle(RECT *updateRect, PaneGFXSurface gfxSurface, char *title)
 {
-	OP2Report *p = (OP2Report*)internalRpt;
+	OP2Report *p = internalRpt;
 
 	if (!p)
 		return;
@@ -179,7 +177,7 @@ void PaneReport::CreateStdButtons(int numButtons, PaneButton *button1, char *but
 	// act as if the user passed parameters for all 4 buttons (the stack will balance out okay)
 	// Performance hit but it will prevent having to deal with passing parameters manually
 
-	OP2Report *p = (OP2Report*)internalRpt;
+	OP2Report *p = internalRpt;
 
 	if (!p)
 		return;
@@ -209,7 +207,7 @@ void PaneReport::CreateStdButtons(int numButtons, PaneButton *button1, char *but
 
 int PaneReport::GetCurrentPage()
 {
-	OP2Report *p = (OP2Report*)internalRpt;
+	OP2Report *p = internalRpt;
 
 	if (!p)
 		return HFLNOTINITED;
@@ -219,7 +217,7 @@ int PaneReport::GetCurrentPage()
 
 void PaneReport::SetCurrentPage(int pageNum)
 {
-	OP2Report *p = (OP2Report*)internalRpt;
+	OP2Report *p = internalRpt;
 
 	if (!p)
 		return;
