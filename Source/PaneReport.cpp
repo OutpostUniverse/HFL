@@ -1,7 +1,7 @@
 #include "HFL.h"
 #include <stdarg.h> // var args on CreateStdButtons
 
-// forward declare
+
 struct OP2Report;
 
 #pragma pack(push,1)

@@ -1,6 +1,6 @@
 #include "HFL.h"
 
-// fwd declare
+
 struct OP2CommandPane;
 
 #pragma pack(push, 1)

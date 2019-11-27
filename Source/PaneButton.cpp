@@ -1,6 +1,6 @@
 #include "HFL.h"
 
-// fwd declares needed here
+
 struct OP2Button;
 
 struct OP2ButtonVtbl
