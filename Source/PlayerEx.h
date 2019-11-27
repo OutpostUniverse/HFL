@@ -1,7 +1,6 @@
 // PlayerEx.h
 // Extra / useful player stuff
-#ifndef _PLAYEREX_H_
-#define _PLAYEREX_H_
+#pragma once
 
 class PlayerEx : public _Player
 {
@@ -27,5 +26,3 @@ extern PlayerEx *ExtPlayer;
 
 struct OP2Player;
 extern OP2Player *playerArray;
-
-#endif // _PLAYEREX_H_

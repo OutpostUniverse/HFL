@@ -1,7 +1,6 @@
 // TethysGameEx.h
 // Extensions to TethysGame
-#ifndef _TETHYSGAMEEX_H_
-#define _TETHYSGAMEEX_H_
+#pragma once
 
 class TethysGameEx : public TethysGame
 {
@@ -33,5 +32,3 @@ extern void *researchObj; // TODO: move to research file when research functions
 
 extern void *frameObj;
 extern void *statusBarObj;
-
-#endif // _TETHYSGAMEEX_H_

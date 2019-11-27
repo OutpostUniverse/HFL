@@ -1,7 +1,6 @@
 // UnitInfo.h
 // Classes for modifying UnitInfo structures
-#ifndef _UNITINFO_H_
-#define _UNITINFO_H_
+#pragma once
 
 class UnitInfo
 {
@@ -125,5 +124,3 @@ public:
 struct OP2UnitInfo;
 extern OP2UnitInfo **unitInfoArray;
 extern void *unitInfoObj;
-
-#endif // UNITINFO_H_

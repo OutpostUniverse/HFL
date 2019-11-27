@@ -1,7 +1,6 @@
 // PaneButton.h
 // Definition of Outpost2 pane button / control, as well as report button.
-#ifndef _PANEBUTTON_H_
-#define _PANEBUTTON_H_
+#pragma once
 
 
 struct OP2Button;
@@ -46,5 +45,3 @@ public:
 	PaneReport GetAttachedReport();
 	void SetAttachedReport(PaneReport *newReport);
 };
-
-#endif // _PANEBUTTON_H_

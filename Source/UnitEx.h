@@ -1,7 +1,6 @@
 // UnitEx.h
 // Extra / useful unit stuff
-#ifndef _UNITEX_H_
-#define _UNITEX_H_
+#pragma once
 
 class UnitEx : public Unit
 {
@@ -49,5 +48,3 @@ public:
 
 struct OP2Unit;
 extern OP2Unit **unitArray;
-
-#endif // _UNITEX_H_
