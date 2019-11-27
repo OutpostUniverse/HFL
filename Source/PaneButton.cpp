@@ -367,4 +367,3 @@ void ReportButton::SetAttachedReport(PaneReport *newReport)
 
 	p->report = newReport->internalRpt;
 }
-
