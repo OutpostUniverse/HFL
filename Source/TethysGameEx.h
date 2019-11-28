@@ -1,6 +1,6 @@
-// Extensions to TethysGame
 #pragma once
 
+// Extensions to TethysGame
 class TethysGameEx : public TethysGame
 {
 public:

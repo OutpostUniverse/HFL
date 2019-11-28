@@ -1,4 +1,3 @@
-// CommandPane etc.
 #pragma once
 
 class CommandPane

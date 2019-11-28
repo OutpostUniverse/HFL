@@ -1,11 +1,9 @@
-// Definition of Outpost2 pane button / control, as well as report button.
 #pragma once
-
 
 struct OP2Button;
 struct OP2ButtonVtbl;
 
-
+// Definition of Outpost2 pane button / control, as well as report button.
 class PaneButton
 {
 public:

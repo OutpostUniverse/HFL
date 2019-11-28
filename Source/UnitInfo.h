@@ -1,6 +1,6 @@
-// Classes for modifying UnitInfo structures
 #pragma once
 
+// Class for modifying UnitInfo structures
 class UnitInfo
 {
 public:

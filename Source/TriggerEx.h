@@ -1,5 +1,6 @@
 #pragma once
 
+// Extends the Trigger class contained in Outpost2DLL
 class TriggerEx : public Trigger
 {
 	void SetHasFired(int playerId, int boolSet);

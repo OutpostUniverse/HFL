@@ -1,7 +1,5 @@
-// HFL version 1.0 header file
 #pragma once
 
-// Other headers first
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 

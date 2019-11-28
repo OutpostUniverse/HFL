@@ -1,6 +1,6 @@
-// Graphics rendering surface (as well as Text Rendering interface)
 #pragma once
 
+// Graphics rendering surface (as well as Text Rendering interface)
 class PaneGFXSurface
 {
 public:

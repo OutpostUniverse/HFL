@@ -1,6 +1,6 @@
-// Extra / useful unit stuff
 #pragma once
 
+// Extends the Unit class defined in Outpost2DLL
 class UnitEx : public Unit
 {
 public:

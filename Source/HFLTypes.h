@@ -1,4 +1,3 @@
-// Defines basic types such as command packet types, unit action types, etc
 #pragma once
 
 // Command types, these are used in the command packet headers, they also indicate what

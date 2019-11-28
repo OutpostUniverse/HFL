@@ -1,6 +1,6 @@
-// Extra / useful player stuff
 #pragma once
 
+// Extends the Player class defined in Outpost2DLL
 class PlayerEx : public _Player
 {
 public:
