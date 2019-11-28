@@ -8,17 +8,9 @@
 
 #include "HFL.h"
 
-// Note: These exports are required by Outpost2.exe from every level
-//		 DLL. They give values for the map and tech trees used by the
-//		 level and a description to place in the level listbox. The
-//		 last export is used to define characteristics of the level.
-//		 See RequiredExports.h for more details.
-//		 ** Be sure to set these when you build your own level**
 
-char MapName[]			= "tutorial.map";							// The .map file used for this level
-char LevelDesc[]		= "HFL test";// Description appearing in the game list box
-char TechtreeName[]		= "MULTITEK.TXT";						// File to use for the tech tree
-SDescBlock DescBlock	= { Colony, 1, 12, 0 }; // Important level details
+// Define required exports through macro. See RequiredExports.h in Outpost2DLL for other macros options.
+ExportLevelDetails("HFL test", "tutorial.map", "MULTITEK.TXT", MissionTypes::Colony, 1)
 
 // Our implementation of a button that just pops a message box when clicked
 class MyButton : public PaneButton
