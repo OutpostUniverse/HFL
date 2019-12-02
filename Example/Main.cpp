@@ -198,4 +198,3 @@ int StatusProc()
 SCRIPT_API void NoResponseToTrigger()
 {
 }
-
