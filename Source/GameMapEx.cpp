@@ -1,4 +1,3 @@
-// GameMapEx.cpp
 #include "HFL.h"
 
 #pragma pack(push,1)

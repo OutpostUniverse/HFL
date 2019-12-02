@@ -1,4 +1,3 @@
-// UnitEx.cpp
 #include "HFL.h"
 
 #pragma pack(push,1)
@@ -833,4 +832,3 @@ void UnitEx::SetAnimation(int animIdx, int animDelay, int animStartDelay, int bo
 
 	func(&(*unitArray)[unitID], 0, animIdx, animDelay, animStartDelay, boolInvisible, boolSkipDoDeath);
 }
-

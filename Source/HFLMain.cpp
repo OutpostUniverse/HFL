@@ -2,7 +2,7 @@
 
 #include "HFL.h"
 
-// Global vars
+// Global variables
 bool isInited = false;
 DWORD imageBase; // = 0x00400000;
 

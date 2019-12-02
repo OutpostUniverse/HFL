@@ -1,7 +1,4 @@
-// PaneReport.h
-// Report objects
-#ifndef _PANEREPORT_H_
-#define _PANEREPORT_H_
+#pragma once
 
 
 // forward declare is needed since the other header isn't included yet
@@ -33,5 +30,3 @@ public:
 	OP2Report *internalRpt;
 	int isInternalObj;
 };
-
-#endif // _PANEREPORT_H_

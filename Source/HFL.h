@@ -1,8 +1,5 @@
-// HFL version 1.0 header file
-#ifndef _HFL_H_
-#define _HFL_H_
+#pragma once
 
-// Other headers first
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
@@ -27,5 +24,3 @@ int HFLCleanup();
 
 extern bool isInited;
 extern DWORD imageBase;
-
-#endif // _HFL_H_

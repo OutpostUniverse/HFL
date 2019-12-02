@@ -1,4 +1,3 @@
-// PaneGFXSurface.cpp
 #include "HFL.h"
 #include <malloc.h>
 
