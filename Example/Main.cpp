@@ -12,6 +12,19 @@
 // Define required exports through macro. See RequiredExports.h in Outpost2DLL for other macros options.
 ExportLevelDetails("HFL test", "tutorial.map", "MULTITEK.TXT", MissionTypes::Colony, 1)
 
+// Place any global variables in the following struct so that your level correctly saves and loads.
+// Note: This struct and following ExportSaveLoadData macro are not required in a multiplayer mission.
+// Note: You may rename the following struct and variable declaration to whatever you want
+// Holder for global script variables (for Saved game files)
+struct ScriptGlobal
+{
+} scriptGlobal;
+// This macro automatically generates the GetSaveRegions export which tells Outpost2.exe about
+// the scriptGlobal variable. Data in this struct is preserved during game save/load.
+// Note: This implies all level data must be statically sized.
+ExportSaveLoadData(scriptGlobal);
+
+
 // Our implementation of a button that just pops a message box when clicked
 class MyButton : public PaneButton
 {
@@ -134,34 +147,6 @@ int InitProc()
 void AIProc()
 {
 }
-
-
-// Note: This function is called by Outpost2.exe to obtain a description
-//		 of a buffer that is saved to saved game files. Outpost2.exe
-//		 calls this function and passes it a pointer to a structure
-//		 which describes this buffer. This function is required to set
-//		 the fields of this structure. If no buffer needs to be saved
-//		 to a saved game file, then the buffer pointer needs to be set
-//		 to 0, and the length should also be set to 0.
-// Note: This function is called once when the DLL is first initialized.
-//		 This means that all data to be saved must have space reserved
-//		 ahead of time at the start of the level. (Static sized storage)
-//		 In other words, there is no way to dynamically grow the size of
-//		 the buffer if more space is needed than originally specified.
-// Note: You can probably stretch the above limitation by saving the
-//		 pointer to the buffer description passed by Outpost2.exe. This
-//		 may allow you to increase the buffer size dynamically but the
-//		 idea is yet untested. Keep in mind that you have no idea when
-//		 a game may be saved (or just loaded).
-
-void __cdecl GetSaveRegions(struct BufferDesc &bufDesc)
-{
-	bufDesc.bufferStart = 0;	// Pointer to a buffer that needs to be saved
-	bufDesc.length = 0;			// sizeof(buffer)
-}
-
-
-
 
 
 // Note: These last two functions aren't absolutely required by a level
