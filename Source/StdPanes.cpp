@@ -35,8 +35,9 @@ CommandPane gCommandPane;
 
 void CommandPane::ActivateReport(PaneReport *report)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	void (__fastcall *func)(void *classPtr, int dummy, void *report) = (void (__fastcall *)(void*,int,void*))(imageBase + 0x5D160);
 
@@ -45,8 +46,9 @@ void CommandPane::ActivateReport(PaneReport *report)
 
 void CommandPane::AddUpdateRect(RECT *updateRect)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	OP2CommandPane *p = (OP2CommandPane*)cmdPane;
 	p->vtbl->AddUpdateRect(cmdPane, 0, updateRect);
@@ -54,8 +56,9 @@ void CommandPane::AddUpdateRect(RECT *updateRect)
 
 int CommandPane::GetReportButtonHeight()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	int (__fastcall *func)(void *classPtr) = (int (__fastcall *)(void*))(imageBase + 0x5CC40);
 
@@ -64,11 +67,13 @@ int CommandPane::GetReportButtonHeight()
 
 ReportButton CommandPane::GetReportButton(ReportButtonType which)
 {
-	if (!isInited)
+	if (!isInited) {
 		return ReportButton(0);
+	}
 
-	if (which < 1 || which > 6)
+	if (which < 1 || which > 6) {
 		return ReportButton(0);
+	}
 
 	OP2CommandPane *p = (OP2CommandPane*)cmdPane;
 
@@ -77,8 +82,9 @@ ReportButton CommandPane::GetReportButton(ReportButtonType which)
 
 void CommandPane::AddButton(PaneButton *btn)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	void (__fastcall *func)(void *classPtr, int dummy, void *button) = (void (__fastcall *)(void*,int,void*))(imageBase + 0x9D1A0);
 
@@ -87,8 +93,9 @@ void CommandPane::AddButton(PaneButton *btn)
 
 void CommandPane::RemoveButton(PaneButton *btn)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	void (__fastcall *func)(void *classPtr, int dummy, void *button) = (void (__fastcall *)(void*,int,void*))(imageBase + 0x9D1C0);
 

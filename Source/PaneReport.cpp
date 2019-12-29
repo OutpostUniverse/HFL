@@ -35,8 +35,9 @@ void __fastcall ReportUpdateDispatcher(OP2Report *classPtr)
 {
 	PaneReport *p = classPtr->rptPtr;
 
-	if (p)
+	if (p) {
 		p->Update();
+	}
 
 	// call default implementation
 	void (__fastcall *func)(OP2Report *classPtr) = (void (__fastcall *)(OP2Report*))(imageBase + 0x59F10);
@@ -47,8 +48,9 @@ void __fastcall ReportInitDispatcher(OP2Report *classPtr)
 {
 	PaneReport *p = classPtr->rptPtr;
 
-	if (p)
+	if (p) {
 		p->Initialize();
+	}
 
 	// call default implementation
 	void (__fastcall *func)(OP2Report *classPtr) = (void (__fastcall *)(OP2Report*))(imageBase + 0x59F20);
@@ -59,8 +61,9 @@ void __fastcall ReportPaintDispatcher(OP2Report *classPtr, int dummy, RECT *upda
 {
 	PaneReport *p = classPtr->rptPtr;
 
-	if (p)
+	if (p) {
 		p->Paint(updateRect, PaneGFXSurface(gfxSurface));
+	}
 
 	// there is no default implementation!
 }
@@ -69,8 +72,9 @@ int __fastcall ReportGetButtonIdDispatcher(OP2Report *classPtr)
 {
 	PaneReport *p = classPtr->rptPtr;
 
-	if (p)
+	if (p) {
 		return p->GetLinkedButtonId();
+	}
 
 	// call default implementation
 	int (__fastcall *func)(OP2Report *classPtr) = (int (__fastcall *)(OP2Report*))(imageBase + 0x59F70);
@@ -123,8 +127,9 @@ PaneReport::PaneReport(OP2Report *internalPtr)
 	internalRpt = NULL;
 	internalVtbl = NULL;
 
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	internalRpt = internalPtr;
 	internalVtbl = internalPtr->vtbl;
@@ -163,8 +168,9 @@ void PaneReport::DrawTitle(RECT *updateRect, PaneGFXSurface gfxSurface, char *ti
 {
 	OP2Report *p = internalRpt;
 
-	if (!p)
+	if (!p) {
 		return;
+	}
 
 	void (__fastcall *func)(OP2Report *p, int dummy, RECT *updateRect, void *gfxSurface, char *title) = (void (__fastcall *)(OP2Report*,int,RECT*,void*,char*))(imageBase + 0x59CA0);
 	func(p, 0, updateRect, gfxSurface.internalSurface, title);
@@ -178,8 +184,9 @@ void PaneReport::CreateStdButtons(int numButtons, PaneButton *button1, char *but
 
 	OP2Report *p = internalRpt;
 
-	if (!p)
+	if (!p) {
 		return;
+	}
 
 	void *buttons[4] = {NULL, NULL, NULL, NULL};
 
@@ -208,8 +215,9 @@ int PaneReport::GetCurrentPage()
 {
 	OP2Report *p = internalRpt;
 
-	if (!p)
+	if (!p) {
 		return HFLNOTINITED;
+	}
 
 	return p->curPage;
 }
@@ -218,8 +226,9 @@ void PaneReport::SetCurrentPage(int pageNum)
 {
 	OP2Report *p = internalRpt;
 
-	if (!p)
+	if (!p) {
 		return;
+	}
 
 	p->curPage = pageNum;
 }

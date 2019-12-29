@@ -44,8 +44,9 @@ PlayerEx *ExtPlayer = (PlayerEx*)&Player[0];
 
 char* PlayerEx::GetPlayerName()
 {
-	if (!isInited)
+	if (!isInited) {
 		return (char*)HFLNOTINITED;
+	}
 
 	char* (__fastcall *func)(OP2Player *classPtr) = (char* (__fastcall *)(OP2Player*))(imageBase + 0x90C80);
 	return func(&playerArray[playerNum]);
@@ -53,8 +54,9 @@ char* PlayerEx::GetPlayerName()
 
 void PlayerEx::SetPlayerName(char *newName)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	void (__fastcall *func)(OP2Player *classPtr, int dummy, char *name) = (void (__fastcall *)(OP2Player*,int,char*))(imageBase + 0x90CB0);
 	func(&playerArray[playerNum], 0, newName);
@@ -62,8 +64,9 @@ void PlayerEx::SetPlayerName(char *newName)
 
 int PlayerEx::GetSatelliteCount(map_id objectType)
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	switch (objectType)
 	{
@@ -80,8 +83,9 @@ int PlayerEx::GetSatelliteCount(map_id objectType)
 
 void PlayerEx::SetSatelliteCount(map_id objectType, int count)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	switch (objectType)
 	{
@@ -96,35 +100,40 @@ void PlayerEx::SetSatelliteCount(map_id objectType, int count)
 
 int PlayerEx::GetColorNumber()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	return playerArray[playerNum].colorNumber;
 }
 
 int PlayerEx::IsAlliedTo(int playerId)
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (playerId < 0 || playerId > 6)
+	if (playerId < 0 || playerId > 6) {
 		return -1;
+	}
 
 	return (playerArray[playerNum].playerBitmask >> playerId) & 1;
 }
 
 int PlayerEx::GetNumBuildingsBuilt()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	return playerArray[playerNum].numBuildingsBuilt;
 }
 
 int PlayerEx::ProcessCommandPacket(CommandPacket *packet)
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	int (__fastcall *func)(OP2Player *classPtr, int dummy, CommandPacket *packet) = (int (__fastcall *)(OP2Player*,int,CommandPacket*))(imageBase + 0x0E300);
 	return func(&playerArray[playerNum], 0, packet);
@@ -132,8 +141,9 @@ int PlayerEx::ProcessCommandPacket(CommandPacket *packet)
 
 void PlayerEx::Starve(int numToStarve, int boolSkipMoraleUpdate)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	void (__fastcall *func)(OP2Player *classPtr, int dummy, int numStarve, int skipMoraleUpdate) = (void (__fastcall *)(OP2Player*,int,int,int))(imageBase + 0x71C70);
 	func(&playerArray[playerNum], 0, numToStarve, boolSkipMoraleUpdate);
@@ -141,8 +151,9 @@ void PlayerEx::Starve(int numToStarve, int boolSkipMoraleUpdate)
 
 CommandPacket* PlayerEx::GetNextCommandPacketAddress()
 {
-	if (!isInited)
+	if (!isInited) {
 		return (CommandPacket*)HFLNOTINITED;
+	}
 
 	CommandPacket* (__fastcall *func)(OP2Player *classPtr) = (CommandPacket* (__fastcall *)(OP2Player*))(imageBase + 0x90810);
 	return func(&playerArray[playerNum]);
@@ -150,24 +161,27 @@ CommandPacket* PlayerEx::GetNextCommandPacketAddress()
 
 int PlayerEx::GetMaxOre()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	return playerArray[playerNum].maxCommonOre;
 }
 
 int PlayerEx::GetMaxRareOre()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	return playerArray[playerNum].maxRareOre;
 }
 
 void PlayerEx::RecalculateValues()
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	playerArray[playerNum].boolRecalcValues = 1;
 }

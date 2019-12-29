@@ -36,6 +36,7 @@ struct wayPoint // todo: check into this
 	unsigned int x:15;
 	unsigned int y:14;
 };
+
 union wayPoints {
 	wayPoint points;
 	unsigned int rawPoints;
@@ -199,11 +200,13 @@ OP2Unit **unitArray;
 
 void UnitEx::DoAttack(LOCATION where)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
-	
-	if (!IsLive())
+	}
+
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdAttackXY *data = (cmdAttackXY*)packet.dataBuff;
@@ -221,11 +224,13 @@ void UnitEx::DoAttack(LOCATION where)
 
 void UnitEx::DoDoze(MAP_RECT area)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdDoze *data = (cmdDoze*)packet.dataBuff;
@@ -244,11 +249,13 @@ void UnitEx::DoDoze(MAP_RECT area)
 
 void UnitEx::DoDock(LOCATION dockLocation)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdMove *data = (cmdMove*)packet.dataBuff;
@@ -266,11 +273,13 @@ void UnitEx::DoDock(LOCATION dockLocation)
 
 void UnitEx::DoDockAtGarage(LOCATION dockLocation)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdMove *data = (cmdMove*)packet.dataBuff;
@@ -288,11 +297,13 @@ void UnitEx::DoDockAtGarage(LOCATION dockLocation)
 
 void UnitEx::DoStandGround(LOCATION where)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdMove *data = (cmdMove*)packet.dataBuff;
@@ -310,11 +321,13 @@ void UnitEx::DoStandGround(LOCATION where)
 
 void UnitEx::DoRemoveWall(MAP_RECT area)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdRemoveWall *data = (cmdRemoveWall*)packet.dataBuff;
@@ -334,11 +347,13 @@ void UnitEx::DoRemoveWall(MAP_RECT area)
 
 void UnitEx::DoProduce(map_id unitType, map_id cargoWeaponType)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdProduce *data = (cmdProduce*)packet.dataBuff;
@@ -355,11 +370,13 @@ void UnitEx::DoProduce(map_id unitType, map_id cargoWeaponType)
 
 void UnitEx::DoTransferCargo(int bay)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdTransferCargo *data = (cmdTransferCargo*)packet.dataBuff;
@@ -375,11 +392,13 @@ void UnitEx::DoTransferCargo(int bay)
 
 void UnitEx::DoLoadCargo()
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdLoadCargo *data = (cmdLoadCargo*)packet.dataBuff;
@@ -393,11 +412,13 @@ void UnitEx::DoLoadCargo()
 
 void UnitEx::DoUnloadCargo()
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdLoadCargo *data = (cmdLoadCargo*)packet.dataBuff;
@@ -411,11 +432,13 @@ void UnitEx::DoUnloadCargo()
 
 void UnitEx::DoDumpCargo()
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdLoadCargo *data = (cmdLoadCargo*)packet.dataBuff;
@@ -429,11 +452,13 @@ void UnitEx::DoDumpCargo()
 
 void UnitEx::DoResearch(int techID, int numScientists)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdResearch *data = (cmdResearch*)packet.dataBuff;
@@ -449,11 +474,13 @@ void UnitEx::DoResearch(int techID, int numScientists)
 
 void UnitEx::DoTrainScientists(int numToTrain)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdTrainSci *data = (cmdTrainSci*)packet.dataBuff;
@@ -468,11 +495,13 @@ void UnitEx::DoTrainScientists(int numToTrain)
 
 void UnitEx::DoRepair(Unit what)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdRepair *data = (cmdRepair*)packet.dataBuff;
@@ -490,11 +519,13 @@ void UnitEx::DoRepair(Unit what)
 
 void UnitEx::DoReprogram(Unit what)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdRepair *data = (cmdRepair*)packet.dataBuff;
@@ -512,11 +543,13 @@ void UnitEx::DoReprogram(Unit what)
 
 void UnitEx::DoDismantle(Unit what)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdRepair *data = (cmdRepair*)packet.dataBuff;
@@ -534,11 +567,13 @@ void UnitEx::DoDismantle(Unit what)
 
 void UnitEx::DoSalvage(MAP_RECT area, Unit gorf)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdSalvage *data = (cmdSalvage*)packet.dataBuff;
@@ -557,11 +592,13 @@ void UnitEx::DoSalvage(MAP_RECT area, Unit gorf)
 
 void UnitEx::DoGuard(Unit what)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdGuard *data = (cmdGuard*)packet.dataBuff;
@@ -579,11 +616,13 @@ void UnitEx::DoGuard(Unit what)
 
 void UnitEx::DoPoof()
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
 	CommandPacket packet;
 	cmdLoadCargo *data = (cmdLoadCargo*)packet.dataBuff;
@@ -597,212 +636,259 @@ void UnitEx::DoPoof()
 
 CommandType UnitEx::GetLastCommand()
 {
-	if (!isInited)
+	if (!isInited) {
 		return (CommandType)HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return (CommandType)-1;
+	}
 
 	return (CommandType)(*unitArray)[unitID].curCmd;
 }
 
 ActionType UnitEx::GetCurAction()
 {
-	if (!isInited)
+	if (!isInited) {
 		return (ActionType)HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return (ActionType)-1;
+	}
 
 	return (ActionType)(*unitArray)[unitID].curAction;
 }
 
 int UnitEx::CreatorID()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return -1;
+	}
 
 	return ((*unitArray)[unitID].ownerCreator >> 4) & 0xF;
 }
 
 int UnitEx::IsEMPedEx()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return -1;
+	}
 
-	if ((*unitArray)[unitID].ownerCreator & flagEMPed)
+	if ((*unitArray)[unitID].ownerCreator & flagEMPed) {
 		return (*unitArray)[unitID].timerEMP;
-	else
+	}
+	else {
 		return 0;
+	}
 }
 
 int UnitEx::IsStickyfoamed()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return -1;
+	}
 
-	if ((*unitArray)[unitID].ownerCreator & flagStickyfoamed)
+	if ((*unitArray)[unitID].ownerCreator & flagStickyfoamed) {
 		return (*unitArray)[unitID].timerStickyfoam;
-	else
+	}
+	else {
 		return 0;
+	}
 }
 
 int UnitEx::IsESGed()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return -1;
+	}
 
-	if ((*unitArray)[unitID].ownerCreator & flagESGed)
+	if ((*unitArray)[unitID].ownerCreator & flagESGed) {
 		return (*unitArray)[unitID].timerESG;
-	else
+	}
+	else {
 		return 0;
+	}
 }
 
 int UnitEx::GetDamage()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return -1;
+	}
 
 	return (*unitArray)[unitID].damage;
 }
 
 int UnitEx::GetCargoAmount()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return -1;
+	}
 
 	int cargoAmount = (((*unitArray)[unitID].weaponCargo) >> 4) & 0xFFF;
-	if (GetCargoType() == truckGarbage)
+	if (GetCargoType() == truckGarbage) {
 		cargoAmount += 8000;
+	}
 
 	return cargoAmount;
 }
 
 Truck_Cargo UnitEx::GetCargoType()
 {
-	if (!isInited)
+	if (!isInited) {
 		return (Truck_Cargo)HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return (Truck_Cargo)-1;
+	}
 
 	return (Truck_Cargo)(((*unitArray)[unitID].weaponCargo) & 0xF);
 }
 
 map_id UnitEx::GetFactoryCargo(int bay)
 {
-	if (!isInited)
+	if (!isInited) {
 		return (map_id)HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return (map_id)-1;
+	}
 
-	if (bay < 0 || bay > 5)
+	if (bay < 0 || bay > 5) {
 		return (map_id)-1;
+	}
 
 	return (map_id)(*unitArray)[unitID].bayItem[bay];
 }
 
 map_id UnitEx::GetFactoryCargoWeapon(int bay)
 {
-	if (!isInited)
+	if (!isInited) {
 		return (map_id)HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return (map_id)-1;
+	}
 
-	if (bay < 0 || bay > 5)
+	if (bay < 0 || bay > 5) {
 		return (map_id)-1;
+	}
 
 	return (map_id)(*unitArray)[unitID].bayWeaponCargo[bay];
 }
 
 int UnitEx::GetLights()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return -1;
+	}
 
 	return (*unitArray)[unitID].flags & flagHeadlights;
 }
 
 int UnitEx::GetDoubleFireRate()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return -1;
+	}
 
 	return (*unitArray)[unitID].flags & flagDoubleFireRate;
 }
 
 int UnitEx::GetInvisible()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return -1;
+	}
 
 	return (*unitArray)[unitID].flags & flagInvisible;
 }
 
 void UnitEx::SetDoubleFireRate(int boolOn)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
-	if (boolOn)
+	if (boolOn) {
 		(*unitArray)[unitID].flags |= flagDoubleFireRate;
-	else
+	}
+	else {
 		(*unitArray)[unitID].flags &= ~flagDoubleFireRate;
+	}
 }
 
 void UnitEx::SetInvisible(int boolOn)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return;
+	}
 
-	if (boolOn)
+	if (boolOn) {
 		(*unitArray)[unitID].flags |= flagInvisible;
-	else
+	}
+	else {
 		(*unitArray)[unitID].flags &= ~flagInvisible;
+	}
 }
 
 LOCATION UnitEx::GetDockLocation()
 {
-	if (!isInited)
-		return LOCATION(HFLNOTINITED,HFLNOTINITED);
+	if (!isInited) {
+		return LOCATION(HFLNOTINITED, HFLNOTINITED);
+	}
 
-	if (!IsLive())
-		return LOCATION(-1,-1);
+	if (!IsLive()) {
+		return LOCATION(-1, -1);
+	}
 
 	LOCATION loc;
 
@@ -814,19 +900,22 @@ LOCATION UnitEx::GetDockLocation()
 
 UnitInfo UnitEx::GetUnitInfo()
 {
-	if (!isInited)
+	if (!isInited) {
 		return UnitInfo(mapNone);
+	}
 
-	if (!IsLive())
+	if (!IsLive()) {
 		return UnitInfo(mapAny);
+	}
 
 	return UnitInfo(GetType());
 }
 
 void UnitEx::SetAnimation(int animIdx, int animDelay, int animStartDelay, int boolInvisible, int boolSkipDoDeath)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	void (__fastcall *func)(OP2Unit *classPtr, int dummy, int animIdx, int animDelay, int animStartDelay, int boolInvisible, int boolSkipDoDeath) = (void (__fastcall *)(OP2Unit*,int,int,int,int,int,int))(imageBase + 0x5110);
 

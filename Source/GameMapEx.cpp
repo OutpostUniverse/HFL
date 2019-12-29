@@ -34,8 +34,9 @@ MapTile GameMapEx::GetTileEx(LOCATION where)
 	MapTile t;
 	memset(&t, 0, sizeof(t));
 
-	if (!isInited)
+	if (!isInited) {
 		return t;
+	}
 
 	OP2Map *p = (OP2Map*)mapObj;
 	MapTile **tileArray = (MapTile**)(mapTileData);
@@ -51,8 +52,9 @@ MapTile GameMapEx::GetTileEx(LOCATION where)
 
 void GameMapEx::SetTileEx(LOCATION where, MapTile newData)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	OP2Map *p = (OP2Map*)mapObj;
 	MapTile **tileArray = (MapTile**)(mapTileData);
@@ -69,8 +71,9 @@ void GameMapEx::SetTileEx(LOCATION where, MapTile newData)
 
 int GameMapEx::GetMapWidth()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	OP2Map *p = (OP2Map*)mapObj;
 
@@ -79,8 +82,9 @@ int GameMapEx::GetMapWidth()
 
 int GameMapEx::GetMapHeight()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	OP2Map *p = (OP2Map*)mapObj;
 
@@ -90,8 +94,9 @@ int GameMapEx::GetMapHeight()
 
 int GameMapEx::GetNumUnits()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	OP2Map *p = (OP2Map*)mapObj;
 	return p->numUnits;
@@ -99,8 +104,9 @@ int GameMapEx::GetNumUnits()
 
 int GameMapEx::LoadMap(char *fileName)
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	OP2Map *p = (OP2Map*)mapObj;
 
