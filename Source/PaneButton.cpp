@@ -56,8 +56,9 @@ void __fastcall ButtonPaintDispatcher(OP2Button *classPtr, int dummy, void *gfxS
 {
 	PaneButton *pb = classPtr->btnPtr;
 
-	if (pb)
+	if (pb) {
 		pb->Paint(PaneGFXSurface(gfxSurface));
+	}
 
 	// call default implementation
 	void (__fastcall *func)(OP2Button *classPtr, int dummy, void *gfxSurface) = (void (__fastcall *)(OP2Button*,int,void*))(imageBase + 0xAFD0);
@@ -68,8 +69,9 @@ LRESULT __fastcall ButtonOnUIEventDispatcher(OP2Button *classPtr, int dummy, voi
 {
 	PaneButton *pb = classPtr->btnPtr;
 
-	if (pb)
+	if (pb) {
 		pb->OnUIEvent(msg, wParam, lParam);
+	}
 
 	// call default implementation
 	// (must always take place since it does things with filters and such that we don't)
@@ -81,8 +83,9 @@ void __fastcall ButtonOnAddDispatcher(OP2Button *classPtr, int dummy, void *pane
 {
 	PaneButton *pb = classPtr->btnPtr;
 
-	if (pb)
+	if (pb) {
 		pb->OnAdd();
+	}
 
 	// call default implementation
 	void (__fastcall *func)(OP2Button *classPtr, int dummy, void *pane) = (void (__fastcall *)(OP2Button*,int,void*))(imageBase + 0xA920);
@@ -93,8 +96,9 @@ void __fastcall ButtonOnRemoveDispatcher(OP2Button *classPtr, int dummy, void *p
 {
 	PaneButton *pb = classPtr->btnPtr;
 
-	if (pb)
+	if (pb) {
 		pb->OnRemove();
+	}
 
 	// call default implementation
 	void (__fastcall *func)(OP2Button *classPtr, int dummy, void *pane) = (void (__fastcall *)(OP2Button*,int,void*))(imageBase + 0xA950);
@@ -105,8 +109,9 @@ void __fastcall ButtonSetEnabledDispatcher(OP2Button *classPtr, int dummy, int b
 {
 	PaneButton *pb = classPtr->btnPtr;
 
-	if (pb)
+	if (pb) {
 		pb->SetEnabled(boolEnabled);
+	}
 
 	// call default implementation
 	void (__fastcall *func)(OP2Button *classPtr, int dummy, int boolEnabled) = (void (__fastcall *)(OP2Button*,int,int))(imageBase + 0xA9B0);
@@ -117,8 +122,9 @@ void __fastcall ButtonOnClickDispatcher(OP2Button *classPtr)
 {
 	PaneButton *pb = classPtr->btnPtr;
 
-	if (pb)
+	if (pb) {
 		pb->OnClick();
+	}
 
 	// no harm done if they didn't provide an OnClick, better than exiting with 'pure virtual function call'
 }
@@ -229,8 +235,9 @@ void PaneButton::SetParams(int pixelX, int pixelY, int animId, int normalFrameId
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return;
+	}
 
 	OP2ButtonData data;
 	memset(&data, 0, sizeof(data));
@@ -251,8 +258,9 @@ void PaneButton::SetHelpText(char *helpText)
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) {// not inited if this is null
 		return;
+	}
 
 	p->data.helpText = helpText;
 }
@@ -261,8 +269,9 @@ char* PaneButton::GetHelpText()
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return (char*)HFLNOTINITED;
+	}
 
 	return p->data.helpText;
 }
@@ -271,8 +280,9 @@ void PaneButton::SetLabel(char *label)
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return;
+	}
 
 	p->data.buttonLabel = label;
 }
@@ -281,8 +291,9 @@ char* PaneButton::GetLabel()
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return (char*)HFLNOTINITED;
+	}
 
 	return p->data.buttonLabel;
 }
@@ -291,8 +302,9 @@ int PaneButton::GetPushedIn()
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return HFLNOTINITED;
+	}
 
 	return (p->flags & 0x40);
 }
@@ -301,21 +313,25 @@ void PaneButton::SetPushedIn(int boolPushed)
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return;
+	}
 
-	if (boolPushed)
+	if (boolPushed) {
 		p->flags |= 0x40;
-	else
+	}
+	else {
 		p->flags &= ~0x40;
+	}
 }
 
 int PaneButton::GetAcceleratorKey()
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return HFLNOTINITED;
+	}
 
 	return p->accelKey;
 }
@@ -324,8 +340,9 @@ void PaneButton::SetAcceleratorKey(int asciiCode)
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return;
+	}
 
 	p->accelKey = asciiCode;
 }
@@ -334,8 +351,9 @@ RECT* PaneButton::GetBoundingBox()
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return NULL;
+	}
 
 	return &p->rect;
 }
@@ -352,8 +370,9 @@ PaneReport ReportButton::GetAttachedReport()
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return PaneReport(0);
+	}
 
 	return PaneReport(p->report);
 }
@@ -362,8 +381,9 @@ void ReportButton::SetAttachedReport(PaneReport *newReport)
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) // not inited if this is null
+	if (!p) { // not inited if this is null
 		return;
+	}
 
 	p->report = newReport->internalRpt;
 }
