@@ -26,6 +26,5 @@ public:
 
 extern TethysGameEx gGame;
 extern void *gameObj;
-
 extern void *frameObj;
 extern void *statusBarObj;

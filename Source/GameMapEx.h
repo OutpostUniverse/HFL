@@ -1,8 +1,6 @@
-// GameMapEx.h
-// Extensions to the GameMap class
-#ifndef _GAMEMAPEX_H_
-#define _GAMEMAPEX_H_
+#pragma once
 
+// Extensions to the GameMap class
 class GameMapEx : public GameMap
 {
 public:
@@ -12,10 +10,9 @@ public:
 	static int GetMapHeight();
 	static int GetNumUnits();
 	static int LoadMap(char *fileName);
+	static void CopyTileMap(int* tileMap, int xMin, int xMax, int yMin, int yMax);
 };
 
 extern GameMapEx gMap;
 extern void *mapObj;
 extern void *mapTileData;
-
-#endif // _GAMEMAPEX_H_
