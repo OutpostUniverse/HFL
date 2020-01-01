@@ -189,7 +189,7 @@ struct OP2Unit
 	int unknown12;
 	short unknown13;
 	int objectOnPad;
-	int launchPadCargo; // Arklon says this should be an int32. unknown15 would be int16?
+	int launchPadCargo;
 	short unknown15;
 };
 
