@@ -1,8 +1,6 @@
-// GameMapEx.h
-// Extensions to the GameMap class
-#ifndef _GAMEMAPEX_H_
-#define _GAMEMAPEX_H_
+#pragma once
 
+// Extensions to the GameMap class
 class GameMapEx : public GameMap
 {
 public:
@@ -18,5 +16,3 @@ public:
 extern GameMapEx gMap;
 extern void *mapObj;
 extern void *mapTileData;
-
-#endif // _GAMEMAPEX_H_
