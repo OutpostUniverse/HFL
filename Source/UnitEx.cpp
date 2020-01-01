@@ -1126,6 +1126,7 @@ int UnitEx::GetNumTruckLoadsSoFar()
 	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID*120) + 0x58);
 	return p->numTruckLoadsSoFar;
 }
+
 int UnitEx::GetBarYield()
 {
 	if (!isInited) {
@@ -1135,6 +1136,7 @@ int UnitEx::GetBarYield()
 	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
 	return p->barYield;
 }
+
 int UnitEx::GetVariant()
 {
 	if (!isInited) {
@@ -1144,6 +1146,7 @@ int UnitEx::GetVariant()
 	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
 	return p->variant;
 }
+
 int UnitEx::GetOreType()
 {
 	if (!isInited) {
@@ -1153,6 +1156,7 @@ int UnitEx::GetOreType()
 	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
 	return p->oreType;
 }
+
 int UnitEx::GetSurveyedBy()
 {
 	if (!isInited) {
