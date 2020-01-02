@@ -813,6 +813,12 @@ int UnitEx::GetTimeStickyfoamed()
 	}
 }
 
+bool UnitEx::IsStickyfoamed()
+{
+	// If stickyfoam timer is greater than 0, unit is stickyfoamed
+	return GetTimeStickyfoamed() > 0;
+}
+
 int UnitEx::GetTimeESGed()
 {
 	if (!isInited) {
@@ -829,6 +835,12 @@ int UnitEx::GetTimeESGed()
 	else {
 		return 0;
 	}
+}
+
+bool UnitEx::IsESGed()
+{
+	// If ESG timer is greater than 0, unit is ESGed
+	return GetTimeESGed() > 0;
 }
 
 int UnitEx::GetDamage()
