@@ -787,7 +787,7 @@ int UnitEx::IsEMPedEx()
 		return -1;
 	}
 
-	if ((*unitArray)[unitID].ownerCreator & flagEMPed) {
+	if ((*unitArray)[unitID].flags & flagEMPed) {
 		return (*unitArray)[unitID].timerEMP;
 	}
 	else {
@@ -805,7 +805,7 @@ int UnitEx::IsStickyfoamed()
 		return -1;
 	}
 
-	if ((*unitArray)[unitID].ownerCreator & flagStickyfoamed) {
+	if ((*unitArray)[unitID].flags & flagStickyfoamed) {
 		return (*unitArray)[unitID].timerStickyfoam;
 	}
 	else {
@@ -823,7 +823,7 @@ int UnitEx::IsESGed()
 		return -1;
 	}
 
-	if ((*unitArray)[unitID].ownerCreator & flagESGed) {
+	if ((*unitArray)[unitID].flags & flagESGed) {
 		return (*unitArray)[unitID].timerESG;
 	}
 	else {
