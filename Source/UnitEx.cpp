@@ -777,7 +777,7 @@ int UnitEx::CreatorID()
 	return ((*unitArray)[unitID].ownerCreator >> 4) & 0xF;
 }
 
-int UnitEx::IsEMPedEx()
+int UnitEx::GetTimeEMPed()
 {
 	if (!isInited) {
 		return HFLNOTINITED;
@@ -795,7 +795,7 @@ int UnitEx::IsEMPedEx()
 	}
 }
 
-int UnitEx::IsStickyfoamed()
+int UnitEx::GetTimeStickyfoamed()
 {
 	if (!isInited) {
 		return HFLNOTINITED;
@@ -813,7 +813,7 @@ int UnitEx::IsStickyfoamed()
 	}
 }
 
-int UnitEx::IsESGed()
+int UnitEx::GetTimeESGed()
 {
 	if (!isInited) {
 		return HFLNOTINITED;
