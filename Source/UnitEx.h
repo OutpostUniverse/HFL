@@ -28,9 +28,11 @@ public:
 	CommandType GetLastCommand();
 	ActionType GetCurAction();
 	int CreatorID();
-	int IsEMPedEx();
-	int IsStickyfoamed();
-	int IsESGed();
+	int GetTimeEMPed();
+	int GetTimeStickyfoamed();
+	bool IsStickyfoamed();
+	int GetTimeESGed();
+	bool IsESGed();
 	int GetDamage();
 	int GetCargoAmount();
 	Truck_Cargo GetCargoType();

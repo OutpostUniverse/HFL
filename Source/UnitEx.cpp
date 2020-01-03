@@ -777,7 +777,7 @@ int UnitEx::CreatorID()
 	return ((*unitArray)[unitID].ownerCreator >> 4) & 0xF;
 }
 
-int UnitEx::IsEMPedEx()
+int UnitEx::GetTimeEMPed()
 {
 	if (!isInited) {
 		return HFLNOTINITED;
@@ -787,7 +787,7 @@ int UnitEx::IsEMPedEx()
 		return -1;
 	}
 
-	if ((*unitArray)[unitID].ownerCreator & flagEMPed) {
+	if ((*unitArray)[unitID].flags & flagEMPed) {
 		return (*unitArray)[unitID].timerEMP;
 	}
 	else {
@@ -795,7 +795,7 @@ int UnitEx::IsEMPedEx()
 	}
 }
 
-int UnitEx::IsStickyfoamed()
+int UnitEx::GetTimeStickyfoamed()
 {
 	if (!isInited) {
 		return HFLNOTINITED;
@@ -805,7 +805,7 @@ int UnitEx::IsStickyfoamed()
 		return -1;
 	}
 
-	if ((*unitArray)[unitID].ownerCreator & flagStickyfoamed) {
+	if ((*unitArray)[unitID].flags & flagStickyfoamed) {
 		return (*unitArray)[unitID].timerStickyfoam;
 	}
 	else {
@@ -813,7 +813,13 @@ int UnitEx::IsStickyfoamed()
 	}
 }
 
-int UnitEx::IsESGed()
+bool UnitEx::IsStickyfoamed()
+{
+	// If stickyfoam timer is greater than 0, unit is stickyfoamed
+	return GetTimeStickyfoamed() > 0;
+}
+
+int UnitEx::GetTimeESGed()
 {
 	if (!isInited) {
 		return HFLNOTINITED;
@@ -823,12 +829,18 @@ int UnitEx::IsESGed()
 		return -1;
 	}
 
-	if ((*unitArray)[unitID].ownerCreator & flagESGed) {
+	if ((*unitArray)[unitID].flags & flagESGed) {
 		return (*unitArray)[unitID].timerESG;
 	}
 	else {
 		return 0;
 	}
+}
+
+bool UnitEx::IsESGed()
+{
+	// If ESG timer is greater than 0, unit is ESGed
+	return GetTimeESGed() > 0;
 }
 
 int UnitEx::GetDamage()
