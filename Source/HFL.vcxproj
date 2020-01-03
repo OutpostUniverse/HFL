@@ -11,12 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameMapEx.h" />
     <ClInclude Include="HFL.h" />
     <ClInclude Include="HFLTypes.h" />
     <ClInclude Include="PaneButton.h" />
     <ClInclude Include="PaneGFXSurface.h" />
     <ClInclude Include="PaneReport.h" />
     <ClInclude Include="PlayerEx.h" />
+    <ClInclude Include="Research.h" />
     <ClInclude Include="StdPanes.h" />
     <ClInclude Include="TethysGameEx.h" />
     <ClInclude Include="TriggerEx.h" />
@@ -30,6 +32,7 @@
     <ClCompile Include="PaneGFXSurface.cpp" />
     <ClCompile Include="PaneReport.cpp" />
     <ClCompile Include="PlayerEx.cpp" />
+    <ClCompile Include="Research.cpp" />
     <ClCompile Include="StdPanes.cpp" />
     <ClCompile Include="TethysGameEx.cpp" />
     <ClCompile Include="TriggerEx.cpp" />

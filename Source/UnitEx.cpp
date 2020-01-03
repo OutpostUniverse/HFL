@@ -20,6 +20,19 @@ struct cmdGuard
 	short unused; // FFFF
 };
 
+struct cmdDeploy
+{
+	char numUnits;
+	short unitId;
+	short numWayPoints;
+	long wptLoc;		// Pixel-based X/Y location, X coordinate = low byte, Y coordinate = high byte
+	short x1;
+	short y1;
+	short x2;
+	short y2;
+	short unknown;
+};
+
 struct cmdDoze
 {
 	char numUnits;
@@ -170,14 +183,36 @@ struct OP2Unit
 	short timerESG;
 	short unknown8;
 	int unknown9;
-	char unknown10;
+	char workersInTraining;
 	char bayItem[6];
 	char unknown11;
 	int unknown12;
 	short unknown13;
 	int objectOnPad;
-	short unknown14;
-	int unknown15;
+	int launchPadCargo;
+	short unknown15;
+};
+
+struct BeaconData
+{
+	int numTruckLoadsSoFar;
+	int barYield;
+	int variant;
+	char oreType; // [0 = common, 1 = rare]
+	char unknown1;
+	char unknown2;
+	char surveyedBy; // [player bit vector]
+};
+
+struct LabData
+{
+	short nextResearchTime;		// Amount of time until next research increment(research progresses in chunks)
+	short unknown1;
+	int unknown2[5];
+	int researchRemaining;		// Amount of research left to complete tech(intialized to costOfResearch * 256 when research starts)
+	int unknown3[8];
+	int techNum;
+	char numScientists;			// numScientists researching at the lab
 };
 #pragma pack(pop)
 
@@ -188,8 +223,12 @@ enum OP2UnitFlags
 	flagVehicle = 0x2,
 	flagBuilding = 0x4,
 	flagDoubleFireRate = 0x20,
+	flagPower = 0x2000,
+	flagWorkers = 0x4000,
+	flagScientists = 0x8000,
 	flagLive = 0x20000,
 	flagStickyfoamed = 0x40000,
+	flagInfected = 0x40000,
 	flagEMPed = 0x80000,
 	flagESGed = 0x100000,
 	flagInvisible = 0x10000000,
@@ -218,6 +257,41 @@ void UnitEx::DoAttack(LOCATION where)
 	data->tileX = where.x;
 	data->tileY = where.y;
 	data->unknown = 0;
+
+	ExtPlayer[OwnerID()].ProcessCommandPacket(&packet);
+}
+
+void UnitEx::DoDeployMiner(LOCATION where)
+{
+	if (!isInited) {
+		return;
+	}
+
+	if (!IsLive()) {
+		return;
+	}
+
+	CommandPacket packet;
+	cmdDeploy *data = (cmdDeploy*)packet.dataBuff;
+
+	// Convert x/y location to pixel
+	int pxLoc = 0;
+	int x = where.x * 32;
+	int y = where.y * 32;
+	pxLoc = (x & 0x07FFF) | (y & 0x03FFF) << 15;
+
+	// Build command packet
+	packet.type = ctMoBuild;
+	packet.dataLength = sizeof(cmdDeploy);
+	data->numUnits = 1;
+	data->unitId = unitID;
+	data->numWayPoints = 1;
+	data->wptLoc = pxLoc;
+	data->x1 = where.x-1;
+	data->y1 = where.y;
+	data->x2 = where.x;
+	data->y2 = where.y;
+	data->unknown = -1;
 
 	ExtPlayer[OwnerID()].ProcessCommandPacket(&packet);
 }
@@ -265,8 +339,12 @@ void UnitEx::DoDock(LOCATION dockLocation)
 	data->numUnits = 1;
 	data->unitId = unitID;
 	data->numWayPoints = 1;
-	data->pts.points.x = dockLocation.x;
-	data->pts.points.y = dockLocation.y;
+	long wpt = 0,
+		x = dockLocation.x,
+		y = dockLocation.y;
+	wpt |= (x & 0x7ff) << 5;
+	wpt |= (y & 0x3ff) << 20;
+	data->pts.rawPoints = wpt;
 
 	ExtPlayer[OwnerID()].ProcessCommandPacket(&packet);
 }
@@ -315,6 +393,32 @@ void UnitEx::DoStandGround(LOCATION where)
 	data->numWayPoints = 1;
 	data->pts.points.x = where.x;
 	data->pts.points.y = where.y;
+
+	ExtPlayer[OwnerID()].ProcessCommandPacket(&packet);
+}
+
+void UnitEx::DoBuildWall(map_id wallType, MAP_RECT area)
+{
+	if (!isInited) {
+		return;
+	}
+
+	if (!IsLive()) {
+		return;
+	}
+
+	CommandPacket packet;
+	cmdBuildWall *data = (cmdBuildWall*)packet.dataBuff;
+
+	packet.type = ctMoBuildWall;
+	packet.dataLength = sizeof(cmdBuildWall);
+	data->numUnits = 1;
+	data->unitId = unitID;
+	data->wallType = wallType;
+	data->x1 = area.x1;
+	data->x2 = area.x2;
+	data->y1 = area.y1;
+	data->y2 = area.y2;
 
 	ExtPlayer[OwnerID()].ProcessCommandPacket(&packet);
 }
@@ -771,6 +875,19 @@ Truck_Cargo UnitEx::GetCargoType()
 	return (Truck_Cargo)(((*unitArray)[unitID].weaponCargo) & 0xF);
 }
 
+int UnitEx::GetWorkersInTraining()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	if (!IsLive()) {
+		return -1;
+	}
+
+	return (int)((*unitArray)[unitID].workersInTraining);
+}
+
 map_id UnitEx::GetFactoryCargo(int bay)
 {
 	if (!isInited) {
@@ -803,6 +920,32 @@ map_id UnitEx::GetFactoryCargoWeapon(int bay)
 	}
 
 	return (map_id)(*unitArray)[unitID].bayWeaponCargo[bay];
+}
+
+map_id UnitEx::GetLaunchPadCargo()
+{
+	if (!isInited) {
+		return (map_id)HFLNOTINITED;
+	}
+
+	if (!IsLive()) {
+		return (map_id)-1;
+	}
+
+	return (map_id)(*unitArray)[unitID].launchPadCargo;
+}
+
+void UnitEx::SetLaunchPadCargo(map_id moduleType)
+{
+	if (!isInited) {
+		return;
+	}
+
+	if (!IsLive()) {
+		return;
+	}
+
+	(*unitArray)[unitID].launchPadCargo = moduleType;
 }
 
 int UnitEx::GetLights()
@@ -842,6 +985,58 @@ int UnitEx::GetInvisible()
 	}
 
 	return (*unitArray)[unitID].flags & flagInvisible;
+}
+
+int UnitEx::HasPower()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	if (!IsLive()) {
+		return -1;
+	}
+
+	return (*unitArray)[unitID].flags & flagPower;
+}
+
+int UnitEx::HasWorkers()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	if (!IsLive()) {
+		return -1;
+	}
+
+	return (*unitArray)[unitID].flags & flagWorkers;
+}
+
+int UnitEx::HasScientists()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	if (!IsLive()) {
+		return -1;
+	}
+
+	return (*unitArray)[unitID].flags & flagScientists;
+}
+
+int UnitEx::IsInfected()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	if (!IsLive()) {
+		return -1;
+	}
+
+	return (*unitArray)[unitID].flags & flagInfected;
 }
 
 void UnitEx::SetDoubleFireRate(int boolOn)
@@ -921,3 +1116,84 @@ void UnitEx::SetAnimation(int animIdx, int animDelay, int animStartDelay, int bo
 
 	func(&(*unitArray)[unitID], 0, animIdx, animDelay, animStartDelay, boolInvisible, boolSkipDoDeath);
 }
+
+int UnitEx::GetNumTruckLoadsSoFar()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID*120) + 0x58);
+	return p->numTruckLoadsSoFar;
+}
+
+int UnitEx::GetBarYield()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
+	return p->barYield;
+}
+
+int UnitEx::GetVariant()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
+	return p->variant;
+}
+
+int UnitEx::GetOreType()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
+	return p->oreType;
+}
+
+int UnitEx::GetSurveyedBy()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
+	return p->surveyedBy;
+}
+
+int UnitEx::GetLabCurrentTopic()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	LabData* p = (LabData*)((int)(*unitArray) + (unitID * 120) + 0x24);
+	return p->techNum;
+}
+
+int UnitEx::GetLabScientistCount()
+{
+	if (!isInited) {
+		return HFLNOTINITED;
+	}
+
+	LabData* p = (LabData*)((int)(*unitArray) + (unitID * 120) + 0x24);
+	return p->numScientists;
+}
+
+void UnitEx::SetLabScientistCount(int numScientists)
+{
+	if (!isInited) {
+		return;
+	}
+
+	LabData* p = (LabData*)((int)(*unitArray) + (unitID * 120) + 0x24);
+	p->numScientists = numScientists;
+}
+
