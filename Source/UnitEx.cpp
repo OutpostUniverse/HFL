@@ -1137,7 +1137,7 @@ int UnitEx::GetNumTruckLoadsSoFar()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID*120) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
 	return p->numTruckLoadsSoFar;
 }
 
@@ -1147,7 +1147,7 @@ int UnitEx::GetBarYield()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
 	return p->barYield;
 }
 
@@ -1157,7 +1157,7 @@ int UnitEx::GetVariant()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
 	return p->variant;
 }
 
@@ -1167,7 +1167,7 @@ int UnitEx::GetOreType()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
 	return p->oreType;
 }
 
@@ -1177,7 +1177,7 @@ int UnitEx::GetSurveyedBy()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
 	return p->surveyedBy;
 }
 
@@ -1187,7 +1187,7 @@ int UnitEx::GetLabCurrentTopic()
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * 120) + 0x24);
+	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x24);
 	return p->techNum;
 }
 
@@ -1197,7 +1197,7 @@ int UnitEx::GetLabScientistCount()
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * 120) + 0x24);
+	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x24);
 	return p->numScientists;
 }
 
@@ -1207,7 +1207,7 @@ void UnitEx::SetLabScientistCount(int numScientists)
 		return;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * 120) + 0x24);
+	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x24);
 	p->numScientists = numScientists;
 }
 
