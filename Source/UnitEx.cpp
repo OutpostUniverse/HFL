@@ -193,6 +193,8 @@ struct OP2Unit
 	short unknown15;
 };
 
+static_assert(120 == sizeof(OP2Unit), "OP2Unit is an unexpected size");
+
 struct BeaconData
 {
 	int numTruckLoadsSoFar;
