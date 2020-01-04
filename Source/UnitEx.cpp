@@ -1217,4 +1217,3 @@ void UnitEx::SetLabScientistCount(int numScientists)
 	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
 	p->numScientists = numScientists;
 }
-
