@@ -1144,7 +1144,7 @@ int UnitEx::GetNumTruckLoadsSoFar()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
+	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->numTruckLoadsSoFar;
 }
 
@@ -1154,7 +1154,7 @@ int UnitEx::GetBarYield()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
+	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->barYield;
 }
 
@@ -1164,7 +1164,7 @@ int UnitEx::GetVariant()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
+	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->variant;
 }
 
@@ -1174,7 +1174,7 @@ int UnitEx::GetOreType()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
+	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->oreType;
 }
 
@@ -1184,7 +1184,7 @@ int UnitEx::GetSurveyedBy()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
+	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->surveyedBy;
 }
 
@@ -1194,7 +1194,7 @@ int UnitEx::GetLabCurrentTopic()
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
+	LabData* p = (LabData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
 	return p->techNum;
 }
 
@@ -1204,7 +1204,7 @@ int UnitEx::GetLabScientistCount()
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
+	LabData* p = (LabData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
 	return p->numScientists;
 }
 
@@ -1214,6 +1214,6 @@ void UnitEx::SetLabScientistCount(int numScientists)
 		return;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
+	LabData* p = (LabData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
 	p->numScientists = numScientists;
 }
