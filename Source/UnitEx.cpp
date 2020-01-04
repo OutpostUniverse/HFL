@@ -210,6 +210,9 @@ struct BeaconData
 	char surveyedBy; // [player bit vector]
 };
 
+// Offset to LabData pointer within OP2Unit
+constexpr std::uintptr_t labDataOffset = 0x24;
+
 struct LabData
 {
 	short nextResearchTime;		// Amount of time until next research increment(research progresses in chunks)
@@ -1191,7 +1194,7 @@ int UnitEx::GetLabCurrentTopic()
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x24);
+	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
 	return p->techNum;
 }
 
@@ -1201,7 +1204,7 @@ int UnitEx::GetLabScientistCount()
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x24);
+	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
 	return p->numScientists;
 }
 
@@ -1211,7 +1214,7 @@ void UnitEx::SetLabScientistCount(int numScientists)
 		return;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x24);
+	LabData* p = (LabData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
 	p->numScientists = numScientists;
 }
 
