@@ -1138,14 +1138,19 @@ void UnitEx::SetAnimation(int animIdx, int animDelay, int animStartDelay, int bo
 	func(&(*unitArray)[unitID], 0, animIdx, animDelay, animStartDelay, boolInvisible, boolSkipDoDeath);
 }
 
+// HFL initialization must be checked before calling GetBeaconData
+BeaconData& GetBeaconData(int unitID)
+{
+	return *(BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
+}
+
 int UnitEx::GetNumTruckLoadsSoFar()
 {
 	if (!isInited) {
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
-	return p->numTruckLoadsSoFar;
+	return GetBeaconData(unitID).numTruckLoadsSoFar;
 }
 
 int UnitEx::GetBarYield()
@@ -1154,8 +1159,7 @@ int UnitEx::GetBarYield()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
-	return p->barYield;
+	return GetBeaconData(unitID).barYield;
 }
 
 int UnitEx::GetVariant()
@@ -1164,8 +1168,7 @@ int UnitEx::GetVariant()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
-	return p->variant;
+	return GetBeaconData(unitID).variant;
 }
 
 int UnitEx::GetOreType()
@@ -1174,8 +1177,7 @@ int UnitEx::GetOreType()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
-	return p->oreType;
+	return GetBeaconData(unitID).oreType;
 }
 
 int UnitEx::GetSurveyedBy()
@@ -1184,8 +1186,7 @@ int UnitEx::GetSurveyedBy()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
-	return p->surveyedBy;
+	return GetBeaconData(unitID).surveyedBy;
 }
 
 // HFL initialization must be checked before calling GetLabData
