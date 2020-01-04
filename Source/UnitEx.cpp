@@ -1188,14 +1188,19 @@ int UnitEx::GetSurveyedBy()
 	return p->surveyedBy;
 }
 
+// HFL initialization must be checked before calling GetLabData
+LabData& GetLabData(int unitID) 
+{
+	return *(LabData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
+}
+
 int UnitEx::GetLabCurrentTopic()
 {
 	if (!isInited) {
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
-	return p->techNum;
+	return GetLabData(unitID).techNum;
 }
 
 int UnitEx::GetLabScientistCount()
@@ -1204,8 +1209,7 @@ int UnitEx::GetLabScientistCount()
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
-	return p->numScientists;
+	return GetLabData(unitID).numScientists;
 }
 
 void UnitEx::SetLabScientistCount(int numScientists)
@@ -1214,6 +1218,5 @@ void UnitEx::SetLabScientistCount(int numScientists)
 		return;
 	}
 
-	LabData* p = (LabData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
-	p->numScientists = numScientists;
+	GetLabData(unitID).numScientists = numScientists;
 }
