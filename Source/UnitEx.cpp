@@ -1,4 +1,5 @@
 #include "HFL.h"
+#include <cstdint>
 
 #pragma pack(push,1)
 // All of these structs have room for only one unit ID as the functions operate on one unit only.
@@ -194,6 +195,9 @@ struct OP2Unit
 };
 
 static_assert(120 == sizeof(OP2Unit), "OP2Unit is an unexpected size");
+
+// Offset to BeaconData pointer within OP2Unit
+constexpr std::uintptr_t beaconDataOffset = 0x58;
 
 struct BeaconData
 {
@@ -1137,7 +1141,7 @@ int UnitEx::GetNumTruckLoadsSoFar()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->numTruckLoadsSoFar;
 }
 
@@ -1147,7 +1151,7 @@ int UnitEx::GetBarYield()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->barYield;
 }
 
@@ -1157,7 +1161,7 @@ int UnitEx::GetVariant()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->variant;
 }
 
@@ -1167,7 +1171,7 @@ int UnitEx::GetOreType()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->oreType;
 }
 
@@ -1177,7 +1181,7 @@ int UnitEx::GetSurveyedBy()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + 0x58);
+	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 	return p->surveyedBy;
 }
 
