@@ -967,7 +967,7 @@ map_id UnitEx::GetConVecCargoTurret()
 	}
 
 	if (!IsLive() || (GetType() != mapConVec)) {
-		return static_cast<map_id>(-1);
+		return map_id::mapNone;
 	}
 
 	if (GetCargo() == mapGuardPost) {
