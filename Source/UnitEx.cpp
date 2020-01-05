@@ -1,4 +1,5 @@
 #include "HFL.h"
+#include <cstdint>
 
 #pragma pack(push,1)
 // All of these structs have room for only one unit ID as the functions operate on one unit only.
@@ -193,6 +194,11 @@ struct OP2Unit
 	short unknown15;
 };
 
+static_assert(120 == sizeof(OP2Unit), "OP2Unit is an unexpected size");
+
+// Offset to BeaconData pointer within OP2Unit
+constexpr std::uintptr_t beaconDataOffset = 0x58;
+
 struct BeaconData
 {
 	int numTruckLoadsSoFar;
@@ -203,6 +209,9 @@ struct BeaconData
 	char unknown2;
 	char surveyedBy; // [player bit vector]
 };
+
+// Offset to LabData pointer within OP2Unit
+constexpr std::uintptr_t labDataOffset = 0x24;
 
 struct LabData
 {
@@ -1129,14 +1138,20 @@ void UnitEx::SetAnimation(int animIdx, int animDelay, int animStartDelay, int bo
 	func(&(*unitArray)[unitID], 0, animIdx, animDelay, animStartDelay, boolInvisible, boolSkipDoDeath);
 }
 
+// HFL initialization must be checked before calling GetBeaconData
+BeaconData& GetBeaconData(int unitID)
+{
+	return *reinterpret_cast<BeaconData*>(
+		reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
+}
+
 int UnitEx::GetNumTruckLoadsSoFar()
 {
 	if (!isInited) {
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID*120) + 0x58);
-	return p->numTruckLoadsSoFar;
+	return GetBeaconData(unitID).numTruckLoadsSoFar;
 }
 
 int UnitEx::GetBarYield()
@@ -1145,8 +1160,7 @@ int UnitEx::GetBarYield()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
-	return p->barYield;
+	return GetBeaconData(unitID).barYield;
 }
 
 int UnitEx::GetVariant()
@@ -1155,8 +1169,7 @@ int UnitEx::GetVariant()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
-	return p->variant;
+	return GetBeaconData(unitID).variant;
 }
 
 int UnitEx::GetOreType()
@@ -1165,8 +1178,7 @@ int UnitEx::GetOreType()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
-	return p->oreType;
+	return GetBeaconData(unitID).oreType;
 }
 
 int UnitEx::GetSurveyedBy()
@@ -1175,8 +1187,14 @@ int UnitEx::GetSurveyedBy()
 		return HFLNOTINITED;
 	}
 
-	BeaconData* p = (BeaconData*)((int)(*unitArray) + (unitID * 120) + 0x58);
-	return p->surveyedBy;
+	return GetBeaconData(unitID).surveyedBy;
+}
+
+// HFL initialization must be checked before calling GetLabData
+LabData& GetLabData(int unitID) 
+{
+	return *reinterpret_cast<LabData*>(
+		reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
 }
 
 int UnitEx::GetLabCurrentTopic()
@@ -1185,8 +1203,7 @@ int UnitEx::GetLabCurrentTopic()
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * 120) + 0x24);
-	return p->techNum;
+	return GetLabData(unitID).techNum;
 }
 
 int UnitEx::GetLabScientistCount()
@@ -1195,8 +1212,7 @@ int UnitEx::GetLabScientistCount()
 		return HFLNOTINITED;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * 120) + 0x24);
-	return p->numScientists;
+	return GetLabData(unitID).numScientists;
 }
 
 void UnitEx::SetLabScientistCount(int numScientists)
@@ -1205,7 +1221,5 @@ void UnitEx::SetLabScientistCount(int numScientists)
 		return;
 	}
 
-	LabData* p = (LabData*)((int)(*unitArray) + (unitID * 120) + 0x24);
-	p->numScientists = numScientists;
+	GetLabData(unitID).numScientists = numScientists;
 }
-
