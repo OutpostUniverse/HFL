@@ -125,11 +125,7 @@ void PlayerEx::SetSatelliteCount(map_id objectType, int count)
 
 int PlayerEx::GetColorNumber()
 {
-	if (!isInited) {
-		return HFLNOTINITED;
-	}
-
-	return playerArray[playerNum].colorNumber;
+	return isInited ? playerArray[playerNum].colorNumber : HFLNOTINITED;
 }
 
 int PlayerEx::IsAlliedTo(int playerId)
@@ -147,11 +143,7 @@ int PlayerEx::IsAlliedTo(int playerId)
 
 int PlayerEx::GetNumBuildingsBuilt()
 {
-	if (!isInited) {
-		return HFLNOTINITED;
-	}
-
-	return playerArray[playerNum].numBuildingsBuilt;
+	return isInited ? playerArray[playerNum].numBuildingsBuilt : HFLNOTINITED;
 }
 
 int PlayerEx::ProcessCommandPacket(CommandPacket *packet)
@@ -186,20 +178,12 @@ CommandPacket* PlayerEx::GetNextCommandPacketAddress()
 
 int PlayerEx::GetMaxOre()
 {
-	if (!isInited) {
-		return HFLNOTINITED;
-	}
-
-	return playerArray[playerNum].maxCommonOre;
+	return isInited ? playerArray[playerNum].maxCommonOre : HFLNOTINITED;
 }
 
 int PlayerEx::GetMaxRareOre()
 {
-	if (!isInited) {
-		return HFLNOTINITED;
-	}
-
-	return playerArray[playerNum].maxRareOre;
+	return isInited ? playerArray[playerNum].maxRareOre : HFLNOTINITED;
 }
 
 void PlayerEx::RecalculateValues()
