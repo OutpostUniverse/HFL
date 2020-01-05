@@ -26,6 +26,8 @@ enum TechCategory
 	tcSpaceship = 12   // Spaceship module
 };
 
+struct OP2TechInfo;
+
 class TechInfo
 {
 public:
@@ -50,7 +52,7 @@ public:
 	//int GetNumDependentTech(); // (number of techs that depend on this one) (below is a pointer to an int? list of this many elements)
 	//int* GetDependentTechNum(int index); // (pointer to array of techNums of techs that depend on this one)
 
-	void *internalPtr;
+	OP2TechInfo* internalPtr;
 };
 
 class Research

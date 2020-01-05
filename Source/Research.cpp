@@ -87,8 +87,7 @@ int TechInfo::GetTechID()
 		return HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->techID;
+	return internalPtr->techID;
 }
 
 TechCategory TechInfo::GetCategory()
@@ -97,8 +96,7 @@ TechCategory TechInfo::GetCategory()
 		return (TechCategory)HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return (TechCategory)p->category;
+	return (TechCategory)internalPtr->category;
 }
 
 int TechInfo::GetTechLevel()
@@ -107,8 +105,7 @@ int TechInfo::GetTechLevel()
 		return HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->techLevel;
+	return internalPtr->techLevel;
 }
 
 int TechInfo::GetPlymouthCost()
@@ -117,8 +114,7 @@ int TechInfo::GetPlymouthCost()
 		return HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->plymouthCost;
+	return internalPtr->plymouthCost;
 }
 
 int TechInfo::GetEdenCost()
@@ -127,8 +123,7 @@ int TechInfo::GetEdenCost()
 		return HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->edenCost;
+	return internalPtr->edenCost;
 }
 
 int TechInfo::GetMaxScientists()
@@ -137,8 +132,7 @@ int TechInfo::GetMaxScientists()
 		return HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->maxScientists;
+	return internalPtr->maxScientists;
 }
 
 LabType TechInfo::GetLab()
@@ -147,8 +141,7 @@ LabType TechInfo::GetLab()
 		return (LabType)HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return (LabType)p->lab;
+	return (LabType)internalPtr->lab;
 }
 
 int TechInfo::GetPlayerHasTech()
@@ -157,8 +150,7 @@ int TechInfo::GetPlayerHasTech()
 		return HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->playerHasTech;
+	return internalPtr->playerHasTech;
 }
 
 int TechInfo::GetNumUpgrades()
@@ -167,8 +159,7 @@ int TechInfo::GetNumUpgrades()
 		return HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->numUpgrades;
+	return internalPtr->numUpgrades;
 }
 
 int TechInfo::GetNumRequiredTechs()
@@ -177,8 +168,7 @@ int TechInfo::GetNumRequiredTechs()
 		return HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->numRequiredTechs;
+	return internalPtr->numRequiredTechs;
 }
 
 char* TechInfo::GetTechName()
@@ -187,8 +177,7 @@ char* TechInfo::GetTechName()
 		return (char*)HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->techName;
+	return internalPtr->techName;
 }
 
 char* TechInfo::GetDescription()
@@ -197,8 +186,7 @@ char* TechInfo::GetDescription()
 		return (char*)HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->description;
+	return internalPtr->description;
 }
 
 char* TechInfo::GetTeaser()
@@ -207,8 +195,7 @@ char* TechInfo::GetTeaser()
 		return (char*)HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->teaser;
+	return internalPtr->teaser;
 }
 
 char* TechInfo::GetImproveDesc()
@@ -217,8 +204,7 @@ char* TechInfo::GetImproveDesc()
 		return (char*)HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->improveDesc;
+	return internalPtr->improveDesc;
 }
 
 int TechInfo::GetRequiredTechIndex(int index)
@@ -227,6 +213,5 @@ int TechInfo::GetRequiredTechIndex(int index)
 		return HFLNOTINITED;
 	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->requiredTechNum[index];
+	return internalPtr->requiredTechNum[index];
 }
