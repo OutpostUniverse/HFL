@@ -93,10 +93,10 @@ int TechInfo::GetTechID()
 TechCategory TechInfo::GetCategory()
 {
 	if (!isInited) {
-		return (TechCategory)HFLNOTINITED;
+		return static_cast<TechCategory>(HFLNOTINITED);
 	}
 
-	return (TechCategory)internalPtr->category;
+	return static_cast<TechCategory>(internalPtr->category);
 }
 
 int TechInfo::GetTechLevel()
@@ -138,10 +138,10 @@ int TechInfo::GetMaxScientists()
 LabType TechInfo::GetLab()
 {
 	if (!isInited) {
-		return (LabType)HFLNOTINITED;
+		return static_cast<LabType>(HFLNOTINITED);
 	}
 
-	return (LabType)internalPtr->lab;
+	return static_cast<LabType>(internalPtr->lab);
 }
 
 int TechInfo::GetPlayerHasTech()
