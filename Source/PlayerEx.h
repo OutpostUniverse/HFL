@@ -42,7 +42,6 @@ public:
 	int GetTotalForumCapacity();
 	int GetTotalMedCenterCapacity();
 	int GetTotalResidenceCapacity();
-	// todo: anything else?
 };
 
 // ExtPlayer array that references the Player array
