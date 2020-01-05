@@ -28,15 +28,15 @@ public:
 	int GetNumActiveBuildings();
 	int GetNumBuildings();
 	int GetNumUnpoweredStructures();
-	int GetNumWorkersRequired();		// [assigned workers and scientists]
-	int GetNumScientistsRequired();		// [assigned to buildings, or researching]
+	int GetNumWorkersRequired(); // Assigned workers and scientists
+	int GetNumScientistsRequired(); // Assigned to buildings or researching
 	int GetNumScientistsAsWorkers();
 	int GetNumScientistsAssignedToResearch();
 	int GetTotalFoodProduction();
 	int GetTotalFoodConsumption();
-	int GetFoodLacking();	// [how much food needed to stop people starving ? Note this can be 0 even if there is a food deficit]
+	int GetFoodLacking(); // How much food if required to stop people from starving. This can be 0 even if there is a food deficit
 	int GetNetFoodProduction();
-	int GetNumSolarSatellites();	// [copy from bitfield at offset 8]
+	int GetNumSolarSatellites(); // Copy from bitfield at offset 8
 
 	int GetTotalRecreationFacilityCapacity();
 	int GetTotalForumCapacity();

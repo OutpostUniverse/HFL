@@ -9,7 +9,7 @@ struct OP2Player
 		unsigned int rlv :4;
 		unsigned int solarSat :4;
 		unsigned int edwardSat :4;
-		unsigned	:20;
+		unsigned int :20;
 	} satellites;
 	int difficulty;
 	int foodStored;
@@ -29,7 +29,7 @@ struct OP2Player
 	int scientists;
 	int kids;
 	int boolRecalcValues;
-	int numAvailableWorkers;	//	56EFC0	0x0A4	numAvailableWorkers
+	int numAvailableWorkers;             // 56EFC0 0x0A4
 	int numAvailableScientists;
 	int amountPowerGenerated;
 	int inactivePowerCapacity;
@@ -39,21 +39,21 @@ struct OP2Player
 	int numActiveBuildings;
 	int numBuildings;
 	int numUnpoweredStructures;
-	int numWorkersRequired;	// 56EFE8	0x0CC	numWorkersRequired[assigned workers and scientists]
-	int numScientistsRequired;	// 56EFEC	0x0D0	numScientistsRequired[assigned to buildings, or researching]
+	int numWorkersRequired;              // 56EFE8 0x0CC
+	int numScientistsRequired;           // 56EFEC 0x0D0
 	int numScientistsAsWorkers;
 	int numScientistsAssignedToResearch;
 	int totalFoodProduction;
 	int totalFoodConsumption;
-	int foodLacking;	// 56F000	0x0E4	foodLacking[how much food needed to stop people starving ? Note this can be 0 even if there is a food deficit]
+	int foodLacking;                     // 56F000 0x0E4
 	int netFoodProduction;
-	int numSolarSatellites;	// 56F008	0x0EC	numSolarSatellites[copy from bitfield at offset 8]
+	int numSolarSatellites;	             // 56F008 0x0EC
 
-	// 56F00C	0x0F0	TotalCapacities
-	int totalRecreationFacilityCapacity;// 56F00C	 0x0F0	 totalRecreationFacilityCapacity
-	int totalForumCapacity;// 56F010	 0x0F4	 totalForumCapacity
-	int totalMedCenterCapacity;// 56F014	 0x0F8	 totalMedCenterCapacity
-	int totalResidenceCapacity;// 56F018	 0x0FC	 totalResidenceCapacity
+	// 56F00C 0x0F0 TotalCapacities
+	int totalRecreationFacilityCapacity; // 56F00C 0x0F0
+	int totalForumCapacity;              // 56F010 0x0F4
+	int totalMedCenterCapacity;          // 56F014 0x0F8
+	int totalResidenceCapacity;          // 56F018 0x0FC
 	int unk3[47];
 	int numBuildingsBuilt;
 	int unk4[662];
