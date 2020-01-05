@@ -39,17 +39,29 @@ Below the #includes for Outpost2DLL.h and OP2Helper.h, add the following:
 <pre>#include &lt;HFL.h&gt;</pre>
 <p>This allows you to use the HFL functions and classes from your own code.</p>
 <p>Next, you must add calls to HFLInit and HFLCleanup to initialize and cleanup the HFL library. Without these, HFL will not work at all.</p>
-<h2>HFLInit</h2>
-<p>At the top of InitProc, add an HFLInit call as shown:</p>
-<pre>int InitProc()<br>{<br>	HFLInit();
-	// ... rest of your code goes below
-}</pre>
-<p>It's as simple as that. Now, you have to add an HFLCleanup call in the DLL_PROCESS_DETACH handler of DllMain to clean up HFL.</p>
-<h2>HFLCleanup</h2>
-<p>Go to DllMain in your code. Inside, there should already be code to handle DLL_PROCESS_ATTACH. Below, you just need to add a handler for DLL_PROCESS_DETACH. Add code below so it looks like the following:</p>
-<pre>// ... right here would be the end of the if-statement for DLL_PROCESS_ATTACH
-else if (fdwReason == DLL_PROCESS_DETACH)<br>{<br>	HFLCleanup();<br>}</pre>
-<p>Again, not much more difficult. Now that the calls are in place to initialize and cleanup HFL, we can begin using the library itself.</p>
+<h2>HFLInit & HFLCleanup Example</h2>
+<p>Go to DllMain in your code. Inside, there may already be code to handle DLL_PROCESS_ATTACH and DLL_PROCESS_DETACH. Add code below so it looks like the following:</p>
+<pre>
+#define WIN32_LEAN_AND_MEAN
+#include &lt;windows.h&gt;
+#include "HFL/Source/HFL.h"
+
+BOOL APIENTRY DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
+{
+	if (fdwReason == DLL_PROCESS_ATTACH)
+	{
+		DisableThreadLibraryCalls(hinstDLL);
+		HFLInit();
+	}
+	else if (fdwReason == DLL_PROCESS_DETACH)
+	{
+		HFLCleanup();
+	}
+
+	return true;
+}
+</pre>
+<p>Now that the calls are in place to initialize and cleanup HFL, we can begin using the library itself.</p>
 <h2>Your first HFL function call</h2>
 <p>HFL defines a new class, the UnitEx class. UnitEx stands for &quot;Unit Extension&quot; -- it can be used in place of any code that requires a plain old Unit.</p>
 <p>We'll use this to create an RPG Lynx with the fire rate of a Tiger, by turning on the &quot;double fire rate&quot; flag that OP2 normally uses with Tigers to double their rate of fire. Use code such as the following:</p>
