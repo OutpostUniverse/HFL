@@ -41,6 +41,7 @@ public:
 	map_id GetFactoryCargoWeapon(int bay);
 	map_id GetLaunchPadCargo();
 	void SetLaunchPadCargo(map_id moduleType);
+	map_id GetConVecCargoTurret();
 	int GetLights();
 	int GetDoubleFireRate();
 	int GetInvisible();

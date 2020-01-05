@@ -177,7 +177,7 @@ struct OP2Unit
 	unsigned int flags;
 	char bayWeaponCargo[6];
 	char unknown6;
-	char unknownCargo;
+	char conVecCargoTurret; // Turret of a guard post stored in a conVec
 	int unknown7;
 	short timerStickyfoam;
 	short timerEMP;
@@ -962,6 +962,23 @@ void UnitEx::SetLaunchPadCargo(map_id moduleType)
 	}
 
 	(*unitArray)[unitID].launchPadCargo = moduleType;
+}
+
+map_id UnitEx::GetConVecCargoTurret()
+{
+	if (!isInited) {
+		return static_cast<map_id>(HFLNOTINITED);
+	}
+
+	if (!IsLive() || (GetType() != mapConVec)) {
+		return map_id::mapNone;
+	}
+
+	if (GetCargo() == mapGuardPost) {
+		return static_cast<map_id>((*unitArray)[unitID].conVecCargoTurret);
+	}
+
+	return static_cast<map_id>(-1);
 }
 
 int UnitEx::GetLights()
