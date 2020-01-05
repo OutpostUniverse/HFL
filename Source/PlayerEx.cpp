@@ -211,27 +211,118 @@ void PlayerEx::RecalculateValues()
 	playerArray[playerNum].boolRecalcValues = 1;
 }
 
-int PlayerEx::GetNumAvailableWorkers()					{ return isInited ? playerArray[playerNum].numAvailableWorkers : HFLNOTINITED;				}
-int PlayerEx::GetNumAvailableScientists()				{ return isInited ? playerArray[playerNum].numAvailableScientists : HFLNOTINITED;			}
-int PlayerEx::GetAmountPowerGenerated()					{ return isInited ? playerArray[playerNum].amountPowerGenerated : HFLNOTINITED;				}
-int PlayerEx::GetInactivePowerCapacity()				{ return isInited ? playerArray[playerNum].inactivePowerCapacity : HFLNOTINITED;			}
-int PlayerEx::GetAmountPowerConsumed()					{ return isInited ? playerArray[playerNum].amountPowerConsumed : HFLNOTINITED;				}
-int PlayerEx::GetAmountPowerAvailable()					{ return isInited ? playerArray[playerNum].amountPowerAvailable : HFLNOTINITED;				}
-int PlayerEx::GetNumIdleBuildings()						{ return isInited ? playerArray[playerNum].numIdleBuildings : HFLNOTINITED;					}
-int PlayerEx::GetNumActiveBuildings()					{ return isInited ? playerArray[playerNum].numActiveBuildings : HFLNOTINITED;				}
-int PlayerEx::GetNumBuildings()							{ return isInited ? playerArray[playerNum].numBuildings : HFLNOTINITED;						}
-int PlayerEx::GetNumUnpoweredStructures()				{ return isInited ? playerArray[playerNum].numUnpoweredStructures : HFLNOTINITED;			}
-int PlayerEx::GetNumWorkersRequired()					{ return isInited ? playerArray[playerNum].numWorkersRequired : HFLNOTINITED;				}
-int PlayerEx::GetNumScientistsRequired()				{ return isInited ? playerArray[playerNum].numScientistsRequired : HFLNOTINITED;			}
-int PlayerEx::GetNumScientistsAsWorkers()				{ return isInited ? playerArray[playerNum].numScientistsAsWorkers : HFLNOTINITED;			}
-int PlayerEx::GetNumScientistsAssignedToResearch()		{ return isInited ? playerArray[playerNum].numScientistsAssignedToResearch : HFLNOTINITED;	}
-int PlayerEx::GetTotalFoodProduction()					{ return isInited ? playerArray[playerNum].totalFoodProduction : HFLNOTINITED;				}
-int PlayerEx::GetTotalFoodConsumption()					{ return isInited ? playerArray[playerNum].totalFoodConsumption : HFLNOTINITED;				}
-int PlayerEx::GetFoodLacking()							{ return isInited ? playerArray[playerNum].foodLacking : HFLNOTINITED;						}
-int PlayerEx::GetNetFoodProduction()					{ return isInited ? playerArray[playerNum].netFoodProduction : HFLNOTINITED;				}
-int PlayerEx::GetNumSolarSatellites()					{ return isInited ? playerArray[playerNum].numSolarSatellites : HFLNOTINITED;				}
+int PlayerEx::GetNumAvailableWorkers()
+{ 
+	return isInited ? playerArray[playerNum].numAvailableWorkers : HFLNOTINITED;
+}
 
-int PlayerEx::GetTotalRecreationFacilityCapacity()		{ return isInited ? playerArray[playerNum].totalRecreationFacilityCapacity : HFLNOTINITED;	}
-int PlayerEx::GetTotalForumCapacity()					{ return isInited ? playerArray[playerNum].totalForumCapacity : HFLNOTINITED;				}
-int PlayerEx::GetTotalMedCenterCapacity()				{ return isInited ? playerArray[playerNum].totalMedCenterCapacity : HFLNOTINITED;			}
-int PlayerEx::GetTotalResidenceCapacity()				{ return isInited ? playerArray[playerNum].totalResidenceCapacity : HFLNOTINITED;			}
+int PlayerEx::GetNumAvailableScientists()
+{ 
+	return isInited ? playerArray[playerNum].numAvailableScientists : HFLNOTINITED;
+}
+
+int PlayerEx::GetAmountPowerGenerated()
+{ 
+	return isInited ? playerArray[playerNum].amountPowerGenerated : HFLNOTINITED;
+}
+
+int PlayerEx::GetInactivePowerCapacity()
+{ 
+	return isInited ? playerArray[playerNum].inactivePowerCapacity : HFLNOTINITED;
+}
+
+int PlayerEx::GetAmountPowerConsumed()
+{ 
+	return isInited ? playerArray[playerNum].amountPowerConsumed : HFLNOTINITED;
+}
+
+int PlayerEx::GetAmountPowerAvailable()
+{
+	return isInited ? playerArray[playerNum].amountPowerAvailable : HFLNOTINITED;
+}
+
+int PlayerEx::GetNumIdleBuildings()
+{
+	return isInited ? playerArray[playerNum].numIdleBuildings : HFLNOTINITED;
+}
+
+int PlayerEx::GetNumActiveBuildings()
+{
+	return isInited ? playerArray[playerNum].numActiveBuildings : HFLNOTINITED;
+}
+
+int PlayerEx::GetNumBuildings() 
+{
+	return isInited ? playerArray[playerNum].numBuildings : HFLNOTINITED;
+}
+
+int PlayerEx::GetNumUnpoweredStructures()
+{
+	return isInited ? playerArray[playerNum].numUnpoweredStructures : HFLNOTINITED;
+}
+
+int PlayerEx::GetNumWorkersRequired()
+{
+	return isInited ? playerArray[playerNum].numWorkersRequired : HFLNOTINITED;
+}
+
+int PlayerEx::GetNumScientistsRequired()
+{
+	return isInited ? playerArray[playerNum].numScientistsRequired : HFLNOTINITED;
+}
+
+int PlayerEx::GetNumScientistsAsWorkers()
+{
+	return isInited ? playerArray[playerNum].numScientistsAsWorkers : HFLNOTINITED;
+}
+
+int PlayerEx::GetNumScientistsAssignedToResearch()
+{
+	return isInited ? playerArray[playerNum].numScientistsAssignedToResearch : HFLNOTINITED;
+}
+
+int PlayerEx::GetTotalFoodProduction()
+{
+	return isInited ? playerArray[playerNum].totalFoodProduction : HFLNOTINITED;
+}
+
+int PlayerEx::GetTotalFoodConsumption()
+{
+	return isInited ? playerArray[playerNum].totalFoodConsumption : HFLNOTINITED;
+}
+
+int PlayerEx::GetFoodLacking()
+{
+	return isInited ? playerArray[playerNum].foodLacking : HFLNOTINITED;
+}
+
+int PlayerEx::GetNetFoodProduction()
+{
+	return isInited ? playerArray[playerNum].netFoodProduction : HFLNOTINITED;
+}
+
+int PlayerEx::GetNumSolarSatellites()
+{
+	return isInited ? playerArray[playerNum].numSolarSatellites : HFLNOTINITED;
+}
+
+
+int PlayerEx::GetTotalRecreationFacilityCapacity()
+{
+	return isInited ? playerArray[playerNum].totalRecreationFacilityCapacity : HFLNOTINITED;
+}
+
+int PlayerEx::GetTotalForumCapacity()
+{
+	return isInited ? playerArray[playerNum].totalForumCapacity : HFLNOTINITED;
+}
+
+int PlayerEx::GetTotalMedCenterCapacity()
+{
+	return isInited ? playerArray[playerNum].totalMedCenterCapacity : HFLNOTINITED;
+}
+
+int PlayerEx::GetTotalResidenceCapacity()
+{
+	return isInited ? playerArray[playerNum].totalResidenceCapacity : HFLNOTINITED;
+}
