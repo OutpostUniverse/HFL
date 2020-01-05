@@ -1141,7 +1141,8 @@ void UnitEx::SetAnimation(int animIdx, int animDelay, int animStartDelay, int bo
 // HFL initialization must be checked before calling GetBeaconData
 BeaconData& GetBeaconData(int unitID)
 {
-	return *(BeaconData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
+	return *reinterpret_cast<BeaconData*>(
+		reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + beaconDataOffset);
 }
 
 int UnitEx::GetNumTruckLoadsSoFar()
@@ -1192,7 +1193,8 @@ int UnitEx::GetSurveyedBy()
 // HFL initialization must be checked before calling GetLabData
 LabData& GetLabData(int unitID) 
 {
-	return *(LabData*)(reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
+	return *reinterpret_cast<LabData*>(
+		reinterpret_cast<std::uintptr_t>(*unitArray) + (unitID * sizeof(OP2Unit)) + labDataOffset);
 }
 
 int UnitEx::GetLabCurrentTopic()
