@@ -5,27 +5,27 @@
 
 enum LabType
 {
-	ltBasic			= 1,
-	ltStandard		= 2,
-	ltAdvanced		= 3
+	ltBasic	= 1,
+	ltStandard = 2,
+	ltAdvanced = 3
 };
 
 // "CATEGORY" values (for both items and upgrades to these items)
 enum TechCategory
 {
-	tcFree			= 0, // 0 = Free technologies (and unavailable technologies)
-	tcBasic			= 1, // 1 = Basic labratory sciences
-	tcDefense		= 2, // 2 = Defenses (GP upgrade, walls, and efficiency engineering)
-	tcPower			= 3, // 3 = Power
-	tcVehicles		= 4, // 4 = Vehicles (which ones can be built, speed upgrades, armour upgrades)
-	tcFood			= 5, // 5 = Food
-	tcMetals		= 6, // 6 = Metals gathering
-	tcWeapons		= 7, // 7 = Weapons
-	tcSpace			= 8, // 8 = Space (spaceport, observatory, launch vehicle, skydock)
-	tcMorale		= 9, // 9 = Population (happiness)
-	tcDisaster		= 10,// 10 = Disaster warning (and defense)
-	tcPopulation	= 11,// 11 = Population (health, growth)
-	tcSpaceship		= 12 // 12 = Spaceship module
+	tcFree = 0,        // Free or unavailable technologies
+	tcBasic = 1,       // Basic laboratory sciences
+	tcDefense = 2,     // Guard Post upgrades, walls, and efficiency engineering
+	tcPower = 3,       // Power
+	tcVehicles = 4,    // Which vehicles can be built, speed upgrades, armour upgrades
+	tcFood = 5,        // Food
+	tcMetals = 6,      // Metals gathering
+	tcWeapons = 7,     // Weapons
+	tcSpace = 8,       // Spaceport, observatory, launch vehicle, skydock
+	tcMorale = 9,      // Population morale
+	tcDisaster = 10,   // Disaster warning and defense
+	tcPopulation = 11, // Population health, growth rate
+	tcSpaceship = 12   // Spaceship module
 };
 
 class TechInfo
