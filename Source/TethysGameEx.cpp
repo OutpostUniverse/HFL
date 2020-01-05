@@ -32,7 +32,6 @@ struct OP2Game
 
 TethysGameEx gGame;
 void *gameObj;
-//void *researchObj;
 void *frameObj;
 void *statusBarObj;
 
