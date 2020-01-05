@@ -45,6 +45,7 @@ int Research::GetTechCount()
 
 	return researchObj->numTechs;
 }
+
 TechInfo Research::GetTechInfo(int index)
 {
 	TechInfo info;
@@ -61,6 +62,7 @@ TechInfo Research::GetTechInfo(int index)
 	info.internalPtr = researchObj->techInfo[index];
 	return info;
 }
+
 int Research::GetMaxTechID()
 {
 	if (!isInited) {
@@ -78,6 +80,7 @@ int TechInfo::IsValid()
 
 	return (internalPtr != nullptr);
 }
+
 int TechInfo::GetTechID()
 {
 	if (!isInited) {
@@ -87,6 +90,7 @@ int TechInfo::GetTechID()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->techID;
 }
+
 TechCategory TechInfo::GetCategory()
 {
 	if (!isInited) {
@@ -96,6 +100,7 @@ TechCategory TechInfo::GetCategory()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return (TechCategory)p->category;
 }
+
 int TechInfo::GetTechLevel()
 {
 	if (!isInited) {
@@ -105,6 +110,7 @@ int TechInfo::GetTechLevel()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->techLevel;
 }
+
 int TechInfo::GetPlymouthCost()
 {
 	if (!isInited) {
@@ -114,6 +120,7 @@ int TechInfo::GetPlymouthCost()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->plymouthCost;
 }
+
 int TechInfo::GetEdenCost()
 {
 	if (!isInited) {
@@ -123,6 +130,7 @@ int TechInfo::GetEdenCost()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->edenCost;
 }
+
 int TechInfo::GetMaxScientists()
 {
 	if (!isInited) {
@@ -132,6 +140,7 @@ int TechInfo::GetMaxScientists()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->maxScientists;
 }
+
 LabType TechInfo::GetLab()
 {
 	if (!isInited) {
@@ -141,6 +150,7 @@ LabType TechInfo::GetLab()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return (LabType)p->lab;
 }
+
 int TechInfo::GetPlayerHasTech()
 {
 	if (!isInited) {
@@ -150,6 +160,7 @@ int TechInfo::GetPlayerHasTech()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->playerHasTech;
 }
+
 int TechInfo::GetNumUpgrades()
 {
 	if (!isInited) {
@@ -159,6 +170,7 @@ int TechInfo::GetNumUpgrades()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->numUpgrades;
 }
+
 int TechInfo::GetNumRequiredTechs()
 {
 	if (!isInited) {
@@ -168,6 +180,7 @@ int TechInfo::GetNumRequiredTechs()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->numRequiredTechs;
 }
+
 char* TechInfo::GetTechName()
 {
 	if (!isInited) {
@@ -177,6 +190,7 @@ char* TechInfo::GetTechName()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->techName;
 }
+
 char* TechInfo::GetDescription()
 {
 	if (!isInited) {
@@ -186,6 +200,7 @@ char* TechInfo::GetDescription()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->description;
 }
+
 char* TechInfo::GetTeaser()
 {
 	if (!isInited) {
@@ -195,6 +210,7 @@ char* TechInfo::GetTeaser()
 	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
 	return p->teaser;
 }
+
 char* TechInfo::GetImproveDesc()
 {
 	if (!isInited) {
