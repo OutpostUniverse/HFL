@@ -1,7 +1,5 @@
-// Research.h
+#pragma once
 // Classes for modifying Research structures
-#ifndef _RESEARCH_H_
-#define _RESEARCH_H_
 
 enum LabType
 {
@@ -65,7 +63,3 @@ public:
 
 struct OP2Research;
 extern OP2Research *researchObj;
-
-
-
-#endif // TECHINFO_H_
