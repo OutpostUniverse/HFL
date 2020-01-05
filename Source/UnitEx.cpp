@@ -348,12 +348,7 @@ void UnitEx::DoDock(LOCATION dockLocation)
 	data->numUnits = 1;
 	data->unitId = unitID;
 	data->numWayPoints = 1;
-	long wpt = 0,
-		x = dockLocation.x,
-		y = dockLocation.y;
-	wpt |= (x & 0x7ff) << 5;
-	wpt |= (y & 0x3ff) << 20;
-	data->pts.rawPoints = wpt;
+	data->pts.rawPoints = ((dockLocation.x & 0x7ff) << 5) | ((dockLocation.y & 0x3ff) << 20);
 
 	ExtPlayer[OwnerID()].ProcessCommandPacket(&packet);
 }
