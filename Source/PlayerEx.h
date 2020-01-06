@@ -34,7 +34,7 @@ public:
 	int GetNumScientistsAssignedToResearch();
 	int GetTotalFoodProduction();
 	int GetTotalFoodConsumption();
-	int GetFoodLacking(); // How much food if required to stop people from starving. This can be 0 even if there is a food deficit
+	int GetFoodLacking(); // How much food is required to stop people from starving. This can be 0 even if there is a food deficit
 	int GetNetFoodProduction();
 	int GetNumSolarSatellites(); // Copy from bitfield at offset 8
 
