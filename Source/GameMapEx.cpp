@@ -117,7 +117,28 @@ int GameMapEx::LoadMap(char *fileName)
 
 void GameMapEx::CopyTileMap(int* tileMap)
 {
+	if (!isInited) {
+		return;
+	}
+
 	int **tileArray = (int**)(mapTileData);
+	OP2Map *p = (OP2Map*)mapObj;
 	
-	memcpy(tileMap, *tileArray, GetMapWidth()*GetMapHeight()*sizeof(int));
+	int padding;
+	int length;
+
+	if (p->clipRect.x1 == -1)
+	{
+		// Around the world map
+		padding = 0;
+		length = p->tileWidth * p->tileHeight;
+	}
+	else
+	{
+		// Standard map
+		padding = p->clipRect.x1 * p->tileHeight;
+		length = p->clipRect.Width() * p->clipRect.Height();
+	}
+
+	memcpy(tileMap, *tileArray + padding, length*sizeof(int));
 }
