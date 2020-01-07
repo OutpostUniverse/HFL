@@ -101,7 +101,7 @@ int UnitInfo::IsValid()
 		return HFLNOTINITED;
 	}
 
-	return (internalPtr != nullptr);
+	return internalPtr != nullptr;
 }
 
 int UnitInfo::GetHitPoints(int player)
