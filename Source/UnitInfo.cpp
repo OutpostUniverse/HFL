@@ -419,6 +419,7 @@ int UnitInfo::GetPenetrationDamage(int player)
 	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
 	return p->playerChunk[player].penetrationDmg;
 }
+
 void UnitInfo::SetPenetrationDamage(int player, int value)
 {
 	if (!isInited) {
@@ -504,6 +505,7 @@ int UnitInfo::GetWeaponSightRange(int player)
 	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
 	return p->playerChunk[player].weapSightRange;
 }
+
 void UnitInfo::SetWeaponSightRange(int player, int value)
 {
 	if (!isInited) {
@@ -833,6 +835,7 @@ int UnitInfo::GetRubble()
 	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
 	return p->commonRubble;
 }
+
 void UnitInfo::SetRubble(int value)
 {
 	if (!isInited) {
@@ -852,6 +855,7 @@ int UnitInfo::GetEdenDockPos()
 	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
 	return p->edenDockLoc;
 }
+
 void UnitInfo::SetEdenDockPos(int value)
 {
 	if (!isInited) {
@@ -871,6 +875,7 @@ int UnitInfo::GetPlymDockPos()
 	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
 	return p->plyDockLoc;
 }
+
 void UnitInfo::SetPlymDockPos(int value)
 {
 	if (!isInited) {
