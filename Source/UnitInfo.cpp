@@ -67,8 +67,9 @@ UnitInfo::UnitInfo(map_id unitType)
 		}
 	}
 
-	if (unitType >= 1 && unitType <= 0x72)
+	if (unitType >= 1 && unitType <= 0x72) {
 		internalPtr = unitInfoArray[unitType];
+	}
 }
 
 UnitInfo::UnitInfo(char *codeName)
