@@ -86,7 +86,7 @@ UnitInfo::UnitInfo(char *codeName)
 
 	for (int i=1; i<0x72; i++)
 	{
-		OP2UnitInfo *p = unitInfoArray[i];
+		OP2UnitInfo* p = unitInfoArray[i];
 		if (strcmp(p->vtbl->GetCodeName(p), codeName) == 0)
 		{
 			internalPtr = p;
@@ -114,8 +114,7 @@ int UnitInfo::GetHitPoints(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].hitPoints;
+	return internalPtr->playerChunk[player].hitPoints;
 }
 
 void UnitInfo::SetHitPoints(int player, int value)
@@ -128,8 +127,7 @@ void UnitInfo::SetHitPoints(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].hitPoints = value;
+	internalPtr->playerChunk[player].hitPoints = value;
 }
 
 int UnitInfo::GetRepairAmt(int player)
@@ -142,8 +140,7 @@ int UnitInfo::GetRepairAmt(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].repairAmt;
+	return internalPtr->playerChunk[player].repairAmt;
 }
 
 void UnitInfo::SetRepairAmt(int player, int value)
@@ -156,8 +153,7 @@ void UnitInfo::SetRepairAmt(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].repairAmt = value;
+	internalPtr->playerChunk[player].repairAmt = value;
 }
 
 int UnitInfo::GetArmor(int player)
@@ -170,8 +166,7 @@ int UnitInfo::GetArmor(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].armor;
+	return internalPtr->playerChunk[player].armor;
 }
 
 void UnitInfo::SetArmor(int player, int value)
@@ -184,8 +179,7 @@ void UnitInfo::SetArmor(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].armor = value;
+	internalPtr->playerChunk[player].armor = value;
 }
 
 int UnitInfo::GetOreCost(int player)
@@ -198,8 +192,7 @@ int UnitInfo::GetOreCost(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].commonCost;
+	return internalPtr->playerChunk[player].commonCost;
 }
 
 void UnitInfo::SetOreCost(int player, int value)
@@ -212,8 +205,7 @@ void UnitInfo::SetOreCost(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].commonCost = value;
+	internalPtr->playerChunk[player].commonCost = value;
 }
 
 int UnitInfo::GetRareOreCost(int player)
@@ -226,8 +218,7 @@ int UnitInfo::GetRareOreCost(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].rareCost;
+	return internalPtr->playerChunk[player].rareCost;
 }
 
 void UnitInfo::SetRareOreCost(int player, int value)
@@ -240,8 +231,7 @@ void UnitInfo::SetRareOreCost(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].rareCost = value;
+	internalPtr->playerChunk[player].rareCost = value;
 }
 
 int UnitInfo::GetBuildTime(int player)
@@ -254,8 +244,7 @@ int UnitInfo::GetBuildTime(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].buildTime;
+	return internalPtr->playerChunk[player].buildTime;
 }
 
 void UnitInfo::SetBuildTime(int player, int value)
@@ -268,8 +257,7 @@ void UnitInfo::SetBuildTime(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].buildTime = value;
+	internalPtr->playerChunk[player].buildTime = value;
 }
 
 int UnitInfo::GetSightRange(int player)
@@ -282,8 +270,7 @@ int UnitInfo::GetSightRange(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].sightRange;
+	return internalPtr->playerChunk[player].sightRange;
 }
 
 void UnitInfo::SetSightRange(int player, int value)
@@ -296,8 +283,7 @@ void UnitInfo::SetSightRange(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].sightRange = value;
+	internalPtr->playerChunk[player].sightRange = value;
 }
 
 int UnitInfo::GetWeaponRange(int player)
@@ -320,8 +306,7 @@ int UnitInfo::GetPowerRequired(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].powerRequired;
+	return internalPtr->playerChunk[player].powerRequired;
 }
 
 void UnitInfo::SetPowerRequired(int player, int value)
@@ -334,8 +319,7 @@ void UnitInfo::SetPowerRequired(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].powerRequired = value;
+	internalPtr->playerChunk[player].powerRequired = value;
 }
 
 int UnitInfo::GetMovePoints(int player)
@@ -368,8 +352,7 @@ int UnitInfo::GetConcussionDamage(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].concussionDmg;
+	return internalPtr->playerChunk[player].concussionDmg;
 }
 
 void UnitInfo::SetConcussionDamage(int player, int value)
@@ -382,8 +365,7 @@ void UnitInfo::SetConcussionDamage(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].concussionDmg = value;
+	internalPtr->playerChunk[player].concussionDmg = value;
 }
 
 int UnitInfo::GetWorkersRequired(int player)
@@ -416,8 +398,7 @@ int UnitInfo::GetPenetrationDamage(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].penetrationDmg;
+	return internalPtr->playerChunk[player].penetrationDmg;
 }
 
 void UnitInfo::SetPenetrationDamage(int player, int value)
@@ -430,8 +411,7 @@ void UnitInfo::SetPenetrationDamage(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].penetrationDmg = value;
+	internalPtr->playerChunk[player].penetrationDmg = value;
 }
 
 int UnitInfo::GetScientistsRequired(int player)
@@ -464,8 +444,7 @@ int UnitInfo::GetReloadTime(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].reloadTime;
+	return internalPtr->playerChunk[player].reloadTime;
 }
 
 void UnitInfo::SetReloadTime(int player, int value)
@@ -478,8 +457,7 @@ void UnitInfo::SetReloadTime(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].reloadTime = value;
+	internalPtr->playerChunk[player].reloadTime = value;
 }
 
 int UnitInfo::GetStorageCapacity(int player)
@@ -502,8 +480,7 @@ int UnitInfo::GetWeaponSightRange(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].weapSightRange;
+	return internalPtr->playerChunk[player].weapSightRange;
 }
 
 void UnitInfo::SetWeaponSightRange(int player, int value)
@@ -516,8 +493,7 @@ void UnitInfo::SetWeaponSightRange(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].weapSightRange = value;
+	internalPtr->playerChunk[player].weapSightRange = value;
 }
 
 int UnitInfo::GetProductionCapacity(int player)
@@ -540,8 +516,7 @@ int UnitInfo::GetNumStorageBays(int player)
 		return -1;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->playerChunk[player].numBays;
+	return internalPtr->playerChunk[player].numBays;
 }
 
 void UnitInfo::SetNumStorageBays(int player, int value)
@@ -554,8 +529,7 @@ void UnitInfo::SetNumStorageBays(int player, int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->playerChunk[player].numBays = value;
+	internalPtr->playerChunk[player].numBays = value;
 }
 
 int UnitInfo::GetCargoCapacity(int player)
@@ -574,8 +548,7 @@ int UnitInfo::GetResearchTopic()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->techId;
+	return internalPtr->techId;
 }
 
 void UnitInfo::SetResearchTopic(int techId)
@@ -584,8 +557,7 @@ void UnitInfo::SetResearchTopic(int techId)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->techId = techId;
+	internalPtr->techId = techId;
 }
 
 TrackType UnitInfo::GetTrackType()
@@ -594,8 +566,7 @@ TrackType UnitInfo::GetTrackType()
 		return (TrackType)HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return (TrackType)p->trackType;
+	return (TrackType)internalPtr->trackType;
 }
 
 void UnitInfo::SetTrackType(TrackType type)
@@ -604,8 +575,7 @@ void UnitInfo::SetTrackType(TrackType type)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->trackType = type;
+	internalPtr->trackType = type;
 }
 
 int UnitInfo::GetOwnerFlags()
@@ -614,8 +584,7 @@ int UnitInfo::GetOwnerFlags()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->ownerType;
+	return internalPtr->ownerType;
 }
 
 void UnitInfo::SetOwnerFlags(int flags)
@@ -624,8 +593,7 @@ void UnitInfo::SetOwnerFlags(int flags)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->ownerType = flags;
+	internalPtr->ownerType = flags;
 }
 
 char* UnitInfo::GetUnitName()
@@ -634,8 +602,7 @@ char* UnitInfo::GetUnitName()
 		return (char*)HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->unitName;
+	return internalPtr->unitName;
 }
 
 void UnitInfo::SetUnitName(char *newName)
@@ -648,8 +615,7 @@ void UnitInfo::SetUnitName(char *newName)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	strcpy_s(p->unitName, newName);
+	strcpy_s(internalPtr->unitName, newName);
 }
 
 char* UnitInfo::GetProduceListName()
@@ -658,8 +624,7 @@ char* UnitInfo::GetProduceListName()
 		return (char*)HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->produceName;
+	return internalPtr->produceName;
 }
 
 void UnitInfo::SetProduceListName(char *newName)
@@ -672,8 +637,7 @@ void UnitInfo::SetProduceListName(char *newName)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	strcpy_s(p->produceName, newName);
+	strcpy_s(internalPtr->produceName, newName);
 }
 
 int UnitInfo::GetXSize()
@@ -682,8 +646,7 @@ int UnitInfo::GetXSize()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->xSize;
+	return internalPtr->xSize;
 }
 
 void UnitInfo::SetXSize(int value)
@@ -692,8 +655,7 @@ void UnitInfo::SetXSize(int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->xSize = value;
+	internalPtr->xSize = value;
 }
 
 int UnitInfo::GetDamageRadius()
@@ -722,8 +684,7 @@ int UnitInfo::GetYSize()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->ySize;
+	return internalPtr->ySize;
 }
 
 void UnitInfo::SetYSize(int value)
@@ -732,8 +693,7 @@ void UnitInfo::SetYSize(int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->ySize = value;
+	internalPtr->ySize = value;
 }
 
 int UnitInfo::GetPixelsSkippedWhenFiring()
@@ -742,8 +702,7 @@ int UnitInfo::GetPixelsSkippedWhenFiring()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->pixelsSkipped;
+	return internalPtr->pixelsSkipped;
 }
 
 void UnitInfo::SetPixelsSkippedWhenFiring(int value)
@@ -752,8 +711,7 @@ void UnitInfo::SetPixelsSkippedWhenFiring(int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->pixelsSkipped = value;
+	internalPtr->pixelsSkipped = value;
 }
 
 int UnitInfo::GetBuildingFlags()
@@ -792,8 +750,7 @@ int UnitInfo::GetResourcePriority()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->resPriority;
+	return internalPtr->resPriority;
 }
 
 void UnitInfo::SetResourcePriority(int value)
@@ -802,8 +759,7 @@ void UnitInfo::SetResourcePriority(int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->resPriority = value;
+	internalPtr->resPriority = value;
 }
 
 int UnitInfo::GetRareRubble()
@@ -812,8 +768,7 @@ int UnitInfo::GetRareRubble()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->rareRubble;
+	return internalPtr->rareRubble;
 }
 
 void UnitInfo::SetRareRubble(int value)
@@ -822,8 +777,7 @@ void UnitInfo::SetRareRubble(int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->rareRubble = value;
+	internalPtr->rareRubble = value;
 }
 
 int UnitInfo::GetRubble()
@@ -832,8 +786,7 @@ int UnitInfo::GetRubble()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->commonRubble;
+	return internalPtr->commonRubble;
 }
 
 void UnitInfo::SetRubble(int value)
@@ -842,8 +795,7 @@ void UnitInfo::SetRubble(int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->commonRubble = value;
+	internalPtr->commonRubble = value;
 }
 
 int UnitInfo::GetEdenDockPos()
@@ -852,8 +804,7 @@ int UnitInfo::GetEdenDockPos()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->edenDockLoc;
+	return internalPtr->edenDockLoc;
 }
 
 void UnitInfo::SetEdenDockPos(int value)
@@ -862,8 +813,7 @@ void UnitInfo::SetEdenDockPos(int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->edenDockLoc = value;
+	internalPtr->edenDockLoc = value;
 }
 
 int UnitInfo::GetPlymDockPos()
@@ -872,8 +822,7 @@ int UnitInfo::GetPlymDockPos()
 		return HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	return p->plyDockLoc;
+	return internalPtr->plyDockLoc;
 }
 
 void UnitInfo::SetPlymDockPos(int value)
@@ -882,8 +831,7 @@ void UnitInfo::SetPlymDockPos(int value)
 		return;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-	p->plyDockLoc = value;
+	internalPtr->plyDockLoc = value;
 }
 
 char* UnitInfo::GetCodeName()
@@ -892,9 +840,7 @@ char* UnitInfo::GetCodeName()
 		return (char*)HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-
-	return p->vtbl->GetCodeName(p);
+	return internalPtr->vtbl->GetCodeName(internalPtr);
 }
 
 map_id UnitInfo::GetMapID()
@@ -903,9 +849,7 @@ map_id UnitInfo::GetMapID()
 		return (map_id)HFLNOTINITED;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-
-	return (map_id)p->unitType;
+	return (map_id)internalPtr->unitType;
 }
 
 Unit UnitInfo::CreateUnit(LOCATION where, int unitId)
@@ -918,8 +862,6 @@ Unit UnitInfo::CreateUnit(LOCATION where, int unitId)
 		return u;
 	}
 
-	OP2UnitInfo *p = (OP2UnitInfo*)internalPtr;
-
 	struct _unit {
 		int vtbl;
 		int isLive;
@@ -928,7 +870,7 @@ Unit UnitInfo::CreateUnit(LOCATION where, int unitId)
 		int id;
 		// ... more, but not needed for this purpose
 	} *unitPtr;
-	unitPtr = (_unit*)p->vtbl->CreateUnit(p, 0, where.x*32, where.y*32, unitId);
+	unitPtr = (_unit*)internalPtr->vtbl->CreateUnit(internalPtr, 0, where.x*32, where.y*32, unitId);
 	if (unitPtr)
 	{
 		u.unitID = unitPtr->id;
