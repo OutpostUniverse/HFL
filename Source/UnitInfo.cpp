@@ -566,7 +566,7 @@ TrackType UnitInfo::GetTrackType()
 		return (TrackType)HFLNOTINITED;
 	}
 
-	return (TrackType)internalPtr->trackType;
+	return static_cast<TrackType>(internalPtr->trackType);
 }
 
 void UnitInfo::SetTrackType(TrackType type)
