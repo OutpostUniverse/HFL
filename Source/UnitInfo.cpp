@@ -57,7 +57,7 @@ void *unitInfoObj;
 
 UnitInfo::UnitInfo(map_id unitType)
 {
-	internalPtr = NULL;
+	internalPtr = nullptr;
 
 	if (!isInited) // automatic initialization since objects in static storage will be constructed before InitProc is reached
 	{
@@ -73,7 +73,7 @@ UnitInfo::UnitInfo(map_id unitType)
 
 UnitInfo::UnitInfo(char *codeName)
 {
-	internalPtr = NULL;
+	internalPtr = nullptr;
 
 	if (!isInited) // automatic initialization since objects in static storage will be constructed before InitProc is reached
 	{
@@ -100,7 +100,7 @@ int UnitInfo::IsValid()
 		return HFLNOTINITED;
 	}
 
-	return (internalPtr != NULL);
+	return (internalPtr != nullptr);
 }
 
 int UnitInfo::GetHitPoints(int player)
