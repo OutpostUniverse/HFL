@@ -84,8 +84,8 @@ int __fastcall ReportGetButtonIdDispatcher(OP2Report *classPtr)
 PaneReport::PaneReport()
 {
 	isInternalObj = 0;
-	internalRpt = NULL;
-	internalVtbl = NULL;
+	internalRpt = nullptr;
+	internalVtbl = nullptr;
 
 	if (!isInited) // automatic initialization since objects in static storage will be constructed before InitProc is reached
 	{
@@ -124,8 +124,8 @@ PaneReport::PaneReport()
 PaneReport::PaneReport(OP2Report *internalPtr)
 {
 	isInternalObj = 0;
-	internalRpt = NULL;
-	internalVtbl = NULL;
+	internalRpt = nullptr;
+	internalVtbl = nullptr;
 
 	if (!isInited) {
 		return;
@@ -188,7 +188,7 @@ void PaneReport::CreateStdButtons(int numButtons, PaneButton *button1, char *but
 		return;
 	}
 
-	void *buttons[4] = {NULL, NULL, NULL, NULL};
+	void *buttons[4] = {nullptr, nullptr, nullptr, nullptr};
 
 	if (button1)
 	{

@@ -18,7 +18,7 @@ void *textRenderObj;
 
 PaneGFXSurface::PaneGFXSurface(void *gfxPointer)
 {
-	internalSurface = NULL;
+	internalSurface = nullptr;
 
 	if (!isInited) // automatic initialization since objects in static storage will be constructed before InitProc is reached
 	{

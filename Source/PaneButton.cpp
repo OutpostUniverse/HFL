@@ -131,8 +131,8 @@ void __fastcall ButtonOnClickDispatcher(OP2Button *classPtr)
 
 PaneButton::PaneButton()
 {
-	internalBtn = NULL;
-	internalVtbl = NULL;
+	internalBtn = nullptr;
+	internalVtbl = nullptr;
 	isInternalObj = 0;
 
 	if (!isInited) // automatic initialization since objects in static storage will be constructed before InitProc is reached
@@ -174,8 +174,8 @@ PaneButton::PaneButton()
 
 PaneButton::PaneButton(OP2Button *internalPtr)
 {
-	internalBtn = NULL;
-	internalVtbl = NULL;
+	internalBtn = nullptr;
+	internalVtbl = nullptr;
 	isInternalObj = 0;
 
 	if (!isInited) // automatic initialization since objects in static storage will be constructed before InitProc is reached
@@ -352,7 +352,7 @@ RECT* PaneButton::GetBoundingBox()
 	OP2Button *p = internalBtn;
 
 	if (!p) { // not inited if this is null
-		return NULL;
+		return nullptr;
 	}
 
 	return &p->rect;

@@ -1,5 +1,7 @@
 #pragma once
 
+struct OP2UnitInfo;
+
 // Class for modifying UnitInfo structures
 class UnitInfo
 {
@@ -117,7 +119,7 @@ public:
 	Unit CreateUnit(LOCATION where, int unitId);
 	// todo: perhaps load / save functions? (so people can save data into a stream)
 
-	void *internalPtr;
+	OP2UnitInfo* internalPtr;
 };
 
 struct OP2UnitInfo;
