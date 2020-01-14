@@ -1,4 +1,3 @@
-// Research.cpp
 #include "HFL.h"
 
 #pragma pack(push,1)
@@ -39,159 +38,179 @@ OP2Research *researchObj;
 
 int Research::GetTechCount()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	return researchObj->numTechs;
 }
+
 TechInfo Research::GetTechInfo(int index)
 {
 	TechInfo info;
 	info.internalPtr = nullptr;
 
-	if (!isInited)
+	if (!isInited) {
 		return info;
+	}
 
-	if (index < 0 || index >= researchObj->numTechs)
+	if (index < 0 || index >= researchObj->numTechs) {
 		return info;
+	}
 
 	info.internalPtr = researchObj->techInfo[index];
 	return info;
 }
+
 int Research::GetMaxTechID()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	return researchObj->maxTechID;
 }
 
 int TechInfo::IsValid()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	return (internalPtr != nullptr);
 }
+
 int TechInfo::GetTechID()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->techID;
+	return internalPtr->techID;
 }
+
 TechCategory TechInfo::GetCategory()
 {
-	if (!isInited)
-		return (TechCategory)HFLNOTINITED;
+	if (!isInited) {
+		return static_cast<TechCategory>(HFLNOTINITED);
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return (TechCategory)p->category;
+	return static_cast<TechCategory>(internalPtr->category);
 }
+
 int TechInfo::GetTechLevel()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->techLevel;
+	return internalPtr->techLevel;
 }
+
 int TechInfo::GetPlymouthCost()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->plymouthCost;
+	return internalPtr->plymouthCost;
 }
+
 int TechInfo::GetEdenCost()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->edenCost;
+	return internalPtr->edenCost;
 }
+
 int TechInfo::GetMaxScientists()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->maxScientists;
+	return internalPtr->maxScientists;
 }
+
 LabType TechInfo::GetLab()
 {
-	if (!isInited)
-		return (LabType)HFLNOTINITED;
+	if (!isInited) {
+		return static_cast<LabType>(HFLNOTINITED);
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return (LabType)p->lab;
+	return static_cast<LabType>(internalPtr->lab);
 }
+
 int TechInfo::GetPlayerHasTech()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->playerHasTech;
+	return internalPtr->playerHasTech;
 }
+
 int TechInfo::GetNumUpgrades()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->numUpgrades;
+	return internalPtr->numUpgrades;
 }
+
 int TechInfo::GetNumRequiredTechs()
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->numRequiredTechs;
+	return internalPtr->numRequiredTechs;
 }
+
 char* TechInfo::GetTechName()
 {
-	if (!isInited)
+	if (!isInited) {
 		return (char*)HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-
-	return p->techName;
+	return internalPtr->techName;
 }
+
 char* TechInfo::GetDescription()
 {
-	if (!isInited)
+	if (!isInited) {
 		return (char*)HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->description;
+	return internalPtr->description;
 }
+
 char* TechInfo::GetTeaser()
 {
-	if (!isInited)
+	if (!isInited) {
 		return (char*)HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->teaser;
+	return internalPtr->teaser;
 }
+
 char* TechInfo::GetImproveDesc()
 {
-	if (!isInited)
+	if (!isInited) {
 		return (char*)HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->improveDesc;
+	return internalPtr->improveDesc;
 }
 
 int TechInfo::GetRequiredTechIndex(int index)
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
-	OP2TechInfo *p = (OP2TechInfo*)internalPtr;
-	return p->requiredTechNum[index];
+	return internalPtr->requiredTechNum[index];
 }
