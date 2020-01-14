@@ -115,28 +115,30 @@ int GameMapEx::LoadMap(char *fileName)
 	return func(p, 0, fileName);
 }
 
-void GameMapEx::CopyTileMap(int* tileMap, int xMin, int xMax, int yMin, int yMax)
+void GameMapEx::CopyTileMap(MapTile* destTileMap)
 {
-	OP2Map *p = (OP2Map*)mapObj;
-	int **tileArray = (int**)(mapTileData);
-
-	int mapWidth = xMax - xMin;
-
-	for (int x = xMin; x < xMax; ++x)
-	{
-		for (int y = yMin; y < yMax; ++y)
-		{
-			int px = x - xMin;
-			int py = y - yMin;
-
-			int xLower = p->tileXMask & x;
-			int xUpper = xLower >> 5;
-			xLower &= 31;
-			xUpper <<= p->logTileHeight;
-			xUpper += y;
-			xUpper <<= 5;
-			
-			tileMap[px + py * mapWidth] = (*tileArray)[xUpper + xLower];
-		}
+	if (!isInited) {
+		return;
 	}
+
+	MapTile **tileArray = (MapTile**)(mapTileData);
+	OP2Map *p = (OP2Map*)mapObj;
+
+	int padding;
+	int length;
+
+	if (p->paddingOffsetTileX == 0)
+	{
+		// Around the world map
+		padding = 0;
+		length = p->numTiles;
+	}
+	else
+	{
+		// Standard map
+		padding = p->paddingOffsetTileX * p->tileHeight;
+		length = p->tileHeight << (p->logTileWidth - 1);
+	}
+
+	memcpy(destTileMap, *tileArray + padding, length*sizeof(MapTile));
 }
