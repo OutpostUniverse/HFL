@@ -105,8 +105,9 @@ void PlayerEx::SetPlayerName(char *newName)
 
 int PlayerEx::GetSatelliteCount(map_id objectType)
 {
-	if (!isInited)
+	if (!isInited) {
 		return HFLNOTINITED;
+	}
 
 	switch (objectType)
 	{
@@ -153,8 +154,9 @@ int PlayerEx::GetSatelliteCount(map_id objectType)
 
 void PlayerEx::SetSatelliteCount(map_id objectType, int count)
 {
-	if (!isInited)
+	if (!isInited) {
 		return;
+	}
 
 	switch (objectType)
 	{
