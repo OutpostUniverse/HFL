@@ -158,6 +158,19 @@ void PlayerEx::SetSatelliteCount(map_id objectType, int count)
 		return;
 	}
 
+	// Normalize count for starship components
+	if (objectType >= mapIonDriveModule && objectType <= mapChildrenModule)
+	{
+		if (count > 1)
+		{
+			count = 1;
+		}
+		else if (count < 0)
+		{
+			count = 0;
+		}
+	}
+	
 	switch (objectType)
 	{
 	case mapRLV:
@@ -171,49 +184,49 @@ void PlayerEx::SetSatelliteCount(map_id objectType, int count)
 		playerArray[playerNum].satellites.edwardSat = count;
 		break;
 	case mapEvacuationModule:
-		playerArray[playerNum].satellites.evacModule = 1;
+		playerArray[playerNum].satellites.evacModule = count;
 		break;
 	case mapChildrenModule:
-		playerArray[playerNum].satellites.childCargo = 1;
+		playerArray[playerNum].satellites.childCargo = count;
 		break;
 	case mapRareMetalsCargo:
-		playerArray[playerNum].satellites.rareCargo = 1;
+		playerArray[playerNum].satellites.rareCargo = count;
 		break;
 	case mapCommonMetalsCargo:
-		playerArray[playerNum].satellites.commonCargo = 1;
+		playerArray[playerNum].satellites.commonCargo = count;
 		break;
 	case mapFoodCargo:
-		playerArray[playerNum].satellites.foodCargo = 1;
+		playerArray[playerNum].satellites.foodCargo = count;
 		break;
 	case mapPhoenixModule:
-		playerArray[playerNum].satellites.phoenixModule = 1;
+		playerArray[playerNum].satellites.phoenixModule = count;
 		break;
 	case mapOrbitalPackage:
-		playerArray[playerNum].satellites.orbitalPackage = 1;
+		playerArray[playerNum].satellites.orbitalPackage = count;
 		break;
 	case mapStasisSystems:
-		playerArray[playerNum].satellites.stasisSystems = 1;
+		playerArray[playerNum].satellites.stasisSystems = count;
 		break;
 	case mapSkydock:
-		playerArray[playerNum].satellites.skydock = 1;
+		playerArray[playerNum].satellites.skydock = count;
 		break;
 	case mapSensorPackage:
-		playerArray[playerNum].satellites.sensorPackage = 1;
+		playerArray[playerNum].satellites.sensorPackage = count;
 		break;
 	case mapHabitatRing:
-		playerArray[playerNum].satellites.habitatRing = 1;
+		playerArray[playerNum].satellites.habitatRing = count;
 		break;
 	case mapFuelingSystems:
-		playerArray[playerNum].satellites.fuelingSystems = 1;
+		playerArray[playerNum].satellites.fuelingSystems = count;
 		break;
 	case mapCommandModule:
-		playerArray[playerNum].satellites.commandModule = 1;
+		playerArray[playerNum].satellites.commandModule = count;
 		break;
 	case mapFusionDriveModule:
-		playerArray[playerNum].satellites.fusionDrive = 1;
+		playerArray[playerNum].satellites.fusionDrive = count;
 		break;
 	case mapIonDriveModule:
-		playerArray[playerNum].satellites.ionDrive = 1;
+		playerArray[playerNum].satellites.ionDrive = count;
 		break;
 	}
 }
