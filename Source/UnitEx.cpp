@@ -65,7 +65,17 @@ struct cmdMove // same for patrol, dock, dockEG, cargo route
 	// ...
 };
 
-// todo: cargoroute
+struct cmdCargoRoute
+{
+	char numUnits;
+	short unitId;
+	short numWayPoints;
+	long pts[3];
+	short mineWayPointIndex;
+	short smelterWayPointIndex;
+	short mineUnitId;
+	short smelterUnitId;
+};
 
 struct cmdBuildWall
 {
@@ -266,6 +276,44 @@ void UnitEx::DoAttack(LOCATION where)
 	data->tileX = where.x;
 	data->tileY = where.y;
 	data->unknown = 0;
+
+	ExtPlayer[OwnerID()].ProcessCommandPacket(&packet);
+}
+
+void UnitEx::DoCargoRoute(UnitEx mine, UnitEx smelter)
+{
+	if (!isInited)
+		return;
+
+	if (!IsLive())
+		return;
+
+	CommandPacket packet;
+	cmdCargoRoute *data = (cmdCargoRoute*)packet.dataBuff;
+
+	packet.type = ctMoCargoRoute;
+	packet.dataLength = sizeof(cmdMove);
+	data->numUnits = 1;
+	data->unitId = unitID;
+	data->mineUnitId = mine.unitID;
+	data->smelterUnitId = smelter.unitID;
+	data->numWayPoints = 3;
+
+	int pxLoc = 0;
+	int x = mine.GetDockLocation().x * 32,
+		y = mine.GetDockLocation().y * 32;
+	pxLoc = (x & 0x07FFF) | (y & 0x03FFF) << 15;
+	data->pts[0] = data->pts[2] = pxLoc;
+
+	pxLoc = 0;
+	x = smelter.GetDockLocation().x * 32;
+	y = smelter.GetDockLocation().y * 32;
+	pxLoc = (x & 0x07FFF) | (y & 0x03FFF) << 15;
+	data->pts[1] = pxLoc;
+
+	data->mineWayPointIndex = 0;
+	data->smelterWayPointIndex = 1;
+
 
 	ExtPlayer[OwnerID()].ProcessCommandPacket(&packet);
 }
