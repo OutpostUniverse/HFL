@@ -258,7 +258,7 @@ void PaneButton::SetHelpText(char *helpText)
 {
 	OP2Button *p = internalBtn;
 
-	if (!p) {// not inited if this is null
+	if (!p) { // not inited if this is null
 		return;
 	}
 

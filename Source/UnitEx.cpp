@@ -3,7 +3,7 @@
 
 #pragma pack(push,1)
 // All of these structs have room for only one unit ID as the functions operate on one unit only.
-struct cmdAttackXY // supports waypoints, as well for attack unit
+struct cmdAttackXY // supports waypoints, as well as for attack unit
 {
 	char numUnits;
 	short unitId;
@@ -135,7 +135,7 @@ struct cmdTrainSci
 	short numScis;
 };
 
-struct cmdRepair // same for reprogram / dismantle. supports waypoints.. need to find out how
+struct cmdRepair // same for reprogram / dismantle. supports waypoints... need to find out how
 {
 	char numUnits;
 	short unitId;
@@ -225,10 +225,10 @@ constexpr std::uintptr_t labDataOffset = 0x24;
 
 struct LabData
 {
-	short nextResearchTime;		// Amount of time until next research increment(research progresses in chunks)
+	short nextResearchTime;		// Amount of time until next research increment (research progresses in chunks)
 	short unknown1;
 	int unknown2[5];
-	int researchRemaining;		// Amount of research left to complete tech(intialized to costOfResearch * 256 when research starts)
+	int researchRemaining;		// Amount of research left to complete tech (initialized to costOfResearch * 256 when research starts)
 	int unknown3[8];
 	int techNum;
 	char numScientists;			// numScientists researching at the lab

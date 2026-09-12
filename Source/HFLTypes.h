@@ -145,7 +145,7 @@ enum BuildingFlags
 	bflagDockingAll = 0x4,
 	bflagDockingTruck = 0x8,		// allows cargo truck to dock
 	bflagDockingConvec = 0x10,		// allows convec to dock
-	bflagDockingEvac = 0x20,		// ? - allow evac. transport to dock maybe?
+	bflagDockingEvac = 0x20,		// ? - allows evac. transport to dock maybe?
 	bflagCanBeAutoTargeted = 0x40	// can be automatically targeted. CC doesn't have this set by default (may affect whether something can be EMP'ed as well)
 };
 

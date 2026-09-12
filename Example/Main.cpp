@@ -9,7 +9,7 @@
 #include "HFL.h"
 
 
-// Define required exports through macro. See RequiredExports.h in Outpost2DLL for other macros options.
+// Define required exports through a macro. See RequiredExports.h in Outpost2DLL for other macro options.
 ExportLevelDetails("HFL test", "tutorial.map", "MULTITEK.TXT", MissionTypes::Colony, 1)
 
 // Place any global variables in the following struct so that your level correctly saves and loads.
@@ -97,8 +97,8 @@ class TestReport : public PaneReport
 TestReport myReport;
 
 // Note: This is the DLL entry point which is called by Windows when the
-//		 DLL is first loaded into a processes address space or unloaded
-//		 from the process address space. This function also be called for
+//		 DLL is first loaded into a process's address space or unloaded
+//		 from the process's address space. This function may also be called for
 //		 each thread owned by the process, but this has been disabled
 //		 for efficiency reasons by the DisableThreadLibraryCalls during
 //		 the first time the method is run.
@@ -167,8 +167,8 @@ int StatusProc()
 //		 intentionally left empty and is used as the trigger
 //		 callback function for triggers that don't want or need
 //		 any special callback function.
-// Note: The use of SCRIPT_API is used by all trigger functions
-//		 to ensure they are exported correctly. (Although,
+// Note: SCRIPT_API is used by all trigger functions
+//		 to ensure they are exported correctly. Although,
 //		 technically it's not needed in this case since this
 //		 function has a function prototype defined in
 //		 RequiredExports.h which contains the SCRIPT_API macro
