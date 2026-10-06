@@ -7,7 +7,7 @@ struct OP2CommandPane;
 struct OP2CommandPaneVtbl
 {
 	int iwnd[6]; // don't care about these
-	int pane[5]; // don't care here either TODO fill these in later
+	int pane[5]; // don't care here either; TODO: fill these in later
 	void (__fastcall *AddUpdateRect)(void *classPtr, int dummy, RECT *updateRect);
 	int Paint; // don't care
 };
@@ -19,7 +19,7 @@ struct OP2CommandPane
 	void *gfxSurface;
 	int controls[20]; // don't care
 	int numControls;
-	int reportButtons[6][43]; // Don't need to know the structure of the buttons
+	int reportButtons[6][43]; // don't need to know the structure of the buttons
 	RECT updateRect;
 	int unknown1;
 	int numReportButtons;
